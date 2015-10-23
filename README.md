@@ -9,6 +9,9 @@ Development best practices for Intrepid
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
+## Process
+* [Git Workflow](git_workflow_quick_reference.md)
+
 ## Advice 
 * [Mobile API Guidance](mobile_api_guidance.md)
 
