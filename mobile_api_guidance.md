@@ -1,0 +1,7 @@
+# Versioning
+
+Functionality provided by an API inevitably changes over time, and it’s sometimes necessary to make breaking, backwards-incompatible changes. In contrast to web app users, mobile app users must upgrade their software to take advantage of new functionality, and there is a period of overlap and adoption where two versions of a client are in circulation. It is beneficial to think about upgrade strategies early in your API’s development, and there are a few different approaches.
+
+The most common approach is to prefix URIs with a version, e.g. ‘/v1/method’. This allows clients that are configured to use a particular version of an API to continue using it after a new version of the API is released with a different prefix. Facebook is an example of an API that is versioned this way.
+
+Another approach is to require all clients to upgrade when a new API is released. The user must be presented with an explicit message that they need to visit the appropriate app store to upgrade their app. This is typically a sacrifice in user experience but can be necessary for applications like multiplayer games. To implement this, an API can either provide a “latestVersion” endpoint, or create an explicit error code that triggers the client to present the upgrade message to the user. An example of this type of API is the game Hearthstone. 

@@ -1,4 +1,4 @@
-# sherpa
+# Sherpa
 Development best practices for Intrepid
 
 ## Style Guides
@@ -8,3 +8,7 @@ Development best practices for Intrepid
 * [Android](https://source.android.com/source/code-style.html)
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
+
+## Advice 
+* [Mobile API Guidance](mobile_api_guidance.md)
+
