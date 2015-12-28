@@ -5,7 +5,9 @@ Development best practices for Intrepid
 * iOS
 	* [Swift](https://github.com/IntrepidPursuits/swift-style-guide)
 	* [Objective-C](https://github.com/IntrepidPursuits/objective-c-style-guide)
-* [Android](https://source.android.com/source/code-style.html)
+* Android
+	* [Android](https://source.android.com/source/code-style.html)
+	* [Intrepid Style Template](android/code_style.md)
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
