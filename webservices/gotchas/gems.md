@@ -1,5 +1,32 @@
 ## Gotchas with commonly used gems
 
+###Acts-as-taggable-on
+
+####Using Taggables with UUIDs
+
+When using the acts-as-taggable-on gem it will generate migrations for the taggable tables with the command
+
+```
+rake acts_as_taggable_on_engine:install:migrations
+```
+
+If the database is set up using UUIDs as opposed to integer IDs then edit the migration whose title looks like
+
+```
+..._acts_as_taggable_on_migration.acts_as_taggable_on_engine.rb
+```
+and change this line
+
+```
+t.references :taggable, polymorphic: true
+```
+
+to
+
+```
+t.references :taggable, polymorphic: true, type: :uuid
+```
+
 ### Shoulda
 
 #### Uniqueness validations
