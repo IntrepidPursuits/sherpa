@@ -22,3 +22,15 @@ show up in the list of options when configuring `Editor -> Code Style`
 Our code style is a living document - if you have suggested changes,
 please bring them up on the #android Slack channel for discussion and
 we'll go from there!
+
+### Syncing the code style file
+Code style settings can also be checked into git and have the changes 
+be automatically synced across team members. This can be done by checking
+`.idea/codeStyleSettings.xml` into git and set the code style scheme in
+the settings dialog to `Project`. Normally, we put the whole `.idea` 
+folder under gitignore. However, we can make an exception for the code
+style file by putting the following lines in gitignore instead:
+```
+.idea/*
+!.idea/codeStyleSettings.xml
+```
