@@ -27,12 +27,32 @@ to
 t.references :taggable, polymorphic: true, type: :uuid
 ```
 
+### Monban
+
+#### Case-insensitive lookup
+
+We use Monban for email (or username) and password authentication. By default, Monban does not treat email (or username, or other lookup fields) as case-insensitive.  Thus, a user with email geneparmesan@example.com will not be able to log in if enters GeneParmesan@example.com.  This will not stand. The fix is this:
+
+```ruby
+config/initializers/monban.rb
+
+Monban.configure do |config|
+  # sub in email for username or other lookup field as necessary
+  config.find_method = ->(params) { Monban.config.user_class.find_by(email: params[:email].downcase) }
+end
+```
+
+Note also that your validation for `email` should be case-insensitive:
+
+```ruby
+validates :email, uniqueness: { case_sensitive: false }
+```
+
 ### Shoulda
 
 #### Uniqueness validations
 
 When testing uniqueness validations, if you also have a uniqueness constraint on the database, and not just on the model, you need to create a record before running the test or you'll get an error.
-
 
 ```ruby
 # spec/models/widget_spec.rb
