@@ -47,6 +47,7 @@ Note also that your validation for `email` should be case-insensitive:
 ```ruby
 validates :email, uniqueness: { case_sensitive: false }
 ```
+(Benn: note, by changing our configuration this way, we are exposing ourselves to an edge case where some email server might actually use case-sensitive email addresses. Technically, according to RFC 2821, email addresses are supposed to be case sensitive. That said, this is extremely unlikely, as any reasonable email system would block two addresses that differ only by case)
 
 ### Shoulda
 
