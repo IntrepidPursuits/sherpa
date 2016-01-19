@@ -17,3 +17,8 @@ Development best practices for Intrepid
 ## Advice 
 * [Mobile API Guidance](mobile_api_guidance.md)
 
+## Resources
+* [Stuff to read for Android devs](android/stuff_to_read.md)
+* [Stuff to read for iOS devs](ios/stuff_to_read.md)
+* [Stuff to read for backend devs](backend/stuff_to_read.md)
+
