@@ -1,21 +1,15 @@
 ## So you want to sign up users and authenticate your Rails API - Step 1
 
-Hi folks. My name is Helen and I'm a Rails developer at Intrepid. That's right, we don't just do mobile. We also have a small but mighty web team that builds APIs, admin portals, and the like for our clients. And we're hiring!  Hit us up.
+Although Intrepid is primarily a mobile shop, we have a small but mighty web team that builds APIs, admin portals, and the like for our clients.  And for every API we’ve build, some sort of authentication system is required.  In this and subsequent posts, I’ll walk through the approach we’ve developed over a number of projects for user sign-up and authentication.
 
-It seems like every time we get a new crop of apprentices or start on a new project we ask ourselves: "Er, how do we do handle user sign up and authentication again?"
-
-And then we think: "Shouldn't we have written this down somewhere last time?"
-
-Yes, yes we should have. So now we are, for our and your benefit.
-
-Over the last few projects, we've come up with a fairly consistent approach to authenticating our APIs, which I'll outline in this and future blog posts. In this post, I'll review signing up users with email and password.  In future posts, I'll review:
+In this post, I'll review signing up users with email and password.  In future posts, I'll review:
 - allowing users to sign up via either email/password or an OAuth provider
 - authenticating API endpoints using [warden](https://github.com/hassox/warden).
 - regenerating API tokens when they expire
 
 ### Overview
 
-Here's the whole sign-up and authentication flow:
+Before we get started, let’s review the whole sign-up and authentication flow:
 
 1. User signs up
   * A first-time user submits their email and password to a `POST /users` endpoint.
@@ -41,7 +35,7 @@ We'll tackle parts 1 and 3 today.  Follow along on [this repo](https://github.co
 
 #### Step 1: Write a test
 
-Because we're good little TDD-ers, we'll start with an integration test for our "happy path" case:
+Because we're good little TDD-ers, we'll start with an integration test for our "happy path" case -- that is, the case where everything goes right:
 
 ```ruby
 # /spec/requests/v1/users_requests_spec.rb
@@ -79,7 +73,7 @@ describe 'Users endpoints' do
 end
 ```
 
-We're making use of a couple of helper methods in our test that we can define in a `Helpers::Requests` mixin, namely:
+We're making use of a couple of helper methods in our test that we can define in a `Helpers::Requests` module, namely:
 
 * `accept_headers` to generate a header with our vendor prefix and API version number
 * `json_value_at_path` for validating that JSON responses contain the correct values
@@ -132,7 +126,7 @@ Let's add a `User` model with `email`, `password_digest`, `authentication_token`
 
 #### Step 3: Add your route and controller action
 
-We use the [versionist](https://github.com/bploetz/versionist) gem to enable versioning via an accept header.  Adding the route below:
+We use the [versionist](https://github.com/bploetz/versionist) gem to enable versioning via an accept header.  Adding the route below will give us a route to the `v1/users#create` controller action:
 
 ```ruby
 # config/routes.rb
@@ -148,7 +142,7 @@ Rails.application.routes.draw do
 end
 ```
 
-will give us a route to the `v1/userss#create` controller action.  In that action, we'll use a `SignUpUser` service and an `AuthenticationSerializer` to serialize the user into JSON:
+In that action, we'll use a `SignUpUser` service and an `AuthenticationSerializer` to serialize the user into JSON:
 
 ```ruby
 # app/controllers/v1/users_controller.rb
@@ -181,7 +175,7 @@ Here's the [code](https://github.com/IntrepidPursuits/api-authentication-demo/co
 
 #### Step 5: Add AuthenticationSerializer
 
-Our last step is to add an `AuthenticationSerializer` to serialize our newly-signed up user.
+Our last step is to add an `AuthenticationSerializer` to serialize our newly-signed-up user.
 
 First let's add a `BaseSerialier` that our other serializers will inherit from, which will include basic attributes and ensure that any associated records are [sideloaded rather than embedded](https://github.com/rails-api/active_model_serializers/tree/0-8-stable#embedding-associations).
 
@@ -256,7 +250,7 @@ end
 
 ([commit](https://github.com/IntrepidPursuits/api-authentication-demo/commit/6559f931049bd163a2e6649ffeb358d7929c02ec))
 
-We could leave it like this and be done with our feature.  But since we nearly always this pattern in `create` actions of trying to save an object and rendering errors if it fails, let's instead raise an error and rescue that error in our base controller:
+We could leave it like this and be done with our feature.  But since we nearly always use this pattern in `create` actions of trying to save an object, and rendering errors if it fails, let's instead raise an error and rescue that error in our base controller:
 
 ```ruby
 # app/services/sign_up_user.rb
