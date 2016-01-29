@@ -49,6 +49,9 @@ If you did not use the `--heroku true` flag, or did not use suspenders to genera
 * Certain Heroku addons set their own environment variables.  For example, you must add the Airbrake addon before deploying if you have the Airbrake gem installed.  Provisioning the addon will set the necessary environment variables for you.
 * Forgetting to set an environment variable is the most common reason initial deployments fail.
 
+Variables can be added to the command line using the heroku config command:
+heroku config:set NAME_OF_VAR=var -a <my_heroku_app_name>
+
 (5) Push to Heroku, migrate your database, and run a seeder as necessary.
 
   ```
@@ -60,4 +63,24 @@ If you did not use the `--heroku true` flag, or did not use suspenders to genera
 
   ```
   $ heroku run rake db:seed -a <my-heroku-production-app-name>
+```
+
+Provision Airbrake on Heroku to avoid errors when deploying for first time.
+
+Also set the following ENV vars:
+```
+ADMIN_EMAIL:         <some_email>
+APPLICATION_HOST:    <app_name>.herokuapp.com
+ASSET_HOST:          <app_name>.herokuapp.com
+EMAIL_RECIPIENTS:    <some_email>
+EXECJS_RUNTIME:      Node
+HOST:                <app_name>.herokuapp.com
+LANG:                en_US.UTF-8
+RACK_ENV:            staging
+RAILS_ENV:           staging
+SECRET_KEY_BASE:     <output_of_rake_secret>
+SMTP_ADDRESS:        fake-until-add-sendgrid
+SMTP_DOMAIN:         heroku.com
+SMTP_PASSWORD:       fake-until-add-sendgrid
+SMTP_USERNAME:       fake-until-add-sendgrid
 ```
