@@ -1,6 +1,11 @@
 # Sherpa
 Development best practices for Intrepid
 
+## Contribution rules:
+* Two developers must approve before merging contributions
+* One developer veto blocks contribution for review & revision
+* Use the github `issue` functionality if you find something is missing & should be added to Sherpa
+
 ## Style Guides
 * iOS
 	* [Swift](https://github.com/IntrepidPursuits/swift-style-guide)
