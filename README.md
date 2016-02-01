@@ -19,11 +19,11 @@ Development best practices for Intrepid
 ## Process
 * [Git Workflow](git_workflow_quick_reference.md)
 
-## Advice 
+## Advice
 * [Mobile API Guidance](mobile_api_guidance.md)
 
 ## Resources
 * [Stuff to read for Android devs](android/stuff_to_read.md)
 * [Stuff to read for iOS devs](ios/stuff_to_read.md)
 * [Stuff to read for backend devs](backend/stuff_to_read.md)
-
+* [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
