@@ -1,6 +1,6 @@
 ## Gotchas with commonly used gems
 
-###Acts-as-taggable-on
+###Acts-as-taggable-on or Acts-as-follower
 
 ####Using Taggables with UUIDs
 
