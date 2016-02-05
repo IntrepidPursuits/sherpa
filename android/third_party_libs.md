@@ -7,6 +7,9 @@ Clean, intuitive, RESTful HTTP client we use to perform network IO; use with OkH
 Overview: <http://square.github.io/retrofit> <br/>
 Source: <https://github.com/square/retrofit>
 
+Overview of OkHttp: <http://square.github.io/okhttp> <br/>
+Source for OkHttp: <https://github.com/square/okhttp>
+
 ### Otto
 
 An event bus tailored to Android, Otto supports communication between distinct application components, when the use of a traditional interface is inadequate or cumbersome. 
