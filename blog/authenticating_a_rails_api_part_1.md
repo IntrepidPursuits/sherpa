@@ -1,5 +1,7 @@
 ## So you want to sign up users and authenticate your Rails API - Step 1
 
+**Note:** This tutorial is designed for someone who has a beginning to intermediate knowledge of Ruby on Rails.
+
 Although Intrepid is primarily a mobile shop, we have a small but mighty web team that builds APIs, admin portals, and the like for our clients.  And for every API we’ve build, some sort of authentication system is required.  In this and subsequent posts, I’ll walk through the approach we’ve developed over a number of projects for user sign-up and authentication.
 
 In this post, I'll review signing up users with email and password.  In future posts, I'll review:
