@@ -15,7 +15,8 @@ Source for OkHttp: <https://github.com/square/okhttp>
 An event bus tailored to Android, Otto supports communication between distinct application components, when the use of a traditional interface is inadequate or cumbersome. 
 
 Overview: <http://square.github.io/otto> <br/>
-Source: <https://github.com/square/otto>
+Source: <https://github.com/square/otto> <br/>
+Alternatives: <https://github.com/greenrobot/EventBus> and <https://github.com/AndroidKnife/RxBus>
 
 ### ButterKnife
 
