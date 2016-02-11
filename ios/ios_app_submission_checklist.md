@@ -1,6 +1,7 @@
 # iOS App Store Submission Checklist
 
 - Sign up for Apple Developer Program account (requires DUNS number for businesses)
+- If the app communicates with custom hardware, send hardware to Apple to use while they review the app.
 - Gather certificates
     - Create an iOS distribution certificate using the Apple Developer Portal
     - Create prodution APNS certificates
