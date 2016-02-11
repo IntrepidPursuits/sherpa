@@ -30,4 +30,24 @@ Make sure everyone else on the team has access
 13. https://github.com/IntrepidPursuits/follow-app-server/blob/master/spec/support/helpers/requests.rb
 Copy the contents of this file into spec/support/requests.rb
 
+Make sure to include it in your rails helper:
 
+```
+RSpec.configure do |config|
+  # ...
+  config.include Helpers::Requests, type: :request
+end
+```
+
+14. Include the json_spec gem:
+
+```
+group :development, :test do
+  # ...
+  gem 'json_spec'
+end
+RSpec.configure do |config|
+  # ...
+  config.include JsonSpec::Helpers
+end
+```
