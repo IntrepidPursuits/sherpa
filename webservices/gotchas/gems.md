@@ -75,6 +75,27 @@ If you omit `create(:widget)`, you'll get an error like the following:
        : INSERT INTO "widgets" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"
 ```
 
+**UPDATE 2/29/16:** As of `shoulda-matchers` version 3.1, this error no longer occurs.  Instead, if you fail to create a record in your test, you'll get an error like the following:
+
+```
+1) Widget validations should require case sensitive unique value for name
+   Failure/Error: it { should validate_uniqueness_of(:name) }
+   Shoulda::Matchers::ActiveRecord::ValidateUniquenessOfMatcher::ExistingRecordInvalid:
+     validate_uniqueness_of works by matching a new record against an
+     existing record. If there is no existing record, it will create one
+     using the record you provide.
+
+     While doing this, the following error was raised:
+
+       PG::NotNullViolation: ERROR:  null value in column "name" violates not-null constraint
+       DETAIL:  Failing row contains (ee2c4076-bf42-4902-b932-116e4843ec58, 2016-02-29 18:13:06.84585, 2016-02-29 18:13:06.84585, null, null).
+       : INSERT INTO "widgets" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"
+
+     The best way to fix this is to provide the matcher with a record where
+     any required attributes are filled in with valid values beforehand.
+   # ./spec/models/widget_spec.rb:16:in `block (3 levels) in <top (required)>'
+```
+
 #### Inclusion validation
 
 If you have an inclusion validation like so:
