@@ -8,7 +8,7 @@
 
 ## Pull Request Software
 
-* Reviewboard vs. Github
+* We do all our PR's through GitHub.
 
 ## Creating Pull Requests
 
@@ -59,7 +59,7 @@
 * When should we be nit-picky about style?
  * ALWAYS!
  * It makes you better and it makes your code easier for others to read.
-* **Note on tone**: Please don't be offended by lots of style corrections and other comments. Reviewers are not being mean, they are just making the you and the code better. :)
+* **Note on tone**: Please don't be offended by lots of style corrections and other comments. Reviewers are not being mean, they are just making you and the code better. :)
 
 ## Responding to Feedback
 
@@ -70,8 +70,7 @@
  * Pushing new commits will update the PR automatically.
  * If you're rebasing, you will have to force push.
    * WARNING: Force pushes re-write history, so be very careful that you are pushing to the correct branch.
-* When master moves forward, when should the feature branch be rebased?
- * Always? Or just when conflicts are created?
+* When master moves forward, rebase your changes.
 * If you have additional changes to make outside the commented suggestions, you should request a second review or save them for another pull request.
 
 ## Merging Pull Requests
