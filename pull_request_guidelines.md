@@ -76,8 +76,9 @@
 ## Merging Pull Requests
 
 * When to merge (how many people need to approve)
- * Everyone on the team should approve before merging.
+ * On small teams, everyone on the team should approve before merging.
  * On large teams (of 4 or more) two approvals should be good enough.
+ * In the end, the author of the pull should be honest and use their best judgment to get the right amount of feedback before merging.
 * Size of the team vs. size of the PR
 * Rebase before merging with `--no-ff`
 * Who performs the merge?
