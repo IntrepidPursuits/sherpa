@@ -21,7 +21,7 @@ As a user, I want to be able to buy the YbN mat
 
 **Mockups:**
 
-![Image1](/Estimation_Playbook_Images/Image1.png)
+![Image1](./Estimation_Playbook_Images/image1.png)
 
 ## 1
 
@@ -40,7 +40,7 @@ As a user, I want to toggle annotations on or off
 
 **Mockups:**
 
-![Image2](/Estimation_Playbook_Images/Image2.png)
+![Image2](./Estimation_Playbook_Images/image2.png)
 
 ## 2
 
@@ -60,7 +60,7 @@ As a user, I want to be able to share on social media if I have completed a clas
 
 **Mockups:**
 
-![Image3](/Estimation_Playbook_Images/Image3.png)
+![Image3](./Estimation_Playbook_Images/image3.png)
 
 ## 2
 
@@ -81,7 +81,7 @@ This story is just about 100% view layout. There is very little backing logic as
 
 **Mockups:**
 
-![Image4](/Estimation_Playbook_Images/Image4.png)
+![Image4](./Estimation_Playbook_Images/image4.png)
 
 ## 3
 
@@ -106,7 +106,7 @@ As a user I want to create a new YbN account with my email address
 
 **Mockups:**
 
-![Image5](/Estimation_Playbook_Images/Image5.png)
+![Image5](./Estimation_Playbook_Images/image5.png)
 
 ## 5
 
@@ -130,7 +130,7 @@ As a user, I want to be able to view pose videos
 
 **Mockups:**
 
-![Image6](/Estimation_Playbook_Images/Image6.png)
+![Image6](./Estimation_Playbook_Images/image6.png)
 
 ## 8
 
@@ -152,4 +152,4 @@ The estimate for this user story is a good example of complexity vs. amount of w
 
 **Mockups:**
 
-![Image7](/Estimation_Playbook_Images/Image7.png)
+![Image7](./Estimation_Playbook_Images/image7.png)
