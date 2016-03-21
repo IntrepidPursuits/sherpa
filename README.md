@@ -28,3 +28,5 @@ Development best practices for Intrepid
 * [Stuff to read for iOS devs](ios/stuff_to_read.md)
 * [Stuff to read for backend devs](backend/stuff_to_read.md)
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
+* [Git cookbook](git_cookbook.md)
+
