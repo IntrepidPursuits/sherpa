@@ -58,3 +58,9 @@ One of the most common frustrations with submodules is failing to update them or
 ```
 git submodule update --init --recursive
 ```
+
+#### Copy the current short hash into the paste buffer
+
+```
+git log -n 1 --oneline | awk "{print \$1}" | tr -d \\n | pbcopy
+```
