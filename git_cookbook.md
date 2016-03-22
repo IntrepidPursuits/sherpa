@@ -22,6 +22,7 @@ function pr () {
 ```
 
 #### Convenience Alias Commands
+For use with your shell's `alias` command.
 
 ```
 alias gs='git status'
@@ -36,4 +37,24 @@ alias gra='git rebase --abort'
 alias grc='git rebase --continue'
 alias gs="git status"
 alias gca='git commit --amend'
+```
+
+#### A less verbose status command
+Includes only the files that changed and omits the boilerplate about the branch, etc.  Alias as `git s`, using git's built-in alias functionality.
+```
+git status -s
+```
+
+#### A better overview of history
+This command lists commits one-per-line, in color, with a graph of the history on the left.  Very handy for quickly looking at history or checking the relationships between branches.  Alias it as `git lg`.
+
+```
+git log --oneline --decorate --graph --all -100
+```
+
+#### Easier submodules
+One of the most common frustrations with submodules is failing to update them or forgetting to init them.  This command covers all those edge cases.  It's easiest to get into the habit of running it after every pull on a repo that has submodules.  Alias it as `git subup`.
+
+```
+git submodule update --init --recursive
 ```
