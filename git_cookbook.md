@@ -46,7 +46,7 @@ git status -s
 ```
 
 #### A better overview of history
-This command lists commits one-per-line, in color, with a graph of the history on the left.  Very handy for quickly looking at history or checking the relationships between branches.  Alias it as `git lg`.
+This command lists the most recent 100 commits one-per-line, in color, with a graph of the history on the left.  Very handy for quickly looking at history or checking the relationships between branches.  Alias it as `git lg`.  Change the `-100` to any number of commits you'd like, or omit it entirely to see the whole history.
 
 ```
 git log --oneline --decorate --graph --all -100
