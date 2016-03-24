@@ -20,3 +20,20 @@ function pr () {
   open https://github.com/$repo/compare/$branch?expand=1
 }
 ```
+
+#### Convenience Alias Commands
+
+```
+alias gs='git status'
+alias gb='git branch'
+alias gg='git log --graph --oneline —all'
+alias go='git checkout'
+alias gom='git checkout master'
+alias gob='git checkout -b'
+alias grim='git rebase --interactive master'
+alias gri='git rebase -i'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias gs="git status"
+alias gca='git commit --amend'
+```
