@@ -22,7 +22,7 @@ function pr () {
 ```
 
 #### Convenience Alias Commands
-For use with your shell's `alias` command, or you can copy and paste them into your ~/.bashrc file.
+For use with your shell's `alias` command, or you can copy and paste them into your ~/.bash_profile.
 
 ```
 alias gs='git status'
