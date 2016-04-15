@@ -22,7 +22,7 @@ function pr () {
 ```
 
 #### Convenience Alias Commands
-For use with your shell's `alias` command.
+For use with your shell's `alias` command, or you can copy and paste them into your ~/.bash_profile.
 
 ```
 alias gs='git status'
@@ -35,7 +35,6 @@ alias grim='git rebase --interactive master'
 alias gri='git rebase -i'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
-alias gs="git status"
 alias gca='git commit --amend'
 ```
 
