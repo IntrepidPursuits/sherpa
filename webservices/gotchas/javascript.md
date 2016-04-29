@@ -4,12 +4,17 @@
 
 ####Requests that manipulate data need CSRF tokens
 
-CSRF stands for `Cross Site Request Forgery`. Effectively what this requirement is attempting to prevent is the ability for another site to trick a user into clicking a link that may cause you delete your account, or transfer money somewhere if they know your services API well.
+CSRF stands for `Cross Site Request Forgery`. Effectively what a CSRF requirement is attempting to prevent is the ability for another site to trick a user into clicking a link that may cause malicious behavior such as deleting your account, or transfer money somewhere.
 
 A detailed account can be found [here].
 [here]: http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
 
+This is a sample implementation of a submission through and AJAX call. Using the Rails built in forms or [simple form for] will do this automatically. However sometimes this is not ideal if the elements you are selecting are loaded via another AJAX call.
+
+[simple form for]: https://github.com/plataformatec/simple_form
+
 **Form to Delete**
+Create a Rails button and use this special `token_tag` generator to create a CSRF token on the page.
 ```
 <h3>Delete endorsement for <%= user.name %></h3>
 <p class="modal-content">Are you sure you wish to delete this endorsement? This action cannot be undone. </p>
@@ -18,6 +23,7 @@ A detailed account can be found [here].
 ```
 
 **Javascript to Send AJAX Call**
+grab the id's you need from elements on the page in order to build your url. Then add then token as an `authenticity_token` in the `data` portion of the AJAX call.
 
 ```
 $(document).ready(function () {
@@ -42,6 +48,7 @@ $(document).ready(function () {
 ```
 
 **Controller Action**
+This is a pretty standard Rails `DELETE` API endpoint that returns a success boolean to let the AJAX callback know that the operation succeeded.
 ```
 def destroy
   @endorsement = Endorsement.find(params[:id])
@@ -99,7 +106,7 @@ class Admin::BaseController < ApplicationController
 end
 ```
 
-The attribute `current_user` is defined byt the browsers ability to find the user from the requests authenticity token
+The attribute `current_user` is the user that the server associates with the request's authenticity token.
 ```
 def current_user
   request.env['warden'].user
