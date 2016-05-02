@@ -1,6 +1,6 @@
 ## Gotchas with common javascript functions
 
-###PUT, PATCH and DELETE ajax requests 
+###PUT, PATCH and DELETE AJAX requests 
 
 ####Requests that manipulate data need CSRF tokens
 
@@ -8,6 +8,54 @@ CSRF stands for `Cross Site Request Forgery`. Effectively what a CSRF requiremen
 
 A detailed account can be found [here].
 [here]: http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
+
+###Error Message
+
+In Intrepid's standard Warden setup you might see the browser getting redirected
+```
+Started DELETE "/admin/users/9c4c929a-15a1-4060-a916-bcf2d2e81634/endorsements/ed16dfa9-1dc1-4bb8-9778-ca97e0349709" for ::1 at 2016-04-26 15:17:41 -0400
+Processing by Admin::EndorsementsController#destroy as */*
+  Parameters: {"user_id"=>"9c4c929a-15a1-4060-a916-bcf2d2e81634", "id"=>"ed16dfa9-1dc1-4bb8-9778-ca97e0349709"}
+Can't verify CSRF token authenticity
+Geokit is using the domain: localhost
+Redirected to http://localhost:3000/admin/authentications/new <---- This Redirect is because there is no CSRF token
+Filter chain halted as :authorize_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/admin/authentications/new" for ::1 at 2016-04-26 15:17:41 -0400
+Processing by Admin::AuthenticationsController#destroy as */*
+  Parameters: {"id"=>"new"}
+Can't verify CSRF token authenticity
+Geokit is using the domain: localhost
+Redirected to http://localhost:3000/admin/authentications/new
+Filter chain halted as :authorize_admin rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+```
+
+This action is the culprit. `current_user` is `nil` and triggering a redirect.
+```ruby
+class Admin::BaseController < ApplicationController
+  before_action :authorize_admin
+
+  private
+
+  def authorize_admin
+    unless current_user
+      redirect_to new_admin_authentication_path
+    end
+  end
+end
+```
+
+The attribute `current_user` is the user that the server associates with the request's authenticity token.
+```ruby
+def current_user
+  request.env['warden'].user
+end
+```
+
+###Solution
 
 This is a sample implementation of a submission through and AJAX call. Using the Rails built in forms or [simple form for] will do this automatically. However sometimes this is not ideal if the elements you are selecting are loaded via another AJAX call.
 
@@ -65,50 +113,4 @@ end
 Started DELETE "/admin/authentications/9c4c929a-15a1-4060-a916-bcf2d2e81634" for ::1 at 2016-04-26 16:29:13 -0400
 Processing by Admin::AuthenticationsController#destroy as HTML
   Parameters: {"authenticity_token"=>"YkAEMRuYbnoa7WAJNB67SvL9679qiB9TTkm6vP8EHgcOS5UKyEgHueu3Onn3fylSOP849ivMaOgbNk8tU1HzDw==", "id"=>"9c4c929a-15a1-4060-a916-bcf2d2e81634"}
-```
-
-###Signs Something is Wrong
-
-In Intrepid's standard Warden setup you might see the browser getting redirected
-```
-Started DELETE "/admin/users/9c4c929a-15a1-4060-a916-bcf2d2e81634/endorsements/ed16dfa9-1dc1-4bb8-9778-ca97e0349709" for ::1 at 2016-04-26 15:17:41 -0400
-Processing by Admin::EndorsementsController#destroy as */*
-  Parameters: {"user_id"=>"9c4c929a-15a1-4060-a916-bcf2d2e81634", "id"=>"ed16dfa9-1dc1-4bb8-9778-ca97e0349709"}
-Can't verify CSRF token authenticity
-Geokit is using the domain: localhost
-Redirected to http://localhost:3000/admin/authentications/new <---- This Redirect is because there is no CSRF token
-Filter chain halted as :authorize_admin rendered or redirected
-Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
-
-
-Started DELETE "/admin/authentications/new" for ::1 at 2016-04-26 15:17:41 -0400
-Processing by Admin::AuthenticationsController#destroy as */*
-  Parameters: {"id"=>"new"}
-Can't verify CSRF token authenticity
-Geokit is using the domain: localhost
-Redirected to http://localhost:3000/admin/authentications/new
-Filter chain halted as :authorize_admin rendered or redirected
-Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
-```
-
-This action is the culprit. `current_user` is `nil` and triggering a redirect.
-```ruby
-class Admin::BaseController < ApplicationController
-  before_action :authorize_admin
-
-  private
-
-  def authorize_admin
-    unless current_user
-      redirect_to new_admin_authentication_path
-    end
-  end
-end
-```
-
-The attribute `current_user` is the user that the server associates with the request's authenticity token.
-```ruby
-def current_user
-  request.env['warden'].user
-end
 ```
