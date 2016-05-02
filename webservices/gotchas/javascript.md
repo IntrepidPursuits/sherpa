@@ -9,7 +9,7 @@ CSRF stands for `Cross Site Request Forgery`. Effectively what a CSRF requiremen
 A detailed account can be found [here].
 [here]: http://stackoverflow.com/questions/941594/understanding-the-rails-authenticity-token
 
-###Error Message
+####Error Message
 
 In Intrepid's standard Warden setup you might see the browser getting redirected
 ```
@@ -55,7 +55,7 @@ def current_user
 end
 ```
 
-###Solution
+####Solution
 
 This is a sample implementation of a submission through and AJAX call. Using the Rails built in forms or [simple form for] will do this automatically. However sometimes this is not ideal if the elements you are selecting are loaded via another AJAX call.
 
