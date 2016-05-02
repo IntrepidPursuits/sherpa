@@ -70,13 +70,13 @@ Processing by Admin::AuthenticationsController#destroy as HTML
 ###Signs Something is Wrong
 
 In Intrepid's standard Warden setup you might see the browser getting redirected
-```bash
+```
 Started DELETE "/admin/users/9c4c929a-15a1-4060-a916-bcf2d2e81634/endorsements/ed16dfa9-1dc1-4bb8-9778-ca97e0349709" for ::1 at 2016-04-26 15:17:41 -0400
 Processing by Admin::EndorsementsController#destroy as */*
   Parameters: {"user_id"=>"9c4c929a-15a1-4060-a916-bcf2d2e81634", "id"=>"ed16dfa9-1dc1-4bb8-9778-ca97e0349709"}
 Can't verify CSRF token authenticity
 Geokit is using the domain: localhost
-Redirected to http://localhost:3000/admin/authentications/new
+Redirected to http://localhost:3000/admin/authentications/new <---- This Redirect is because there is no CSRF token
 Filter chain halted as :authorize_admin rendered or redirected
 Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
 
