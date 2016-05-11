@@ -17,7 +17,7 @@ Development best practices for Intrepid
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
 ## Process
-* [Git Workflow](git_workflow_quick_reference.md)
+* [Git Workflow](git/git_workflow_quick_reference.md)
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
 
@@ -29,4 +29,4 @@ Development best practices for Intrepid
 * [Stuff to read for iOS devs](ios/stuff_to_read.md)
 * [Stuff to read for backend devs](backend/stuff_to_read.md)
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
-* [Git cookbook](git_cookbook.md)
+* [Git cookbook](git/git_cookbook.md)
