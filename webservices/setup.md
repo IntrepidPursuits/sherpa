@@ -39,7 +39,8 @@ RSpec.configure do |config|
 end
 ```
 
-14. Include the json_spec gem:
+14.
+Include the json_spec gem:
 
 ```
 group :development, :test do
@@ -49,5 +50,20 @@ end
 RSpec.configure do |config|
   # ...
   config.include JsonSpec::Helpers
+end
+```
+
+15.
+Enable the uuid extension in its own migration:
+
+```
+$ rails generate migration EnableUuidExtension
+```
+
+```
+class EnableUuidExtension < ActiveRecord::Migration
+  def change
+    enable_extension 'uuid-ossp'
+  end
 end
 ```
