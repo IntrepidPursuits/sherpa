@@ -4,7 +4,7 @@ When in doubt, remember that the goal of introducing view models is to separate 
 
 
 Topics/Proposed Topics:
-- [ ] Motivation behind using view models
+- [x] [Motivation behind using view models](view-model-motivation.md)
 - [x] [View model reuse accross multiple models](view-model-reuse.md)
 - [ ] Example of view model tests (Bryan)
 - [ ] View models with two way bindings using rx (Ben)
