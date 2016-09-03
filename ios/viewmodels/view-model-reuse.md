@@ -1,4 +1,4 @@
-### View Model Reuse
+# View Model Reuse
 
 Sometimes a view might be generic enough that it would need to be repurposed for multiple models. The most compelling use case is for a views that are generic enough that they are used in multiple different places:
 
@@ -9,7 +9,7 @@ Let's call these two views ProfileViewController and ReviewViewController respec
 
 The table view cell pictured here is the same in both cases, and we would ideally like to reuse the table view cell and it's xib. In both cases, we are trying to abstract view logic out of the table view cell. However, the models that drive these two cells are very different. Let's explore two approaches of view models that can be used for this view.
 
-#### Concrete view model class
+### Concrete view model class
 
 This simpler of the two approaches just has a concrete class for the view, which is how we would do it if the cell only had to display one kind of model.
 
@@ -78,7 +78,7 @@ func viewModel(forIndex index: Int) {
 The problem with this approach is that when the view logic is trivial (ProfileViewController), we can get away with implementing view logic within the view controller, but as soon as it gets complicated(ReviewViewController), the view controller starts knowing a lot about view logic details, and we are back to view controller and view bloat.
 
 
-#### Protocol based view model
+### Protocol based view model
 
 We can use protocols to standardize the interface for the view, while keeping implementation details abstracted out into it's own entity.
 
@@ -160,7 +160,7 @@ func viewModel(forIndex index: Int) {
 
 ```
 
-### Conclusions and takeaways
+## Conclusions and takeaways
 
 View models are a tool to facilitate view logic abstraction, but also code reuse. A protocol-based approach allow us to take abstraction one level further, so that our view relies on a generic interface, without forcing an implementation.
 
