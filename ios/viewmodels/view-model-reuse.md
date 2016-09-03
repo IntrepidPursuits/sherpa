@@ -45,7 +45,7 @@ func viewModel(forIndex index: Int) {
     case 0:
       return TitleMessageCellViewModel(title: "First Name", message: profile.firstName)
     case 1:
-       return TitleMessageCellViewModel(title: "Surname", message: profile.lastName)
+      return TitleMessageCellViewModel(title: "Surname", message: profile.lastName)
     ...
   }
 }
@@ -67,8 +67,8 @@ func viewModel(forIndex index: Int) {
       let number = formatter.formatNumber(profile.phoneNumber) ?? "-"
       return TitleMessageCellViewModel(title: "Contact number", message: number, showsEditButton: profile.canEdit)
     case 1:
-       let rows = allergies.filter({ $0.selected }).map({ $0.title }).joinWithSeparator("\n")
-       return TitleMessageCellViewModel(title: "Allergies", message: allergies, showsEditButton: review.canEdit)
+      let rows = topics.filter({ $0.selected }).map({ $0.title }).joinWithSeparator("\n")
+      return TitleMessageCellViewModel(title: "Visit Details", message: topics, showsEditButton: review.canEdit)
     ...
   }
 }
@@ -103,23 +103,23 @@ struct PhoneNumberTitleMessageCellViewModel: TitleMessageCellConforming {
   let showsEditButton: Bool
 
   init(profile: Profile) {
-      let formatter = PhoneNumberFormatter(forCountryCode: currentCountryCode)
-      let number = formatter.formatNumber(profile.phoneNumber) ?? "-"
+    let formatter = PhoneNumberFormatter(forCountryCode: currentCountryCode)
+    let number = formatter.formatNumber(profile.phoneNumber) ?? "-"
     title = "Contact number"
     message = number
     showsEditButton = profile.canEdit
   }
 
-// AllergiesTitleMessageCellViewModel.swift
-struct AllergiesTitleMessageCellViewModel: TitleMessageCellConforming {
+// TopicsTitleMessageCellViewModel.swift
+struct TopicsTitleMessageCellViewModel: TitleMessageCellConforming {
   let title: String
   let message: String
   let showsEditButton: Bool
 
-  init(allergies: [Allergy], review: Review) {
-    title = "Allergies"
-    message = allergies.filter({ $0.selected }).map({ $0.title }).joinWithSeparator("\n")
-      showsEditButton = review.canEdit
+  init(topics: [Topics], review: Review) {
+    title = "Visit Details"
+    message = topics.filter({ $0.selected }).map({ $0.title }).joinWithSeparator("\n")
+    showsEditButton = review.canEdit
   }
 }
 
@@ -135,7 +135,7 @@ func viewModel(forIndex index: Int) {
     case 0:
       return PhoneNumberTitleMessageCellViewModel(profile)
     case 1:
-       return AllergiesTitleMessageCellViewModel(allergies, review: review)
+      return AllergiesTitleMessageCellViewModel(allergies, review: review)
 
     ...
   }
@@ -153,7 +153,7 @@ func viewModel(forIndex index: Int) {
     case 0:
       return TitleMessageCellViewModel(title: "First Name", message: profile.firstName) // Now, TitleMessageCellViewModel is simply a struct that implements TitleMessageCellConforming.
     case 1:
-       return TitleMessageCellViewModel(title: "Surname", message: profile.lastName)
+      return TitleMessageCellViewModel(title: "Surname", message: profile.lastName)
     ...
   }
 }
