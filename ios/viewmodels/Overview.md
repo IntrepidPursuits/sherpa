@@ -4,8 +4,8 @@ When in doubt, remember that the goal of introducing view models is to separate 
 
 
 Topics/Proposed Topics:
-- [Motivation behind using view models](simple-view-models.md)
-- [ ] Should one view model be shared between multiple views
+- [ ] Motivation behind using view models
+- [x] [View model reuse accross multiple models](view-model-reuse.md)
 - [ ] Should view models be value types as opposed to reference types?
 - [ ] View models with two way bindings(using rx)
 - [ ] View models that handle network calls
