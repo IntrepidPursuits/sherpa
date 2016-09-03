@@ -73,7 +73,7 @@ func viewModel(forIndex index: Int) {
   }
 }
 
-```swift
+```
 
 The problem with this approach is that when the view logic is trivial (ProfileViewController), we can get away with implementing view logic within the view controller, but as soon as it gets complicated(ReviewViewController), the view controller starts knowing a lot about view logic details, and we are back to view controller and view bloat.
 
