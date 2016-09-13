@@ -10,4 +10,4 @@ Topics/Proposed Topics:
 - [ ] View models with two way bindings(using rx)
 - [ ] View models that handle network calls
 - [ ] View models that handle both network calls and persistence
-- [ ] [View model example from a real project](view-model-example.md)
+- [x] [View model example from a real project](view-model-example.md)
