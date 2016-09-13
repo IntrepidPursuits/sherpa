@@ -153,13 +153,6 @@ Below is a stripped-down version of `SavedPreztosViewController` showing the rel
 class SavedPreztosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWTableViewCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var bunnyImageView: UIImageView!
-    
-    private static let CreateNewPreztoTVCIdentifier = "CreateNewPreztoTableViewCellIdentifier"
-    private static let SavedPreztoTVCIdentifier = "SavedPreztoTableViewCellIdentifier"
-    private static let BunnyTVCIdentifier = "BunnyTableViewCellIdentifier"
-    private static let CreateNewPreztoTVC = "CreateNewPreztoTableViewCell"
-    private static let SavedPreztoTVC = "SavedPreztoTableViewCell"
 
     let viewModel = SavedPreztosViewModel()
 
