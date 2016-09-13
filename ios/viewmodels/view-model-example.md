@@ -135,3 +135,119 @@ class SavedPreztoViewModel {
         }
     }
 ```
+
+## Using the view models
+
+Below is a stripped-down version of `SavedPreztosViewController` showing the relevant places where the view models are used:
+
+### SavedPreztosViewController.swift
+
+```swift
+class SavedPreztosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWTableViewCellDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var bunnyImageView: UIImageView!
+    
+    private static let CreateNewPreztoTVCIdentifier = "CreateNewPreztoTableViewCellIdentifier"
+    private static let SavedPreztoTVCIdentifier = "SavedPreztoTableViewCellIdentifier"
+    private static let BunnyTVCIdentifier = "BunnyTableViewCellIdentifier"
+    private static let CreateNewPreztoTVC = "CreateNewPreztoTableViewCell"
+    private static let SavedPreztoTVC = "SavedPreztoTableViewCell"
+
+    let viewModel = SavedPreztosViewModel()
+
+    /********************************************************************
+     * Skipping a bunch of view controller setup and life-cycle code... *
+     ********************************************************************/
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+        viewModel.clearCachedImages()
+    }
+    
+    /****************************************
+     * Skipping a bunch of UI setup code... *
+     ****************************************/
+
+    private func refreshSavedPreztosList() {
+        viewModel.retrievePreztos { result in
+            switch result {
+            case .Success:
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                    self.setupBunnyImage()
+                }
+            case .Failure(let error):
+                // TODO: Need UI here to retry
+                print("Error refreshing preztos: \(error)")
+                return
+            }
+        }
+    }
+
+    private func deletePreztoAtIndex(index: Int) {
+        viewModel.deletePreztoAtIndex(index) { result in
+            dispatch_async(dispatch_get_main_queue()) {
+                switch result {
+                case .Success:
+                    if self.viewModel.count == 0 {
+                        self.goToEmptyVC()
+                    } else {
+                        self.tableView.reloadData()
+                        self.setupBunnyImage()
+                    }
+                case .Failure(let e):
+                    print("Error deleting prezto: \(e)")
+                    self.presentAlertWithTitle("Error", message: "There was an unexpected problem deleting a Prezto.")
+                }
+            }
+        }
+    }
+
+    /*****************************************
+     * Skipping a bunch of helper methods... *
+     *****************************************/
+
+    // MARK: - UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return viewModel.count + 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 12.0
+    }
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return section == viewModel.count ? 12 : 0
+    }
+    
+    // Snip...
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            if let createPreztoCell = tableView.dequeueReusableCellWithIdentifier(SavedPreztosViewController.CreateNewPreztoTVCIdentifier, forIndexPath: indexPath) as? CreateNewPreztoTableViewCell {
+                createPreztoCell.layer.cornerRadius = 5
+                return createPreztoCell
+            }
+        } else if let savedPreztoCell = tableView.dequeueReusableCellWithIdentifier(SavedPreztosViewController.SavedPreztoTVCIdentifier, forIndexPath: indexPath) as? SavedPreztoTableViewCell {
+            let index = indexPath.section - 1
+
+            savedPreztoCell.delegateVC = self
+            savedPreztoCell.viewModel = viewModel.viewModelForPreztoAtIndex(index)
+            savedPreztoCell.setRightUtilityButtons(createDeleteBtn(), withButtonWidth: 42.0)
+            savedPreztoCell.layer.cornerRadius = 5
+
+            savedPreztoCell.delegate = self
+            return savedPreztoCell
+        }
+        return UITableViewCell()
+    }
+    
+}
+```
