@@ -276,4 +276,5 @@ class SavedPreztoTableViewCell: SWTableViewCell {
             modifiedOnLabel.text = viewModel.modifiedLabelText
         }
     }
+}
 ```
