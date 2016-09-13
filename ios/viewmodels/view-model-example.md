@@ -12,6 +12,13 @@ For this example, we show the implemenation of the "saved preztos" screen, which
 
 ![SavedPreztosViewController](prezto.png)
 
+NOTE: While this page does show code used in an actual project, the snippets here show only the relevant parts to illustrate view model use. The full versions of these files can be found here:
+
+- [`SavedPreztosViewModel.swift`](https://github.com/IntrepidPursuits/prezto-ios/blob/kevin/saved-preztos/prezto-ios/Features/SavedPreztos/SavedPreztosViewModel.swift)
+- [`SavedPreztoViewModel.swift`](https://github.com/IntrepidPursuits/prezto-ios/blob/kevin/saved-preztos/prezto-ios/Features/SavedPreztos/SavedPreztoViewModel.swift)
+- [`SavedPreztosViewController.swift`](https://github.com/IntrepidPursuits/prezto-ios/blob/kevin/saved-preztos/prezto-ios/Features/SavedPreztos/SavedPreztosViewController.swift)
+- [`SavedPreztoTableViewCell.swift`](https://github.com/IntrepidPursuits/prezto-ios/blob/kevin/saved-preztos/prezto-ios/Features/SavedPreztos/SavedPreztoTableViewCell.swift)
+
 ## Parent View Model
 
 The `SavedPreztosViewController` contains a `SavedPreztosViewModel` that provides the backing logic for fetching and deleting prezto's. 
@@ -250,4 +257,30 @@ class SavedPreztosViewController: UIViewController, UITableViewDataSource, UITab
     }
     
 }
+```
+
+Finally, here is the relevant portion of `SavedPreztoTableViewCell`:
+
+### SavedPreztoTableViewCell
+```swift
+class SavedPreztoTableViewCell: SWTableViewCell {
+
+    var viewModel: SavedPreztoViewModel? {
+        didSet {
+            guard let viewModel = viewModel else { return }
+
+            viewModel.getImages { images in
+                // Make sure that our view model hasn't been swapped out for a different one
+                guard let currentViewModel = self.viewModel where
+                    viewModel.prezto.id == currentViewModel.prezto.id else {
+                    return
+                }
+                self.setupThumbnailView()
+            }
+
+            titleLabel.text = viewModel.titleLabelText
+            accessCodeLabel.text = viewModel.accessCodeLabelText
+            modifiedOnLabel.text = viewModel.modifiedLabelText
+        }
+    }
 ```
