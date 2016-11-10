@@ -1,7 +1,7 @@
 
 #Intrepid Development Principles
 
-The following core principles represent how Intrepid approaches software development practices and process. We use these principles as a lens through which we can evaluate new technologies, tools, and procedures.
+The following core principles represent how Intrepid approaches software development. We use these principles as a lens through which we can evaluate new technologies, tools, and processes.
 
 ###Team Alignment
 
@@ -13,7 +13,7 @@ At Intrepid we understand that uncertainty is inevitable in software development
 
 ###Transparency
 
-We reduce the impact of this uncertainty by building continuous feedback into our process. Our quality metrics, code review workflow and agile approach are designed to give stakeholders and team members alike a clear view of progress. It is never too early to communicate risks.
+We reduce the impact of this uncertainty by building continuous feedback into our process. Our quality metrics, code review workflow, and agile approach are designed to give stakeholders and team members alike a clear view of progress. It is never too early to communicate risks.
 
 ###Self Assessment
 
