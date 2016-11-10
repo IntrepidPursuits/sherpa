@@ -17,6 +17,7 @@ Development best practices for Intrepid
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
 ## Process
+* [Intrepid Development Principles](development_principles.md)
 * [Git Workflow](git/git_workflow_quick_reference.md)
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
