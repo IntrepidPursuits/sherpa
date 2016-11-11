@@ -6,7 +6,10 @@ When in doubt, remember that the goal of introducing view models is to separate 
 Topics/Proposed Topics:
 - [ ] Motivation behind using view models
 - [x] [View model reuse accross multiple models](view-model-reuse.md)
-- [ ] Should view models be value types as opposed to reference types?
-- [ ] View models with two way bindings(using rx)
+- [ ] Example of view model tests (Bryan)
+- [ ] View models with two way bindings using rx (Ben)
 - [ ] View models that handle network calls
 - [ ] View models that handle both network calls and persistence
+
+Archived Topics:
+- [ ] Should view models be value types as opposed to reference types?
