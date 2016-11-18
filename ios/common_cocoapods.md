@@ -14,8 +14,8 @@ The purpose of this document is to provide a list of recommended cocoapods that 
 
 ## Analytics
 - [Fabric](https://get.fabric.io/)
-- [Crashlytics](http://try.crashlytics.com/)
 - [MixPanel](https://mixpanel.com/)
+- [Localytics](https://www.localytics.com/)
 
 ## Attributed Labels
 - [TTTAttributedLabel](https://github.com/TTTAttributedLabel/TTTAttributedLabel)
@@ -40,9 +40,19 @@ The purpose of this document is to provide a list of recommended cocoapods that 
 ## Image Downloading & Caching
 - [Kingfisher](https://github.com/onevcat/Kingfisher)
 - [SDWebImage](https://github.com/rs/SDWebImage)
+- [AlamofireImage](https://github.com/Alamofire/AlamofireImage)
 
 ## Keychain
 - [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess)
 
 ## Reachability
 - [ReachabilitySwift](https://github.com/ashleymills/Reachability.swift)
+
+## UI
+- [FXBlurView](https://github.com/nicklockwood/FXBlurView)
+
+## Reactive Programming
+- [RxSwift](https://github.com/ReactiveX/RxSwift)
+
+## Permissions Handling
+- [PermissionScope](https://github.com/nickoneill/PermissionScope)
