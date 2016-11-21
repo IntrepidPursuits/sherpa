@@ -26,6 +26,7 @@ Development best practices for Intrepid
 * [Mobile API Guidance](mobile_api_guidance.md)
 
 ## Resources
+* [Android Code Coverage On Jenkins](android_cobertura.md)
 * [Stuff to read for Android devs](android/stuff_to_read.md)
 * [Stuff to read for iOS devs](ios/stuff_to_read.md)
 * [Stuff to read for backend devs](backend/stuff_to_read.md)
