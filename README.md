@@ -21,6 +21,7 @@ Development best practices for Intrepid
 * [Git Workflow](git/git_workflow_quick_reference.md)
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
+* [CocoaPods Processes](ios/cocoapods_processes.md)
 
 ### Maintenance Readme Template
 Projects repos should always contain a README so that future development teams can learn about processes/specific quirks that have to do with individual projects. See the template [here](readme-template.md).
