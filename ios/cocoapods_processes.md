@@ -1,6 +1,6 @@
 # Cocoapods Processes
 
-We like to make reusable code and cocoapods is a great way to distribute that code. Individual projects may be making their own pods, but we also maintain the `Intrepid` pod within the entire iOS team. This guide aims to cover the necessary steps for creating your own pod and also maintaining one, like we must do with the `Intrepid` pod.
+We like to make reusable code and cocoapods is a great way to distribute that code. Individual projects may be making their own pods, but we also maintain the [Intrepid pod](https://github.com/IntrepidPursuits/swift-wisdom) within the entire iOS team. This guide aims to cover the necessary steps for creating your own pod and also maintaining one, like we must do with the [Intrepid pod](https://github.com/IntrepidPursuits/swift-wisdom).
 
 The goal of this doc is not to copy all the info available at [cocoapods.org](https://cocoapods.org/). This is specifically oriented towards helpful advice specific to Intrepid processes.
 
@@ -18,9 +18,9 @@ Then you'll want to make a podspec file. You can start by just copying the text 
 Pod::Spec.new do |spec|
   spec.name         = 'MyPodName'
   spec.version      = '0.0.1'
-  spec.license      = 'NO LICENSE'
+  spec.license      = 'NO LICENSE' # Use MIT License for an open source pod.
   spec.homepage     = 'https://github.com/IntrepidPursuits/ThisRepoURL'
-  spec.authors      = { 'ip' => 'dev@intrepid.io' }
+  spec.authors      = { 'John Smith' => 'JohnSmith@intrepid.io' }
   spec.summary      = 'Brief description of this pod'
   spec.source       = { :git => 'https://github.com/IntrepidPursuits/ThisRepoURL.git', :tag => "#{spec.version}" }
   spec.source_files = 'root/Source/**/*.{swift}'
@@ -50,13 +50,16 @@ pod 'MyPodName', :path => '/Users/my/path/to/MyPodName'
 
 This is also nice if you're making changes to someone else's pod. Just fork their repo and clone it to your local machine. Then change your podfile like above. Now, since you're using the pod locally, any changes you make in the pod will be tracked by git. Then you can submit a PR to merge back in your changes when you're happy with it.
 
+**Gotcha:** If you add a new file to your target repo, you must re-run `pod install` or you won't see it.
+
 ## Updating Your Pod
 
 The basic steps in most updates to pods:
 
 1. Go through the prescribed contribution process on that project -- likely a pull request.
 1. As a final step in that process, update the podspec's `spec.version` to a new version number. We recommend following the versioning rules here: http://semver.org/.
-1. After merging the change, tag the commit (on remote) with the new version. i.e. If the new version is `0.0.2` the new tag would be `0.0.2`.
+1. Lint your pod to make sure there are no errors with `$ pod spec lint`
+1. After merging the change, tag the commit (on remote) with the new version. i.e. If the new version is `0.0.2` the new tag would be `0.0.2`. When tagging, please tag verbosely: `git tag -a 1.0.2 -m 'added test coverage for foobar class'`
 1. If this is a public pod, being hosted through the cocoapods trunk, push the podspec to trunk. `$ pod trunk push`.
 
 ## Other resources:
@@ -64,3 +67,4 @@ The basic steps in most updates to pods:
 - [See other pods on cocoapods.org](https://cocoapods.org/)
 - [Pod spec reference on cocoapods.org](https://guides.cocoapods.org/syntax/podspec.html)
 - [Pod trunk reference on cocoapods.org](https://guides.cocoapods.org/making/getting-setup-with-trunk.html)
+- [Tweaking 3rd Party Libraries by Ying](http://blog.intrepid.io/cocoapods-tweaking-3rd-party-libraries)
