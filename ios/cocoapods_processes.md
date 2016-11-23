@@ -120,7 +120,7 @@ The basic steps in most updates to pods:
 
 1. Go through the prescribed contribution process on that project -- likely a pull request.
 1. As a final step in that process, update the podspec's `spec.version` to a new version number. We recommend following the versioning rules here: http://semver.org/.
-1. Lint your pod to make sure there are no errors with `$ pod spec lint`
+1. Lint your pod to make sure there are no errors with `$ pod spec lint`. [Read more on cocoapods.org](http://guides.cocoapods.org/terminal/commands.html#pod_spec_lint)
 1. After merging the change, tag the commit (on remote) with the new version. i.e. If the new version is `0.0.2` the new tag would be `0.0.2`. When tagging, please tag verbosely: `git tag -a 1.0.2 -m 'added test coverage for foobar class'`
 1. If this is a public pod, being hosted through the cocoapods trunk, push the podspec to trunk. `$ pod trunk push`.
 
