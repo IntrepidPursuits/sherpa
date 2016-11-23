@@ -9,8 +9,69 @@ The goal of this doc is not to copy all the info available at [cocoapods.org](ht
 The first thing to do is just start a new xcode project that holds all of your source components. There will really be two parts of your project. There will be the actual pod components that you are building to be reusable by others -- let's keep these in a folder called `Source`. Then there will be the rest of your project that should really act like a demo of the pod.
 
 Your structure could end up looking something like this:
+```
+|-- MyPodName
+    |-- Source
+        |-- FooClass.swift
+        |-- FooBar.swift
+        |-- Extensions
+            |-- Bundle+Extensions.swift
+        |-- Resources
+            |-- fooImage.png
+            |-- fooSound.mp3
+            |-- fooNib.xib
+    |-- Demo
+        |-- AppDelegate.swift
+        |-- ViewController.swift
+        |-- LaunchScreen.storyboard
+        |-- Main.storyboard
+|-- MyPodNameTests
+    |-- FooClassTests.swift
+    |-- FooBarTests.swift
+    |-- ResourceTests.swift
+```
 
-![pod folder structure](./images/pod_folder_setup.png)
+### Including Resources
+
+If your pod makes use of some bundled resources like images or xibs, then you'll need to be careful in how you access those in your library. When the pod is being used in another project, those resources will be kept in a separate bundle (as opposed to `Bundle.main`). So here is a handy way to access those.
+
+**Bundle+Extensions.swift:**
+```swift
+private final class BundleFinderClass {}
+
+private let podBundlePath: String = {
+    let bundle = Bundle(for: BundleFinderClass.self) // just using any random class from this framework.
+    
+    // Use pod path if in a pod, but if that doesn't exist use the mainBundle because we're in the source project
+    return bundle.path(forResource: "PodBundleName", ofType: "bundle") ?? Bundle.main.bundlePath // Replace "PodBundleName" with the name of your bundle that you use in the PodSpec.
+}()
+
+extension Bundle {
+    static var podBundle: Bundle {
+        return Bundle(path: podBundlePath) ?? Bundle.main
+    }
+}
+```
+**How to use that extension:**
+```swift
+// Ex: Grabbing a resource via it's path
+extension UIImage {
+    class func bundledImage(named bundledFilename: String) -> UIImage? {
+        guard let imagePath = Bundle.podBundle.path(forResource: bundledFilename, ofType: "png") else { return nil }
+        return UIImage(contentsOfFile: imagePath)
+    }
+}
+
+// Ex: ViewController initialize by a nib
+class FooViewController {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nil, bundle: Bundle.podBundle)
+    }
+}
+```
+
+
+### Podspec
 
 Then you'll want to make a podspec file. You can start by just copying the text below and customizing. This should be saved in the top level of your project directory and be named like `[Your-pod-name].podspec`.
 
@@ -67,4 +128,4 @@ The basic steps in most updates to pods:
 - [See other pods on cocoapods.org](https://cocoapods.org/)
 - [Pod spec reference on cocoapods.org](https://guides.cocoapods.org/syntax/podspec.html)
 - [Pod trunk reference on cocoapods.org](https://guides.cocoapods.org/making/getting-setup-with-trunk.html)
-- [Tweaking 3rd Party Libraries by Ying](http://blog.intrepid.io/cocoapods-tweaking-3rd-party-libraries)
+- [Tweaking 3rd Party Libraries (by Ying)](http://blog.intrepid.io/cocoapods-tweaking-3rd-party-libraries)
