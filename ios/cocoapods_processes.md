@@ -25,6 +25,7 @@ Your structure could end up looking something like this:
         |-- ViewController.swift
         |-- LaunchScreen.storyboard
         |-- Main.storyboard
+        |-- Info.plist
 |-- MyPodNameTests
     |-- FooClassTests.swift
     |-- FooBarTests.swift
