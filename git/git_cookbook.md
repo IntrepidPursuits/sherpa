@@ -5,17 +5,12 @@ Handy recipes for git'n it done.
 #### Bash Completions
 Get tab-completion for all your git commands, including branch names!
 
-1. [Install homebrew](https://github.com/Homebrew/homebrew/wiki/Installation), if you haven't already.
-1. Install git and bash-completion via homebrew _(you must install git via homebrew for this to work)_
-   1. `brew install git`
-   1. `brew install bash-completion`
-1. Add bash-completion to your `~/.bash_profile` in accordance with the message printed during installation, which probably looks like this:
-
-   ```
-   if [ -f `brew --prefix`/etc/bash_completion ]; then
-        . `brew --prefix`/etc/bash_completion
-   fi
-   ```
+1. Download the git-completion.bash file [here](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash). This is usually stored in the home directory: ~/git-completion.bash
+2. In your  ~/.bash_profile or ~/.bashrc or ~/.zshrc:
+  ```
+  source ~/.git-completion.bash
+  ```
+3. Make sure to restart terminal.
 
 #### Listing branches in most-recently-changed order
 
