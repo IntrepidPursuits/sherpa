@@ -22,6 +22,9 @@ Development best practices for Intrepid
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
 
+### Maintenance Readme Template
+Projects repos should always contain a README so that future development teams can learn about processes/specific quirks that have to do with individual projects. See the template [here](readme-template.md).
+
 ## Advice
 * [Mobile API Guidance](mobile_api_guidance.md)
 
