@@ -10,13 +10,13 @@ Source: <https://github.com/square/retrofit>
 Overview of OkHttp: <http://square.github.io/okhttp> <br/>
 Source for OkHttp: <https://github.com/square/okhttp>
 
-### Otto
+### EventBus
 
-An event bus tailored to Android, Otto supports communication between distinct application components, when the use of a traditional interface is inadequate or cumbersome. 
+An event bus tailored to Android, greenrobot's EventBus supports communication between distinct application components; generally, the event bus should only be used when an event is broadcast to multiple listeners at once.  
 
-Overview: <http://square.github.io/otto> <br/>
-Source: <https://github.com/square/otto> <br/>
-Alternatives: <https://github.com/greenrobot/EventBus> and <https://github.com/AndroidKnife/RxBus>
+Overview: <http://greenrobot.org/eventbus> <br/>
+Source: <https://github.com/greenrobot/EventBus> <br/>
+Alternatives: <https://github.com/AndroidKnife/RxBus>
 
 ### ButterKnife
 
