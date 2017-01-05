@@ -1,5 +1,7 @@
 # iOS App Store Submission Checklist
 
+If you need some quick advice, check out this [App Submission](https://drive.google.com/a/intrepid.io/file/d/0B6c_wNPk_qCbQjBSNzFBMi1sOTQ/view?usp=sharing) video tutorial. The tutorial takes you from creating a new Xcode project to submitting a build to iTunes Connect. Otherwise follow these steps:
+
 - Sign up for Apple Developer Program account (requires DUNS number for businesses)
 - If the app communicates with custom hardware, send hardware to Apple to use while they review the app.
 - Gather certificates
