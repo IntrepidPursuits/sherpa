@@ -1,0 +1,39 @@
+// This script will set the app version by either appending the git short hash (if build locally)
+// or the jenkins build number (if build by Jenkins CI) to the original version name.
+// To use this script, define `projectVersion` and then apply this file.
+// example:
+// ext.projectVersion = "1.12"
+// apply from: 'version.gradle'
+//
+// the main `build.gradle` file should delete the `versionName` line under the android
+// defaultConfig block
+
+android {
+    defaultConfig {
+        versionName = projectVersion + versionSuffix()
+    }
+}
+
+def gitShortHash() {
+    'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+def gitHash() {
+    'git rev-parse HEAD'.execute().text.trim()
+}
+
+def buildNumber() {
+    return System.getenv("BUILD_NUMBER")
+}
+
+def versionSuffix() {
+    def buildNumber = buildNumber()
+    if (buildNumber) {
+        return "." + buildNumber
+    }
+
+    def shortHash = gitShortHash()
+    if (shortHash) {
+        return "." + shortHash
+    }
+}
