@@ -30,6 +30,7 @@ Projects repos should always contain a README so that future development teams c
 * [Mobile API Guidance](mobile_api_guidance.md)
 
 ## Resources
+* [iOS Code Coverage On Jenkins](ios_code_coverage.md)
 * [Android Code Coverage On Jenkins](android_cobertura.md)
 * [Stuff to read for Android devs](android/stuff_to_read.md)
 * [Stuff to read for iOS devs](ios/stuff_to_read.md)
