@@ -50,3 +50,8 @@ Supports clean implementation of asynchronous and event-based tasks; considerabl
 
 Source: <https://github.com/ReactiveX/RxJava> <br/>
 RxJava for Android: <https://github.com/ReactiveX/RxAndroid> and <https://github.com/reark/reark>
+
+### RxPermissions
+Allows for permission handling for the new permissions model (M and above) using RxJava and Observables.    
+
+Source: <https://github.com/tbruyelle/RxPermissions> <br/>
