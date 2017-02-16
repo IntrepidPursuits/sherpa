@@ -2,8 +2,8 @@
 
  <!-- Replace the 2 instances of "ios-template" in each of the links below with
       the name of your project in Jenkins. -->
-[![Build Status](http://ci.intrepid.io:8080/buildStatus/icon?job=ios-template)](http://ci.intrepid.io:8080/job/ios-template/)
-[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/ios-template/)](http://ci.intrepid.io:8080/job/ios-template/cobertura/)
+[![Build Status](https://ci.intrepid.io/buildStatus/icon?job=ios-template)](https://ci.intrepid.io/job/ios-template/)
+[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/ios-template/)](https://ci.intrepid.io/job/ios-template/cobertura/)
 
 The purpose of this great app is… something something… the intersection of technology and humanity.
 ___
