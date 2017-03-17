@@ -14,6 +14,7 @@ There are three templates for creating Android Jenkins projects:
 1. Under the `Source Code Management` settings, set the proper `Repository URL` (this is basically the same as the Project url, but might be in slightly different format)
 1. Change the `Branches to build` if your main branch is not master.
 1. Under the Gradle Wrapper settings, configure the `Tasks` if you want to run different commands (ex: `assembleDebug` instead of `assembleQa`).
+1. The default gradle tasks also runs lint. Make sure your project either doesn't contain any lint errors or add `lintOptions {abortOnError false}` to your `build.gradle` to prevent lint from failing the whole build. It is also a good idea to include a lint configuration file to suppress lint warnings that we don't care about. See [this](https://github.com/IntrepidPursuits/AndroidSkeleton/pull/30/files) for an example.
 1. Click `Save`.
 
 ### Additional instructions for `android-template`
