@@ -10,18 +10,18 @@ ___
 # Table of Contents
 
 1. [Building](#building)
-	2. [Onboarding](#onboarding)
-	3. [Running](#running)
+   1. [Onboarding](#onboarding)
+   2. [Running](#running)
 2. [Testing](#testing)
 3. [Release](#release)
-	4. [Quirks](#quirks)
-	5. [Known Bugs](#known-bugs)
-6. [Architecture](#architecture)
-	7. [Data Flow](#data-flow)
-	8. [Core Technology #1](#core-technology-1)
-	9. [Core Technology #2](#core-technology-2)
-	8. [Third Party Libraries](#third-party-libraries)
-9. [History](#history)
+   1. [Quirks](#quirks)
+   2. [Known Bugs](#known-bugs)
+4. [Architecture](#architecture)
+   1. [Data Flow](#data-flow)
+   2. [Core Technology #1](#core-technology-1)
+   3. [Core Technology #2](#core-technology-2)
+   4. [Third Party Libraries](#third-party-libraries)
+5. [History](#history)
 
 ___
 
