@@ -121,7 +121,7 @@ func searchFor(searchTerm: String, completionHandler:@escaping () -> ()) {
     }
 }
 ```
-The view model often acts as the first layer of abstraction between the view and the business logic, networking and data layer of an app. That said, view model tests should not be responsible for testing beyond the functionality of the view model. For instance, writing a test for the above `searchFor` method should not test the actual networking later. Instead, dependency injection should be used to inject a mock networking layer configured to simulate a functioning networking layer. As shown above, the initializer allows for injection of a mock layer. The below tests demonstrates use of the initializer to inject a mock networking layer to test the `searchFor` function. The mock networking layer simply returns a searchResults array, as would be returned by the real Networking Layer.
+The view model often acts as the first layer of abstraction between the view and the business logic, networking and data layer of an app. That said, view model tests should not be responsible for testing beyond the functionality of the view model. For instance, writing a test for the above `searchFor` method should not test the actual networking layer. Instead, dependency injection should be used to inject a mock networking layer configured to simulate a functioning networking layer. As shown above, the initializer allows for injection of a mock layer. The below tests demonstrates use of the initializer to inject a mock networking layer to test the `searchFor` function. The mock networking layer simply returns a searchResults array, as would be returned by the real Networking Layer.
 
 ```
 func testBasicAlbumSearch() {
@@ -191,4 +191,4 @@ As shown in the above examples, testing view models can be a good first step to 
 
 - Only test functionality of the view model, do not attempt to test the functionality of any dependencies of the view model, use dependency injection if needed
 
-The entire app codebase for this test app can be found [here](https://github.com/weberbry/ViewModelTestingDemo).
+The entire app codebase for this test app can be found [here](https://github.com/IntrepidPursuits/MVVMExamples-ios/tree/master/ViewModelTestingDemo).
