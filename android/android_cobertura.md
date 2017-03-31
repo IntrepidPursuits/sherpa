@@ -4,7 +4,7 @@ These are the steps required to set up your Jenkins project to output code cover
 # Jenkins Setup
 
 ## coverage.gradle File
-**Note:** This file has been included in the AndroidSkeleton project found [here](https://github.com/IntrepidPursuits/AndroidSkeleton/blob/master/app/coverage.gradle).
+**Note:** This file has been included in the AndroidSkeleton project found [here](https://github.com/IntrepidPursuits/AndroidSkeleton/blob/develop/app/coverage.gradle).
 This file needs to be located at `/project-dir/app/coverage.gradle`.
 
 Additionally, you need to add `apply from: 'coverage.gradle'` to your `build.gradle` file located in `/project-dir/app/`.
