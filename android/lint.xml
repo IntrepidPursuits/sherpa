@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- list of issues to configure -->
+
+    <!-- Downgrade severity of not explicitly including all options in switch statements.  (using default does not eliminate this warning) -->
+    <issue id="SwitchIntDef" severity="weak warning"/>
+
+    <!-- Upgrade severity of using wrong app compat method - want to highlight cases where this may be occurring. -->
+    <issue id="AppCompatMethod" severity="error"/>
+
+    <!-- Upgrade severity of not using the Firebase App Indexing API - we may not need this one, as we already have “Missing support for Firebase App Indexing” enabled -->
+    <issue id="GoogleAppIndexingApiWarning" severity="warning"/>
+
+    <!-- Enable checking for app links -->
+    <issue id="AppLinksAutoVerifyError" severity="warning"/>
+
+    <!-- Enable checking for potential app links -->
+    <issue id="AppLinksAutoVerifyWarning" severity="warning"/>
+
+    <!-- Enable weak checking for UI design back button issues -->
+    <issue id="BackButton" severity="weak warning"/>
+
+    <!-- Upgrade severity of trying to specify AdapterView children in XML -->
+    <issue id="AdapterViewChildren" severity="error"/>
+
+    <!-- Upgrade severity of including more than one layout within a ScrollView -->
+    <issue id="ScrollViewCount" severity="error"/>
+
+    <!-- Enable checking for implied unsupported Chrome OS hardware -->
+    <issue id="PermissionImpliesUnsupportedChromeOsHardware" severity="warning"/>
+
+    <!-- Enable checking for unsupported Chrome OS hardware -->
+    <issue id="UnsupportedChromeOsHardware" severity="error"/>
+
+    <!-- Enable checking for insecure cipher mode -->
+    <issue id="GetInstance" severity="error"/>
+
+    <!-- Check for easter eggs -->
+    <issue id="EasterEgg" severity="weak warning"/>
+
+    <!-- Look for STOPSHIP comments -->
+    <issue id="StopShip" severity="error"/>
+
+    <!-- Look for mangled file line endings -->
+    <issue id="MangledCRLF" severity="weak warning"/>
+
+    <!-- Increase severity of incorrect Gradle paths -->
+    <issue id="GradlePath" severity="error"/>
+
+    <!-- Notify of newer library versions -->
+    <issue id="NewerVersionAvailable" severity="info"/>
+
+    <!-- Enable checking for incorrect icon sizes -->
+    <issue id="IconExpectedSize" severity="warning"/>
+
+    <!-- Enable WebP icon conversion suggestion -->
+    <issue id="ConvertToWebp" severity="info"/>
+
+    <!-- Upgrade severity of this check to improve layout computation speed -->
+    <issue id="DisableBaselineAlignment" severity="error"/>
+
+    <!-- Add support for checking for logging calls in production code -->
+    <issue id="LogConditional" severity="weak warning"/>
+
+    <!-- Upgrade severity of checking for duplicate features in the manifest -->
+    <issue id="DuplicateUsesFeature" severity="error"/>
+
+    <!-- Upgrade severity of checking for incorrect attribute definitions -->
+    <issue id="IllegalResourceRef" severity="error"/>
+
+    <!-- Upgrade severity of subtle manifest bugs -->
+    <issue id="ManifestOrder" severity="error"/>
+
+    <!-- Upgrade severity of missing minimum and target SDK attributes -->
+    <issue id="UsesMinSdkAttributes" severity="error"/>
+
+    <!-- Enable warning for negative margins -->
+    <issue id="NegativeMargin" severity="weak warning"/>
+
+    <!-- Upgrade severity of missing @Keep annotation for animated properties -->
+    <issue id="AnimatorKeep" severity="error"/>
+
+    <!-- Upgrade severity of missing onClick method referenced from XML -->
+    <issue id="OnClick" severity="error"/>
+
+    <!-- Upgrade severity of exporting PreferenceActivity and exposing application internals -->
+    <issue id="ExportedPreferenceActivity" severity="error"/>
+
+    <!-- Upgrade severity of private resource usage -->
+    <issue id="PrivateResource" severity="error"/>
+
+    <!-- Downgrade severity of using dp instead of sp for text sizes -->
+    <issue id="SpUsage" severity="weak warning"/>
+
+    <!-- Upgrade severity of using mm or in in dimension definitions -->
+    <issue id="InOrMmUsage" severity="error"/>
+
+    <!-- Downgrade severity of using small text sizes -->
+    <issue id="SmallSp" severity="weak warning"/>
+
+    <!-- Upgrade severity of caching RecyclerView positions -->
+    <issue id="RecyclerView" severity="error"/>
+
+    <!-- Upgrade severity of classes missing from manifest -->
+    <issue id="Registered" severity="error"/>
+
+    <!-- Upgrade severity of incorrect width/height values for ScrollView children -->
+    <issue id="ScrollViewSize" severity="error"/>
+
+    <!-- Upgrade severity of explicit path references to /sdcard -->
+    <issue id="SdCardPath" severity="error"/>
+
+    <!-- Enable checking for insecure random number generation -->
+    <issue id="SecureRandom" severity="weak warning"/>
+
+    <!-- Prevent usage of global readable files -->
+    <issue id="SetWorldReadable" severity="error"/>
+
+    <!-- Prevent usage of global writeable files -->
+    <issue id="SetWorldWritable" severity="error"/>
+
+    <!-- Downgrade severity of enabling JavaScript -->
+    <issue id="SetJavaScriptEnabled" severity="weak warning"/>
+
+    <!-- Enable checking for invalid usage of methods marked @VisibleForTest -->
+    <issue id="VisibleForTests" severity="warning"/>
+
+    <!-- Enable suggesting making text selectable -->
+    <issue id="SelectableText" severity="weak warning"/>
+
+    <!-- Downgrade severity of typos -->
+    <issue id="Typos" severity="typo"/>
+
+    <!-- Enable checking for smart quotes -->
+    <issue id="TypographyQuotes" severity="weak warning"/>
+
+    <!-- Enable checking for unused ids -->
+    <issue id="UnusedIds" severity="info"/>
+</lint>
