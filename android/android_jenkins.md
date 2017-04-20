@@ -14,13 +14,13 @@ There are three templates for creating Android Jenkins projects:
 1. Under the `Source Code Management` settings, set the proper `Repository URL` (this is basically the same as the Project url, but might be in slightly different format)
 1. Change the `Branches to build` if your main branch is not master.
 1. Under the Gradle Wrapper settings, configure the `Tasks` if you want to run different commands (ex: `assembleDebug` instead of `assembleQa`).
-1. The default gradle tasks also runs lint. Make sure your project either doesn't contain any lint errors or add `lintOptions {abortOnError false}` to your `build.gradle` to prevent lint from failing the whole build. It is also a good idea to include a lint configuration file to suppress lint warnings that we don't care about. See [this](https://github.com/IntrepidPursuits/AndroidSkeleton/pull/30/files) for an example.
 1. Click `Save`.
 
 ### Additional instructions for `android-template`
 1. In the `Project Content` settings, update the `SHORT_NAME` to your project's name. The `SHORT_NAME` will be used as the url of the ota build, i.e. `http://intrepid.io/ota/SHORT_NAME`
 1. If you changed the build variant in the gradle task field (ex: `assembleDebug` instead of `assembleQa`), also change the build variant in the last `Execute shell` command (ex: `app-debug.apk` instead of `app-qa.apk`)
 1. If desirable, click on `Add Post Build Action` button and select Email Notification and/or Slack Notifications to receive notification whenever a build passes/failed. 
+1. The default gradle configuration runs the analyze task from [Static Analysis Gradle Plugin](https://github.com/IntrepidPursuits/static-analysis-gradle-plugin) to generate Android Lint, PMD, and FindBugs reports. Make sure your project includes that plugin. Refer to the Github page for instructions on how to add it to your project.
 
 Note: the test coverage portion expects the project to contain `coverage.gradle`. See android-nightly-template section for more info. 
 
