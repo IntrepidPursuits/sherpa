@@ -10,6 +10,6 @@
 
 [App Submission Checklist](ios_app_submission_checklist.md) - Checklist of things you will need in order to submit an app to the app store
 
-[Estimation Playbook](ios_estimation_playbook.mdown) - Baseline stories for project estimation
+[Estimation Playbook](ios_estimation_playbook.md) - Baseline stories for project estimation
 
 [Stuff to Read](stuff_to_read.md) - Great stuff to read related to iOS
