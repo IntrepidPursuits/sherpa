@@ -41,3 +41,4 @@ Projects repos should always contain a README so that future development teams c
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
 * [Git cookbook](git/git_cookbook.md)
 * [Common CocoaPods](ios/common_cocoapods.md)
+* [iOS Recommended Tools](ios/ios_recommended_tools.md)
