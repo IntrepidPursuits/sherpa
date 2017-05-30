@@ -9,7 +9,7 @@ Transitioning Swift Wisdom to Swift 4 will be handled collectively by the iOS te
 ```
 # Swift 4 Transition Checklist
 
-Is the project going to remain active beyond launch of Swift 4 (Sept/Oct 2017)  - [ ] Yes  - [ ] No
+Is the project going to remain active or under maintenance contract beyond launch of Swift 4 (Sept/Oct 2017)  - [ ] Yes  - [ ] No
 
  - [ ] Swift 4 transition story in the backlog
  - [ ] Podfile being inventoried by Jenkins
