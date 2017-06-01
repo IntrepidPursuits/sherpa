@@ -26,6 +26,16 @@ A. Error "-10810" means that the SystemUIServer process is not running for the c
 
 There are some common pitfalls when installing applications from the OTA server. Here are some things to be aware of if you run into problems:
 
+##### Q. I receive an error message immediately after tapping "Install" on the OTA
+A. There's a number of factors that can contribute to this.
 - An OTA application cannot be installed over an exisiting App Store version of the same application.
-- Ensure the phone your installing the app on meets the hardware requirements specified by the app itself. For example, if the app requires GPS to work, you won't be able to install it on older iPod touch devices or devices without any GPS.
+- Ensure the phone you're installing the app on meets the hardware requirements specified by the app itself. For example, if the app requires GPS to work, you won't be able to install it on older iPod touch devices or devices without any GPS.
 - Ensure the phone meets the minimum OS Version requirements for the app.
+- If you still have issues, read the [OTA Server](https://github.com/IntrepidPursuits/shhherpa/Infrastructure/OTA) Readme for information on what might be going wrong server side.
+
+
+##### Q. My application begins loading on the phone, but fails around 75%
+A. This is generally a codesigning issue. Specifically, this is common when the provisioning profile bundled with the app doesn't match the bundle identifier.
+
+##### Q. Are there any logs I can read to figure out what's going wrong?
+A. Yes, there is, sort of. Connect your device to your mac, and open up the `Console` application. Select your device from the left hand menu to view the console logs for your device. You can also view console logs, and application logs by connecting your device, and opening the "Devices" window in Xcode.
