@@ -1,4 +1,4 @@
-##Steps to building an alexa skill:
+##Steps to building an Alexa skill:
 
 ###Prerequisites:
 In order to develop an Alexa skill you'll need access to 2 accounts.
@@ -14,23 +14,23 @@ There are two parts to building an echo skill. (1) Developing the logic for skil
 
 1. Login using your IAM user and ensure that you're in the correct region
 * Create a new function
-* Enter the name of your lambda function. It should reflect the name of your skill eg: febreze-alexa-skill.
-* This will give you an empty function that you can configure to process alexa command.
+* Enter the name of your lambda function. It should reflect the name of your skill eg: febreze-Alexa-skill.
+* This will give you an empty function that you can configure to process Alexa command.
 * Next we need to set a role, if you scroll down you should see a role dropdown, this sets permissions for your lambda function. For now you can choose lambda basic execution role.  
 * Click Next and Create Function
 * Now under the event sources tab and the "Alexa Skills Kit" event source.
 * Finally copy the ARN at the top of the page and save it for later
 
-###Configuring your alexa skill:
+###Configuring your Alexa skill:
 
 1. Login using the webservices account
-* Go to the alexa tab and select Alexa Skills Kit and start creating a new skill
+* Go to the Alexa tab and select Alexa Skills Kit and start creating a new skill
 * Under skill information select the following:
     * Custom interaction model
     * Name: This should be self explanatory
-    * Invocation Name: Like the description says this is what people will use to start your alexa skill
-    *Global Fields: Most skills won't need this but if you're playing music through your echo skill this is relevant to you.
-* The interaction model like the name suggests is where you'll define how people will interact with your alexa skill. It's comprised of two parts (1) Intent Schema (2) Sample Utterances
+    * Invocation Name: Like the description says this is what people will use to start your Alexa skill
+    * Global Fields: Most skills won't need this but if you're playing music through your echo skill this is relevant to you.
+* The interaction model like the name suggests is where you'll define how people will interact with your Alexa skill. It's comprised of two parts (1) Intent Schema (2) Sample Utterances
 * Configuration: Here's where you set the endpoint or lambda that your skill will connect to. If you're using a lambda function copy the ARN that you obtained while setting up your lambda
 * Testing: You can enter in phrases and see how Alexa responds to them, you can even hear her say the words. This interface is particularly useful because it gives you the same request that Alexa is sending as well as the sample response.
 * Publish and Profit.
@@ -43,7 +43,7 @@ These intents are like function names that will map back to actual functions in 
 You can define a 'slot' which is essentially a variable that will be taken in your commands like so:
 `SetScent make the room smell like {scent}`
 
-Where scent is the variable that's taken in and SetScent is some action. [Further Reading](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/defining-the-voice-interface#h2_sample_utterances)
+Where scent is the variable that's taken in and SetScent is some action. [Further Reading](https://developer.amazon.com/public/solutions/Alexa/Alexa-skills-kit/docs/defining-the-voice-interface#h2_sample_utterances)
 
  * **Intent Schema**:
 
@@ -61,11 +61,11 @@ Slots have both a name and type. Name is just whatever you named the variable. T
         }
   ]
 ```
-[Further Reading](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/defining-the-voice-interface#h2_intents)
+[Further Reading](https://developer.amazon.com/public/solutions/Alexa/Alexa-skills-kit/docs/defining-the-voice-interface#h2_intents)
 
 
 ### Helpful Links
-More in depth tutorial with screenshots: https://medium.com/@bthdonohue/build-your-first-alexa-skill-8a37dc3103d6
+More in depth tutorial with screenshots: https://medium.com/@bthdonohue/build-your-first-Alexa-skill-8a37dc3103d6
 Creating Lambda roles: http://docs.aws.amazon.com/lambda/latest/dg/with-s3-example-create-iam-role.html
 Using DynamoDB with Alexa skills:
-https://medium.com/@toyhammered/how-i-built-my-alexa-skill-daily-cutiemals-fa3e08dcd4da
+https://medium.com/@toyhammered/how-i-built-my-Alexa-skill-daily-cutiemals-fa3e08dcd4da
