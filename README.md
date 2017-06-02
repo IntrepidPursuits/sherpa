@@ -14,6 +14,7 @@ Development best practices for Intrepid
 	* [Android OS Project Style Guide](https://source.android.com/source/code-style.html)
 	* [Intrepid Style Template](android/code_style.md)
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
+* [Elixir](https://github.com/christopheradams/elixir_style_guide)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
 ## Process
@@ -40,3 +41,4 @@ Projects repos should always contain a README so that future development teams c
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
 * [Git cookbook](git/git_cookbook.md)
 * [Common CocoaPods](ios/common_cocoapods.md)
+* [iOS Recommended Tools](ios/ios_recommended_tools.md)
