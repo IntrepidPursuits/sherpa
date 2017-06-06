@@ -26,9 +26,14 @@ A. Error "-10810" means that the SystemUIServer process is not running for the c
 
 There are some common pitfalls when installing applications from the OTA server. Here are some things to be aware of if you run into problems:
 
+##### Q. Nothing happens after tapping install on the OTA.
+A. iOS won't kick you out to the home screen, so close safari, and double check to see if the app is being installed anywhere. If there is an activity indicator in the status bar, but no loading icon appearing on the home screen, the app is likely trying to install, and you should wait a few minutes to see if it succeeds. You can monitor the console logs to verify something is happening.
+
+This error can also appear when using older 32-bit devices if xcode is only generating a 64-bit binary.
+
 ##### Q. I receive an error message immediately after tapping "Install" on the OTA
 A. There's a number of factors that can contribute to this.
-- An OTA application cannot be installed over an exisiting App Store version of the same application.
+- An OTA application cannot be installed over an existing App Store version of the same application.
 - Ensure the phone you're installing the app on meets the hardware requirements specified by the app itself. For example, if the app requires GPS to work, you won't be able to install it on older iPod touch devices or devices without any GPS.
 - Ensure the phone meets the minimum OS Version requirements for the app.
 - If you still have issues, read the [OTA Server](https://github.com/IntrepidPursuits/shhherpa/Infrastructure/OTA) Readme for information on what might be going wrong server side.
@@ -36,6 +41,9 @@ A. There's a number of factors that can contribute to this.
 
 ##### Q. My application begins loading on the phone, but fails around 75%
 A. This is generally a codesigning issue. Specifically, this is common when the provisioning profile bundled with the app doesn't match the bundle identifier.
+
+##### Q. My application quits immediately after launching
+A. This is potentially a codesigning issue with entitlements. Check to make sure that the IPA is signed with the profile and certificate you expected (See: [Inspecting an IPA File](https://github.com/IntrepidPursuits/sherpa/blob/master/ios/ios_inspecting_an_ipa_file.md)).
 
 ##### Q. Are there any logs I can read to figure out what's going wrong?
 A. Yes, there is, sort of. Connect your device to your mac, and open up the `Console` application. Select your device from the left hand menu to view the console logs for your device. You can also view console logs, and application logs by connecting your device, and opening the "Devices" window in Xcode.
