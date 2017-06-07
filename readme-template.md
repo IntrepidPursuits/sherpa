@@ -8,7 +8,7 @@ For Android Projects:
 
  -->
 [![Build Status](https://ci.intrepid.io/buildStatus/icon?job=iOS/ios-legacy/ios-template)](https://ci.intrepid.io/job/iOS/job/ios-legacy/job/ios-template/)
-[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/ios-template/)](https://ci.intrepid.io/job/iOS/job/ios-legacy/job/ios-template/cobertura/)
+[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/iOS/job/ios-legacy/job/ios-template)](https://ci.intrepid.io/job/iOS/job/ios-legacy/job/ios-template/cobertura/)
 
 The purpose of this great app is… something something… the intersection of technology and humanity.
 ___
