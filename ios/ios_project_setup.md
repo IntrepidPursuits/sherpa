@@ -15,7 +15,7 @@
     ```
     > Pull before pushing to get the Github-generated `.gitignore` so ignored files don't end up in the repo
 
-1. Update `README.md` to use [Intrepid README template](https://github.com/IntrepidPursuits/sherpa/blob/master/readme-template)
+1. Update `README.md` to use [Intrepid README template](https://github.com/IntrepidPursuits/sherpa/blob/master/readme-template.md)
 1. Add and commit, then push to `master`
 
 ## Add Cocoapods
@@ -36,7 +36,7 @@
 
 1. In Xcode, click on the project target icon next to the play button, then click "Manage Schemes...". Click the checkbox to set your project scheme to `Shared`. This is required for Jenkins
 
-1. Follow the instructions in the [iOS Jenkins Pipeline Integration Guide](https://github.com/IntrepidPursuits/sherpa/ios/ios_jenkins_pipeline_guide.md) to set up your Jenkinsfile in your repo.
+1. Follow the instructions in the [iOS Jenkins Pipeline Integration Guide](./ios_jenkins_pipeline_guide.md) to set up your Jenkinsfile in your repo.
 
 1. Add, commit and push the changes.
 

@@ -79,7 +79,7 @@ def config = [
 ]
 ```
 
-A list of all the additional configuration that can be applied is listed below in the `Additional Configuration` section
+A list of all the additional configuration that can be applied is listed below in the [Additional Configuration](#additional-configuration) section
 
 #### 5. Run the pipeline
 
@@ -158,7 +158,7 @@ The directory, relative to the workspace, where the xcodebuild command will stor
 
 **excludedPaths**\
 _Default: ".*Pods.*"_\
-A regex string, describing what paths to exclude from any kind of linting, code review, etc.
+A comma separated list of regex patterns, describing what paths to exclude from any kind of linting, code review, etc.
 
 **language**\
 _Default: "swift"_\
