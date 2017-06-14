@@ -23,7 +23,13 @@ Instead of having users write full Jenkinsfiles themselves, the Intrepid Pipelin
 
 #### 1. Create the Jenkinsfile
 
-The Jenkinsfile is where you define your pipeline. By default, all iOS projects on Jenkins will load the Intrepid Pipeline Library. This gives you immediate access to all the packages and classes within the library if you need to write a non-standard Jenkinsfile. Create the file by adding a text file named `Jenkinsfile` to your repo.
+Create an empty text file in the root of your repo named `Jenkinsfile`
+
+A Jenkinsfile is just a text file that's created on a per-project basis, and added to the repo by someone on the team. The Jenkinsfile usually has some Java/Groovy code which defines the pipeline (the build code) to be run for the project. There's a bunch of default functions (like sh which runs a shell command) available for all Jenkinsfiles.
+
+Our library extends the available methods to use in the Jenkinsfile. In particular, it provides some classes which define the Project model (XcodeProject), and a class which acts as a wrapper around all of the Java/Groovy pipeline code you would need to write, if we didn't have a library to wrap it with.
+
+This allows us to greatly simplify the Jenkinsfile that teams write. In our case, we only require that an `XcodeProject` object is defined, and then passed to the `xcodePipeline` function.
 
 #### 2. Define your Xcode Project model
 
