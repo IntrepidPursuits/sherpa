@@ -285,17 +285,17 @@ The slack key is a map of options related to notifications on Slack.
 When defining builds in your Jenkinsfile by using `addBuild` you're telling the Pipeline that you want these Xcode configurations built, and uploadedd to the OTA when a "master" branch is built.
 
 **Q. What's a "master" branch?**
-A. A master branch is a concept defined by the Pipeline. In this case a master branch means a branch named `master`, `develop`, ANY branch under a `release/` folder, ANY branch under a `test/` folder.
+A. A master branch is a concept defined by the Pipeline. In this case a master branch means a branch named `master`, `develop`, ANY branch under a `deploy/` folder, ANY branch under a `test/` folder.
 
 You may also use `test/` and `release/` tags to deploy to the OTA.
 
 For example, let's say we have a project with a branch named `develop` where all our code that's used for builds to the OTA are made from. Someone else on your project team may be working on a feature branch that also needs to be uploaded to the OTA. In order to get the feature branch to build and upload to the OTA you have a few options:
 
-1. Name the branch `release/my-feature-branch`. Where `my-feature-branch` is the subfolder where this build will be on the OTA. For example, if your master OTA is located at `intrepid.io/ota/myApp`, this feature branch would be located at `intrepid.io/ota/release/my-feature-branch`
+1. Name the branch `deploy/my-feature-branch`. Where `my-feature-branch` is the subfolder where this build will be on the OTA. For example, if your master OTA is located at `intrepid.io/ota/MyApp`, this feature branch would be located at `intrepid.io/ota/MyApp/my-feature-branch`
 
-1. Name the branch `test/my-feature-branch`. Same as above, except the resulting OTA URL would be `intrepid.io/ota/test/my-feature-branch`.
+1. Name the branch `test/my-feature-branch`. Same as above, except the resulting OTA URL would be `intrepid.io/ota/MyApp/my-feature-branch`.
 
-1. Push a tag to git using the same naming structure as branches. e.g. a tag named `test/my-test-build` or `release/client-test`
+1. Push a tag to git using the same naming structure as branches. e.g. a tag named `test/my-test-build` or `deploy/client-test`
 
 **Q. What about Pull Requests?**
 A. Pull requests are never deployed to the OTA. In fact, pull requests never even build an IPA from your code. Only code review, tests, and reporting is done to pull requests. Pull requests reviews are automatically configured when you commit a Jenkinsfile to your project.
