@@ -7,7 +7,9 @@ There are three templates for creating Android Jenkins projects:
 * `android-nightly-template`: This is run once every weeknight between 12am and 8am. It runs both the unit tests and UI tests (currently the UI tests will run on a physical device attached to the Jenkins machine) and reports the test coverage.
 
 ### Setup instructions for all templates
-1. In the Jenkins homepage, click `New Item`
+1. On the Jenkins homepage, find and navigate to the `Android Projects` folder
+1. Depending on the type of Jenkins job you're creating, select the appropriate sub-folder. **Do not create projects in the root directory.**
+1. Click `New Item` in the left side menu.
 1. Enter the project name. The name should be in the form of `project-android`, `project-android-pr`, or `project-android-nightly`.
 1. In the `Copy from` box, enter one of the template names above.
 1. Click OK, and you will be directed to the project configuration page.
@@ -63,4 +65,4 @@ cp -v "${APK_KEYS_PATH}" "${WORKSPACE}/local.properties"
 ```Shell
 rm "${WORKSPACE}/local.properties"
 ```
-1. Make sure this block appears *after* the "Invoke Gradle Script" block. 
+1. Make sure this block appears *after* the "Invoke Gradle Script" block.
