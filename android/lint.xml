@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <!-- list of issues to configure -->
+    <!-- The current list of lint checks available: http://tools.android.com/tips/lint-checks -->
 
     <!-- Downgrade severity of not explicitly including all options in switch statements.  (using default does not eliminate this warning) -->
     <issue id="SwitchIntDef" severity="weak warning"/>
@@ -17,9 +18,6 @@
     <!-- Enable checking for potential app links -->
     <issue id="AppLinksAutoVerifyWarning" severity="warning"/>
 
-    <!-- Enable weak checking for UI design back button issues -->
-    <issue id="BackButton" severity="weak warning"/>
-
     <!-- Upgrade severity of trying to specify AdapterView children in XML -->
     <issue id="AdapterViewChildren" severity="error"/>
 
@@ -35,14 +33,11 @@
     <!-- Enable checking for insecure cipher mode -->
     <issue id="GetInstance" severity="error"/>
 
-    <!-- Check for easter eggs -->
-    <issue id="EasterEgg" severity="weak warning"/>
-
     <!-- Look for STOPSHIP comments -->
     <issue id="StopShip" severity="error"/>
 
     <!-- Look for mangled file line endings -->
-    <issue id="MangledCRLF" severity="weak warning"/>
+    <issue id="MangledCRLF" severity="warning"/>
 
     <!-- Increase severity of incorrect Gradle paths -->
     <issue id="GradlePath" severity="error"/>
@@ -73,9 +68,6 @@
 
     <!-- Upgrade severity of missing minimum and target SDK attributes -->
     <issue id="UsesMinSdkAttributes" severity="error"/>
-
-    <!-- Enable warning for negative margins -->
-    <issue id="NegativeMargin" severity="weak warning"/>
 
     <!-- Upgrade severity of missing @Keep annotation for animated properties -->
     <issue id="AnimatorKeep" severity="error"/>
@@ -111,7 +103,7 @@
     <issue id="SdCardPath" severity="error"/>
 
     <!-- Enable checking for insecure random number generation -->
-    <issue id="SecureRandom" severity="weak warning"/>
+    <issue id="SecureRandom" severity="error"/>
 
     <!-- Prevent usage of global readable files -->
     <issue id="SetWorldReadable" severity="error"/>
@@ -136,4 +128,11 @@
 
     <!-- Enable checking for unused ids -->
     <issue id="UnusedIds" severity="info"/>
+
+    <!-- Ignore scanning commonly used packages -->
+    <issue id="InvalidPackage">
+        <ignore regexp="okio-.*jar"/>
+        <ignore regexp="retrofit-.*jar"/>
+        <ignore regexp="requery-.*jar"/>
+    </issue>
 </lint>
