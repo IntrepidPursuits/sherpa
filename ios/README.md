@@ -15,3 +15,5 @@
 [Stuff to Read](stuff_to_read.md) - Great stuff to read related to iOS
 
 [Inspecting an .ipa file](ios_inspecting_an_ipa_file.md) - Helpful tips for inspecting an app's .ipa file
+
+[Firebase Gotchas](firebase.md) - Firebase Realtime Database Usage and Gotchas...
