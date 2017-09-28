@@ -107,24 +107,66 @@ Analysis took 0.1 seconds (0.02s to load, 0.1s running checks)
 
 ### Add Dialyxir (Typespecs + static analysis)
 
-- Reference commit
-- Explain what Dialyxir is
-- What it does, some examples
-- require typespecs
--- What are Typespecs
--- How are they used
--- Some examples
-- Dialyzer
+Dialyzer (DIscrepancy AnalYZer for ERlang) is a static analysis tool, which can
+provide type mismatches and other errors. Dialyxir is a compilation of mix tasks
+to use Dialyzer in an Elixir project:
+
+https://github.com/jeremyjh/dialyxir
+
+Here, we install `dialyxir` in the project:
+https://github.com/IntrepidPursuits/phoenix-example-app/commit/7061e5ff6f9f6046eba676eba89c3b1682b781c4
+
+We can run `mix dialyzer` now. The first time we run this, it will take a while
+because the task needs to build PLTs (Persistent Lookup Tables), which house the 
+cached static analyses. Running `mix dialyzer` at this point will return
+something like the following:
 
 ```
-Dialyzer is a static analysis tool for Erlang and other languages that compile
-to BEAM bytecode for the Erlang VM. It can analyze the BEAM files and provide
-warnings about problems in your code including type mismatches and other issues
-that are commonly detected by static language compilers. The analysis can be
-improved by inclusion of type hints (called specs) but it can be useful even
-without those. For more information I highly recommend the Success Typings paper
-that describes the theory behind the tool.
+--- intrepid/phoenix_example_app ‹master* M› » mix dialyzer
+Checking PLT...
+[:asn1, :bunt, :compiler, :connection, :cowboy, :cowlib, :credo, :crypto,
+:db_connection, :decimal, :dialyxir, :ecto, :eex, :elixir, :file_system,
+:gettext, :kernel, :logger, :mime, :phoenix, :phoenix_ecto, :phoenix_html,
+:phoenix_live_reload, :phoenix_pubsub, :plug, :poison, :poolboy, :postgrex,
+:public_key, :ranch, :runtime_tools, :ssl, :stdlib]
+PLT is up to date!
+Starting Dialyzer
+dialyzer args: [check_plt: false,
+ init_plt: '/Users/vikram7/Desktop/ql/intrepid/phoenix_example_app/_build/dev/dialyxir_erlang-20.1_elixir-1.5.1_deps-dev.plt',
+ files_rec: ['/Users/vikram7/Desktop/ql/intrepid/phoenix_example_app/_build/dev/lib/phoenix_example_app/ebin'],
+ warnings: [:unknown]]
+done in 0m2.77s
+done (passed successfully)
 ```
+
+Here is an example of how we would use Dialyzer to check typespecs in our app.
+The compiler ignores typespecs, so we can use Dialyzer to perform type checking.
+We will add an incorrect typespec to our `lib/phoenix_example_web_app/views/error_helpers.ex`
+file and see the error that dialyzer provides:
+
+```
+@spec error_tag(atom, atom) :: String
+def error_tag(form, field) do
+  Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
+    content_tag :span, translate_error(error), class: "help-block"
+  end)
+end
+```
+
+When we run `mix dialyzer`, we see the following:
+
+```
+done in 0m3.57s
+lib/phoenix_example_app_web/views/error_helpers.ex:11: Invalid type specification for function
+'Elixir.PhoenixExampleAppWeb.ErrorHelpers':error_tag/2. The success typing is
+(atom() | #{'errors':=[{_,_}], _=>_},atom()) -> [any()]
+```
+
+This tells us that our `String` type is incorrect. It should be `iodata` because
+the function is returning an `Enum.map`. After we fix this, dialyzer runs
+without any errors:
+
+https://github.com/IntrepidPursuits/phoenix-example-app/commit/06eca41448dcec4539e8b897fa2eba87276ef22f
 
 ### Testing
 
