@@ -80,10 +80,30 @@ have available.
 
 ### Add Credo (Linter config)
 
-- Reference commit
-- Explain what Credo is
-- What it does, some examples
-- Running `mix credo --strict`
+[Credo](https://github.com/rrrene/credo)
+> Credo is a static code analysis tool for the Elixir language with a focus on teaching and code consistency
+
+Reference commit: https://github.com/IntrepidPursuits/phoenix-example-app/commit/3c8a8637ae2336012384255781d1c95b4e2fe452
+
+- We can run `mix credo --strict` to get a list of areas we can fix. Running
+  that on the example app returns the following:
+
+![credo](https://imgur.com/a/hqtok)
+
+In this commit, we fix the Credo warnings:
+https://github.com/IntrepidPursuits/phoenix-example-app/commit/3f6928ef9ecb0959f9917a658b48ea35e7a06a10
+
+Running `mix credo --strict` now shows that we are good to go:
+
+```
+--- intrepid/phoenix_example_app ‹master* M› » mix credo --strict
+Checking 13 source files ...
+
+Please report incorrect results: https://github.com/rrrene/credo/issues
+
+Analysis took 0.1 seconds (0.02s to load, 0.1s running checks)
+30 mods/funs, found no issues.
+```
 
 ### Add Dialyxir (Typespecs + static analysis)
 
