@@ -184,6 +184,11 @@ and Erlang for this project.
 
 ### Install inch_ex for documentation coverage
 
-- Reference commit
-- Why we do this
-- Examples
+`inch_ex` is a tool that, when run, indicates areas
+of improvement for application documentation. We install `inch_ex` here:
+
+https://github.com/IntrepidPursuits/phoenix-example-app/commit/d2f6873e208befcb3f75df43800183c76f60780a
+
+We can run `mix inch` to generate a report of the current documentation state:
+
+![inch](https://imgur.com/a/Rvl3m)
