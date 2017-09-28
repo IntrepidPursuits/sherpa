@@ -1,4 +1,4 @@
-# Phoenix / Elixir Documentation of Best Practices
+# Getting a Phoenix App Up and Running
 
 ## Outline
 
@@ -168,19 +168,22 @@ without any errors:
 
 https://github.com/IntrepidPursuits/phoenix-example-app/commit/06eca41448dcec4539e8b897fa2eba87276ef22f
 
-### Testing
-
-- Reference commit
-- Couple testing examples
-- Using fixtures / test helpers / ex machina
-
 ### Circle CI
 
-- Give example config
+CircleCI allows for automated testing on opening of new pull requests or pushing
+up new branches. To setup your repo with CircleCI, you just need to go to their
+site and add your repo as a project. You will also need to manually configure an
+environment for your Phoenix project, which requires a `circle.yml` file at the
+root of your project. Please see the commit here to see this `circle.yml` file:
+
+https://github.com/IntrepidPursuits/phoenix-example-app/commit/89ff7e1468c0782555384b373af6fc0491107834
+
+We also add a `.tool-versions` file (similar to the one at your root folder)
+which is needed by the `circle.yml` file to install the right versions of Elixir
+and Erlang for this project.
 
 ### Install inch_ex for documentation coverage
 
 - Reference commit
 - Why we do this
 - Examples
-
