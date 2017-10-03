@@ -1,7 +1,5 @@
 # Getting a Phoenix App Up and Running
 
-## Outline
-
 The Phoenix [docs](https://hexdocs.pm/phoenix/Phoenix.html) are a phenomenal
 place to refer to for more details on Phoenix apps.
 
@@ -17,11 +15,9 @@ Erlang: 20.1
 ### Using asdf
 
 `asdf` (link) is a version manager for different languages. It is a great
-version manager to work with.
-
-- what is `.tool-versions`
-
-- this is what `.tool-versions` looks like for this:
+version manager to work with. We simply need a `.tool-versions` file at our user
+root folder and/or at our project root to define what versions of libraries we
+will be using. This is what the `.tool-versions` file looks like:
 
 ```
 elixir 1.5.1
@@ -30,10 +26,7 @@ erlang 20.1
 
 This file sits in the home directory:
 
-`/Users/vikram7/.tool-versions`
-
-We can also use a `.tool-versions` file in the root of the app to specify which
-versions of Elixir and Erlang to use for that particular app.
+`/Users/elixirdev/.tool-versions`
 
 ### Creating an app
 
@@ -76,7 +69,11 @@ The application router sits at `lib/phoenix_example_app_web/router.ex`:
 https://github.com/IntrepidPursuits/phoenix-example-app/commit/b0da4648d18ed00f6699483686bb350ad402480a#diff-2538848882aa7f14e75b5ab29f6b4e7bR1
 
 We will add endpoints here. We can run `mix phx.routes` to see the routes we
-have available.
+have available:
+
+```
+page_path  GET  /  PhoenixExampleAppWeb.PageController :index
+```
 
 ### Add Credo (Linter config)
 
@@ -132,8 +129,8 @@ Checking PLT...
 PLT is up to date!
 Starting Dialyzer
 dialyzer args: [check_plt: false,
- init_plt: '/Users/vikram7/Desktop/ql/intrepid/phoenix_example_app/_build/dev/dialyxir_erlang-20.1_elixir-1.5.1_deps-dev.plt',
- files_rec: ['/Users/vikram7/Desktop/ql/intrepid/phoenix_example_app/_build/dev/lib/phoenix_example_app/ebin'],
+ init_plt: '/Users/elixirdev/Desktop/ql/intrepid/phoenix_example_app/_build/dev/dialyxir_erlang-20.1_elixir-1.5.1_deps-dev.plt',
+ files_rec: ['/Users/elixirdev/Desktop/ql/intrepid/phoenix_example_app/_build/dev/lib/phoenix_example_app/ebin'],
  warnings: [:unknown]]
 done in 0m2.77s
 done (passed successfully)
