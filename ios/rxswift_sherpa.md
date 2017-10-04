@@ -12,21 +12,28 @@ When possible, a ViewModel's observable sequences should be setup in a declarati
 
 ```
 private let user = Variable<User?>(nil)
-let username: Observable<String>
+let username: Driver<String>
+let disposeBag = DisposeBag()
 
 init(identifier: String) {
   APIClient.user(withIdentifier: identifier).catchErrorJustReturn(nil).bind(to: user).disposed(by: disposeBag)
-  username = user.asObservable.map({ $0.username })
+  username = user.asDriver().map({ $0?.username ?? "" })
 }
 ```
 
-The majority of a ViewModel's exposed observable sequences will be observed by objects in the UI layer. CocoaTouch requires that UI updates be performed on the main thread. Additionally, since these observations should generally continue until the ViewController leaves the screen, the observed sequences should not complete or error. For these reasons, you should use the correct observable type for the given situation:
+#### What type of observable should I use?
 
-* Use a `Driver` when data is set by the ViewModel and is read-only from the View's perspective
-* Use a `Variable` when double-binding is required to allow the observing View to update observable sequence's most recent value based on user input
-* Use of `Observable` should be limited to when the initial stream is a immediately available; although, in these cases, a plain swift property may be sufficient
+The majority of a ViewModel's exposed observable sequences will be observed by objects in the UI layer (aka, view-binding). CocoaTouch requires that UI updates be performed on the main thread. Additionally, RxCocoa requires that UI bindings never emit errors and will trigger runtime exceptions if errors occur. When Views are going to bind to these sequences they need assurances that these rules are followed. For these reasons, you should use the correct observable type for the given situation:
 
-__Open Question: Should we be advocating against using Observable at all?__
+* Use a `Driver` when data is read-only from the View's perspective
+  * `Driver` is specifically for observations in the UI Layer
+  * `Driver` is roughly equivalent to `Observable` + `.observeOn(MainScheduler.instance)` + `.shareReplayLatestWhileConnected()`
+* Use a `Variable` when bi-directional binding is required to allow the observing View to append to the observable sequence based on user input
+  * **Note:** `Variable` does not imply that it will emit on the main thread so the view will have to observe carefully (see Observing bellow)
+* Use an ordinary swift property when the value never changes and can avoid the overhead of wrapping it in Rx.
+* Exposing sequences of type `Observable` for view-binding should generally be avoided on ViewModels
+  * They have no implication that it will emit only on the main thread
+  * They have no implication that they will not error out
 
 ### Observing
 
@@ -34,15 +41,22 @@ You should prefer `.bind(to: ...)` or `.drive(...)` over `.subscribe(...)` as th
 
 **Do this**
 ```
-// Binding
-viewModel.titleObservable.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
-// Driving
+// Driving from a Driver
 viewModel.titleDriver.drive(titleLabel.rx.text).disposed(by: disposeBag)
+
+// Driving from a Variable
+viewModel.titleVariable.asDriver().drive(titleLabel.rx.text).disposed(by: disposeBag)
+
+// Safely driving from an Observable
+viewModel.titleObservable.asDriver(onErrorJustReturn: "").drive(to: titleLabel.rx.text).disposed(by: disposeBag)
 ```
 **Not this**
 ```
 // Subscribing
-viewModel.title.subscribe(onNext: { [weak self] title in self?.titleLabel.text }).disposed(by: disposeBag)
+viewModel.titleObservable.subscribe(onNext: { [weak self] title in self?.titleLabel.text }).disposed(by: disposeBag)
+
+// Dangerously binding
+viewModel.titleObservable.bind(to: titleLabel.rx.text).disposed(by: disposeBag)
 ```
 
 #### Where to perform the bindings?
@@ -79,7 +93,7 @@ Each ViewController should be given a `var` DisposeBag for use with outlet bindi
 ```
 override func viewWillDisappear(_ animated: Bool) {
   super.viewWillDisappear(animated)
-  disposeBag = DisposeBag
+  disposeBag = DisposeBag()
 }
 ```
 
@@ -88,7 +102,7 @@ Similarly, each custom (Table|Collection)ViewCell should be giving a `var` Dispo
 ```
 override func prepareForReuse() {
   super.prepareForReuse()
-  cellReuseBag = DisposeBag
+  cellReuseBag = DisposeBag()
 }
 ```
 
