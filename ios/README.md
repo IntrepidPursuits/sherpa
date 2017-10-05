@@ -17,3 +17,5 @@
 [Inspecting an .ipa file](ios_inspecting_an_ipa_file.md) - Helpful tips for inspecting an app's .ipa file
 
 [Firebase Gotchas](firebase.md) - Firebase Realtime Database Usage and Gotchas...
+
+[Rx Best Practices](rxswit_sherpa.md) - Best practices when using Rx{Swift|Cocoa|etc.} in iOS projects
