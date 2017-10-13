@@ -1,9 +1,14 @@
 # Project Name
 
- <!-- Replace the 2 instances of "ios-template" in each of the links below with
-      the name of your project in Jenkins. -->
-[![Build Status](https://ci.intrepid.io/buildStatus/icon?job=ios-template)](https://ci.intrepid.io/job/ios-template/)
-[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/ios-template/)](https://ci.intrepid.io/job/ios-template/cobertura/)
+ <!-- Replace the instances of "ios-template" in each of the links below with the name of your project in Jenkins.
+
+For Android Projects:
+- Replace 'iOS' with 'Android' in both links
+- Replace 'ios-legacy' with 'android-projects' in both links
+
+ -->
+[![Build Status](https://ci.intrepid.io/buildStatus/icon?job=iOS/ios-legacy/ios-template)](https://ci.intrepid.io/job/iOS/job/ios-legacy/job/ios-template/)
+[![Coverage](http://ci.intrepid.io:9913/jenkins/cobertura/iOS/job/ios-legacy/job/ios-template)](https://ci.intrepid.io/job/iOS/job/ios-legacy/job/ios-template/cobertura/)
 
 The purpose of this great app is… something something… the intersection of technology and humanity.
 ___

@@ -13,6 +13,7 @@ Development best practices for Intrepid
     * [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
     * [Stuff to read for iOS devs](ios/stuff_to_read.md)
     * [Common CocoaPods](ios/common_cocoapods.md)
+    * [iOS Recommended Tools](ios/ios_recommended_tools.md)
 * Android
     * [New project setup instructions](android/android_project_creation.md)
     * [Android Jenkins setup instructions](android/android_jenkins.md)
@@ -23,11 +24,12 @@ Development best practices for Intrepid
 ## Style Guides
 * iOS
 	* [Swift](https://github.com/IntrepidPursuits/swift-style-guide)
-    * [Objective-C](https://github.com/IntrepidPursuits/objective-c-style-guide)
+  * [Objective-C](https://github.com/IntrepidPursuits/objective-c-style-guide)
 * Android
 	* [Android OS Project Style Guide](https://source.android.com/source/code-style.html)
 	* [Intrepid Style Template](android/code_style.md)
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
+* [Elixir](https://github.com/christopheradams/elixir_style_guide)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
 ## Process

@@ -26,6 +26,7 @@
       <emptyLine />
     </value>
   </option>
+  <option name="RIGHT_MARGIN" value="120" />
   <AndroidXmlCodeStyleSettings>
     <option name="USE_CUSTOM_SETTINGS" value="true" />
     <option name="LAYOUT_SETTINGS">
