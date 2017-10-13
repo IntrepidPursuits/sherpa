@@ -4,7 +4,7 @@
     <!-- The current list of lint checks available: http://tools.android.com/tips/lint-checks -->
 
     <!-- Downgrade severity of not explicitly including all options in switch statements.  (using default does not eliminate this warning) -->
-    <issue id="SwitchIntDef" severity="weak warning"/>
+    <issue id="SwitchIntDef" severity="informational"/>
 
     <!-- Upgrade severity of using wrong app compat method - want to highlight cases where this may be occurring. -->
     <issue id="AppCompatMethod" severity="error"/>
@@ -43,19 +43,19 @@
     <issue id="GradlePath" severity="error"/>
 
     <!-- Notify of newer library versions -->
-    <issue id="NewerVersionAvailable" severity="info"/>
+    <issue id="NewerVersionAvailable" severity="informational"/>
 
     <!-- Enable checking for incorrect icon sizes -->
     <issue id="IconExpectedSize" severity="warning"/>
 
     <!-- Enable WebP icon conversion suggestion -->
-    <issue id="ConvertToWebp" severity="info"/>
+    <issue id="ConvertToWebp" severity="informational"/>
 
     <!-- Upgrade severity of this check to improve layout computation speed -->
     <issue id="DisableBaselineAlignment" severity="error"/>
 
     <!-- Add support for checking for logging calls in production code -->
-    <issue id="LogConditional" severity="weak warning"/>
+    <issue id="LogConditional" severity="informational"/>
 
     <!-- Upgrade severity of checking for duplicate features in the manifest -->
     <issue id="DuplicateUsesFeature" severity="error"/>
@@ -82,13 +82,13 @@
     <issue id="PrivateResource" severity="error"/>
 
     <!-- Downgrade severity of using dp instead of sp for text sizes -->
-    <issue id="SpUsage" severity="weak warning"/>
+    <issue id="SpUsage" severity="informational"/>
 
     <!-- Upgrade severity of using mm or in in dimension definitions -->
     <issue id="InOrMmUsage" severity="error"/>
 
     <!-- Downgrade severity of using small text sizes -->
-    <issue id="SmallSp" severity="weak warning"/>
+    <issue id="SmallSp" severity="informational"/>
 
     <!-- Upgrade severity of caching RecyclerView positions -->
     <issue id="RecyclerView" severity="error"/>
@@ -112,22 +112,22 @@
     <issue id="SetWorldWritable" severity="error"/>
 
     <!-- Downgrade severity of enabling JavaScript -->
-    <issue id="SetJavaScriptEnabled" severity="weak warning"/>
+    <issue id="SetJavaScriptEnabled" severity="informational"/>
 
     <!-- Enable checking for invalid usage of methods marked @VisibleForTest -->
     <issue id="VisibleForTests" severity="warning"/>
 
     <!-- Enable suggesting making text selectable -->
-    <issue id="SelectableText" severity="weak warning"/>
+    <issue id="SelectableText" severity="informational"/>
 
     <!-- Downgrade severity of typos -->
-    <issue id="Typos" severity="typo"/>
+    <issue id="Typos" severity="informational"/>
 
     <!-- Enable checking for smart quotes -->
-    <issue id="TypographyQuotes" severity="weak warning"/>
+    <issue id="TypographyQuotes" severity="informational"/>
 
     <!-- Enable checking for unused ids -->
-    <issue id="UnusedIds" severity="info"/>
+    <issue id="UnusedIds" severity="informational"/>
 
     <!-- Ignore scanning commonly used packages -->
     <issue id="InvalidPackage">
