@@ -18,6 +18,7 @@ Development best practices for Intrepid
     * [New project setup instructions](android/android_project_creation.md)
     * [Android Jenkins setup instructions](android/android_jenkins.md)
     * [Stuff to read for Android devs](android/stuff_to_read.md)
+    * [Useful Android Studio plugins](android/android_studio_plugins.md)
 * Backend
     * [Stuff to read for backend devs](backend/stuff_to_read.md)
 
