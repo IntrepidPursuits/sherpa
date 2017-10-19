@@ -4,135 +4,135 @@
     <!-- The current list of lint checks available: http://tools.android.com/tips/lint-checks -->
 
     <!-- Downgrade severity of not explicitly including all options in switch statements.  (using default does not eliminate this warning) -->
-    <issue id="SwitchIntDef" severity="informational"/>
+    <issue id="SwitchIntDef" severity="informational" />
 
     <!-- Upgrade severity of using wrong app compat method - want to highlight cases where this may be occurring. -->
-    <issue id="AppCompatMethod" severity="error"/>
+    <issue id="AppCompatMethod" severity="error" />
 
     <!-- Upgrade severity of not using the Firebase App Indexing API - we may not need this one, as we already have “Missing support for Firebase App Indexing” enabled -->
-    <issue id="GoogleAppIndexingApiWarning" severity="warning"/>
+    <issue id="GoogleAppIndexingApiWarning" severity="warning" />
 
     <!-- Enable checking for app links -->
-    <issue id="AppLinksAutoVerifyError" severity="warning"/>
+    <issue id="AppLinksAutoVerifyError" severity="warning" />
 
     <!-- Enable checking for potential app links -->
-    <issue id="AppLinksAutoVerifyWarning" severity="warning"/>
+    <issue id="AppLinksAutoVerifyWarning" severity="warning" />
 
     <!-- Upgrade severity of trying to specify AdapterView children in XML -->
-    <issue id="AdapterViewChildren" severity="error"/>
+    <issue id="AdapterViewChildren" severity="error" />
 
     <!-- Upgrade severity of including more than one layout within a ScrollView -->
-    <issue id="ScrollViewCount" severity="error"/>
+    <issue id="ScrollViewCount" severity="error" />
 
     <!-- Enable checking for implied unsupported Chrome OS hardware -->
-    <issue id="PermissionImpliesUnsupportedChromeOsHardware" severity="warning"/>
+    <issue id="PermissionImpliesUnsupportedChromeOsHardware" severity="warning" />
 
     <!-- Enable checking for unsupported Chrome OS hardware -->
-    <issue id="UnsupportedChromeOsHardware" severity="error"/>
+    <issue id="UnsupportedChromeOsHardware" severity="error" />
 
     <!-- Enable checking for insecure cipher mode -->
-    <issue id="GetInstance" severity="error"/>
+    <issue id="GetInstance" severity="error" />
 
     <!-- Look for STOPSHIP comments -->
-    <issue id="StopShip" severity="error"/>
+    <issue id="StopShip" severity="error" />
 
     <!-- Look for mangled file line endings -->
-    <issue id="MangledCRLF" severity="warning"/>
+    <issue id="MangledCRLF" severity="warning" />
 
     <!-- Increase severity of incorrect Gradle paths -->
-    <issue id="GradlePath" severity="error"/>
+    <issue id="GradlePath" severity="error" />
 
     <!-- Notify of newer library versions -->
-    <issue id="NewerVersionAvailable" severity="informational"/>
+    <issue id="NewerVersionAvailable" severity="informational" />
 
     <!-- Enable checking for incorrect icon sizes -->
-    <issue id="IconExpectedSize" severity="warning"/>
+    <issue id="IconExpectedSize" severity="warning" />
 
     <!-- Enable WebP icon conversion suggestion -->
-    <issue id="ConvertToWebp" severity="informational"/>
+    <issue id="ConvertToWebp" severity="informational" />
 
     <!-- Upgrade severity of this check to improve layout computation speed -->
-    <issue id="DisableBaselineAlignment" severity="error"/>
+    <issue id="DisableBaselineAlignment" severity="error" />
 
     <!-- Add support for checking for logging calls in production code -->
-    <issue id="LogConditional" severity="informational"/>
+    <issue id="LogConditional" severity="informational" />
 
     <!-- Upgrade severity of checking for duplicate features in the manifest -->
-    <issue id="DuplicateUsesFeature" severity="error"/>
+    <issue id="DuplicateUsesFeature" severity="error" />
 
     <!-- Upgrade severity of checking for incorrect attribute definitions -->
-    <issue id="IllegalResourceRef" severity="error"/>
+    <issue id="IllegalResourceRef" severity="error" />
 
     <!-- Upgrade severity of subtle manifest bugs -->
-    <issue id="ManifestOrder" severity="error"/>
+    <issue id="ManifestOrder" severity="error" />
 
     <!-- Upgrade severity of missing minimum and target SDK attributes -->
-    <issue id="UsesMinSdkAttributes" severity="error"/>
+    <issue id="UsesMinSdkAttributes" severity="error" />
 
     <!-- Upgrade severity of missing @Keep annotation for animated properties -->
-    <issue id="AnimatorKeep" severity="error"/>
+    <issue id="AnimatorKeep" severity="error" />
 
     <!-- Upgrade severity of missing onClick method referenced from XML -->
-    <issue id="OnClick" severity="error"/>
+    <issue id="OnClick" severity="error" />
 
     <!-- Upgrade severity of exporting PreferenceActivity and exposing application internals -->
-    <issue id="ExportedPreferenceActivity" severity="error"/>
+    <issue id="ExportedPreferenceActivity" severity="error" />
 
     <!-- Upgrade severity of private resource usage -->
-    <issue id="PrivateResource" severity="error"/>
+    <issue id="PrivateResource" severity="error" />
 
     <!-- Downgrade severity of using dp instead of sp for text sizes -->
-    <issue id="SpUsage" severity="informational"/>
+    <issue id="SpUsage" severity="informational" />
 
     <!-- Upgrade severity of using mm or in in dimension definitions -->
-    <issue id="InOrMmUsage" severity="error"/>
+    <issue id="InOrMmUsage" severity="error" />
 
     <!-- Downgrade severity of using small text sizes -->
-    <issue id="SmallSp" severity="informational"/>
+    <issue id="SmallSp" severity="informational" />
 
     <!-- Upgrade severity of caching RecyclerView positions -->
-    <issue id="RecyclerView" severity="error"/>
+    <issue id="RecyclerView" severity="error" />
 
     <!-- Upgrade severity of classes missing from manifest -->
-    <issue id="Registered" severity="error"/>
+    <issue id="Registered" severity="error" />
 
     <!-- Upgrade severity of incorrect width/height values for ScrollView children -->
-    <issue id="ScrollViewSize" severity="error"/>
+    <issue id="ScrollViewSize" severity="error" />
 
     <!-- Upgrade severity of explicit path references to /sdcard -->
-    <issue id="SdCardPath" severity="error"/>
+    <issue id="SdCardPath" severity="error" />
 
     <!-- Enable checking for insecure random number generation -->
-    <issue id="SecureRandom" severity="error"/>
+    <issue id="SecureRandom" severity="error" />
 
     <!-- Prevent usage of global readable files -->
-    <issue id="SetWorldReadable" severity="error"/>
+    <issue id="SetWorldReadable" severity="error" />
 
     <!-- Prevent usage of global writeable files -->
-    <issue id="SetWorldWritable" severity="error"/>
+    <issue id="SetWorldWritable" severity="error" />
 
     <!-- Downgrade severity of enabling JavaScript -->
-    <issue id="SetJavaScriptEnabled" severity="informational"/>
+    <issue id="SetJavaScriptEnabled" severity="informational" />
 
     <!-- Enable checking for invalid usage of methods marked @VisibleForTest -->
-    <issue id="VisibleForTests" severity="warning"/>
+    <issue id="VisibleForTests" severity="warning" />
 
     <!-- Enable suggesting making text selectable -->
-    <issue id="SelectableText" severity="informational"/>
+    <issue id="SelectableText" severity="informational" />
 
     <!-- Downgrade severity of typos -->
-    <issue id="Typos" severity="informational"/>
+    <issue id="Typos" severity="informational" />
 
     <!-- Enable checking for smart quotes -->
-    <issue id="TypographyQuotes" severity="informational"/>
+    <issue id="TypographyQuotes" severity="informational" />
 
     <!-- Enable checking for unused ids -->
-    <issue id="UnusedIds" severity="informational"/>
+    <issue id="UnusedIds" severity="informational" />
 
     <!-- Ignore scanning commonly used packages -->
     <issue id="InvalidPackage">
-        <ignore regexp="okio-.*jar"/>
-        <ignore regexp="retrofit-.*jar"/>
-        <ignore regexp="requery-.*jar"/>
+        <ignore regexp="okio-.*jar" />
+        <ignore regexp="retrofit-.*jar" />
+        <ignore regexp="requery-.*jar" />
     </issue>
 </lint>
