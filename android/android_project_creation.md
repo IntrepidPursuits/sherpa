@@ -27,7 +27,7 @@ That's it!  Your project should now be configured to check against the recommend
 
 <b>Note:</b> If you ever want to update the lint.xml file to the latest version, do the following:
 1. Upgrade to the newest version of the `static-analysis-gradle-plugin`
-2. Delete the `lint.xml` file
+2. Delete the `lint.xml` file (so when the static analysis command is run in step #3 it will re-generate a new lint.xml file)
 3. Re-run the `./gradlew analyze${buildVariant}` command
 
 This will re-generate the lint.xml file with the latest changes.
