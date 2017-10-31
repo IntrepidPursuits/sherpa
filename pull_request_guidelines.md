@@ -32,6 +32,20 @@
   * When you're on a team, or working with a another specific dev, it's best to directly assign them. (Maybe send them a slack message too)
   * When the PR is more general, post in slack to get someone else's eyes on it.
 
+* iOS Pull Request Description Template
+  * Provided below is an example template for a PR description for the iOS Team. Standardizing the information included in a PR description can help team members more effectively review a PR. This template can be pasted directly into Github and completed with the relevant information. If any of the fields are not relevant simply fill in with `NA`.
+  ```
+    Summary:
+  
+    Link to JIRA Ticket:
+  
+    Zeplin screen(s) or link to Zeplin screen(s):
+  
+    Notes for testing:
+  
+    Story closing PR: YES/NO
+  ```
+
 ## Reviewing Pull Requests
 
 * Make comments on the Pull Request itself and not on the individual commits. Basically, use the `Files Changed` tab to make comments.
