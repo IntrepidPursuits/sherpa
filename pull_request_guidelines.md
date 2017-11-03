@@ -35,16 +35,22 @@
 * iOS Pull Request Description Template
   * Provided below is an example template for a PR description for the iOS Team. Standardizing the information included in a PR description can help team members more effectively review a PR. This template can be pasted directly into Github and completed with the relevant information. If any of the fields are not relevant simply fill in with `NA`.
   ```
-    Summary:
-  
-    Link to JIRA Ticket:
-  
-    Zeplin screen(s) or link to Zeplin screen(s):
-  
-    Notes for testing:
-  
-    Story closing PR: YES/NO
+    ## Summary:
+
+    ### Link to JIRA Ticket:
+
+    ### Zeplin screen(s) or link to Zeplin screen(s):
+
+    ### Notes for verifying PR:
+
+    ### Story closing PR: YES/NO
   ```
+
+  The `Summary` should describe the general feature implemented or bug fixed. Include any information that would be helpful to the developer reviewing your PR. 
+
+  The `Notes for verifying PR` should describe any actions required in order to put the app in a state to verify implementation of the feature or bug fix. If the PR should be verified on a device/OS version other than the standard device/OS version for the project, call that out in `Notes for verifying PR`.   
+
+  The `Story closing PR` field should be marked as `YES` is after merging this PR the corresponding story will be moved to QA. 
 
 ## Reviewing Pull Requests
 
