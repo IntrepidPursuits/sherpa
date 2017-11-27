@@ -26,7 +26,7 @@
 * When should screenshots be included?
   * This is usually not necessary in creating a request.
   * Maybe if the fix you are making is impossible to explain in words?
-* [Git process, feature branches](git_workflow_quick_reference.md)
+* [Git process, feature branches](git/git_workflow_quick_reference.md)
 * Assigning people vs. posting in slack
   * Before you post in slack or assign a reviewer, make sure you review the PR yourself to catch any obvious errors.
   * When you're on a team, or working with a another specific dev, it's best to directly assign them. (Maybe send them a slack message too)
