@@ -43,7 +43,7 @@ Note: if you wish to rebuild a PR without pushing new commits, you can type `res
 The `android-nightly-template` expects the project to contain [coverage.gradle](https://github.com/IntrepidPursuits/AndroidSkeleton/blob/master/app/coverage.gradle). If your project is based off [Android Skeleton](https://github.com/IntrepidPursuits/AndroidSkeleton), you should be all set. If not, you can simply copy that file to your project and add `apply from: 'coverage.gradle'` in your app `build.gradle` file (note that you will also need the [spoon plugin](https://github.com/stanfy/spoon-gradle-plugin)).
 Additional info can be found [here](https://github.com/IntrepidPursuits/sherpa/blob/master/android_cobertura.md).
 
-#### Build failing with error 'missing local.properties'
+### Build failing with error 'missing local.properties'
 
 Some builds require having the `local.properties` file on Jenkins. Because this isn't a file tracked by git, there are a few more steps to get this configured on Jenkins.
 
@@ -66,3 +66,43 @@ cp -v "${APK_KEYS_PATH}" "${WORKSPACE}/local.properties"
 rm "${WORKSPACE}/local.properties"
 ```
 1. Make sure this block appears *after* the "Invoke Gradle Script" block.
+
+### SonarQube PR Lint Warning Reporter
+
+THIS IS ONLY FOR PULL REQUEST BRANCHES
+
+1. Make sure you are using Intrepid’s Static Analysis plugin (https://github.com/IntrepidPursuits/static-analysis-gradle-plugin), especially the Android Lint analysis tool
+1. In Jenkins, navigate to your project’s PR Builder project and enter the **Configure** tab
+1. Under **Build**, in the **Invoke Gradle script** section, append to the end of **Tasks** one the lint analysis gradle commands (e.g. lintDevDebug. You can see which lint analysis tasks you can run by running ./gradlew tasks in your terminal on Android Studio)
+1. Add a build step with **ADD BUILD STEP** and choose **Execute SonarQube Scanner**. Place this at the end of the **Build** section
+1. Copy these properties into the **Analysis properties** section and change the names of **sonar.projectKey**, **sonar.projectName** and **sonar.android.lint.report** to reflect your project properties:
+
+```Shell
+# Sonar Properties
+sonar.projectKey=your_project-pr:android (1)
+sonar.projectName=your_project-pr
+sonar.github.repository=IntrepidPursuits/your_project_repo
+sonar.github.pullRequest=${ghprbPullId}
+sonar.analysis.mode=preview
+sonar.host=sonar.intrepid.io
+sonar.profile=Intrepid Android Lint
+
+# Global properties
+sonar.sources=.
+sonar.binaries=app/build/intermediates/classes (2)
+sonar.java.binaries=app/build/intermediates/classes
+sonar.import_unknown_files=true
+sonar.android.lint.report=app/build/reports/your_lint_result_file.xml (3)
+```
+
+That should be it! Push a test PR to make sure that it's working (by creating some sort of lint warning. My favorite is the classic unextracted string in some XML)
+
+Few Notes on the Properties:
+
+(1) The your_project-pr:android and your_project-pr are not really that important naming wise in how SonarQube handles it, but it probably would be good to get a naming convention down
+
+(2) If your binaries/java binaries/source files are different, you’re going to need to point them in to the correct directory
+
+(3) The lint results file should reflect which lint gradle command you ran. So for instance, **lintQaDebugRelease** would create a lint results file called **lint-results-qaDebugRelease.xml** for Stetson. You can check out where your lint results file exists by adding the lint gradle command in your Invoke Gradle Script, push a test PR and then going into the workspace for the project and locating the lint results file (usually under app/build/reports)
+
+What SonarQube reports _should_ only depend on what is generated in your lint report, so any project specific lint warnings should be valid. That being said, I have no idea if thats true, so it would be great to get feedback
