@@ -1,6 +1,11 @@
 # Rx{Swift,Cocoa} Sherpa
 ### _“How to use Rx responsibility”_
 
+Reactive Extensions (Rx) represent a suite of operators and methods that allow for the easy understanding and reasoning about streams of data.  If you can have a source of information that emits events in a less than understandable manner, you can apply Rx operators, transforming it, through a series of small idempotent steps, into something that is easy to reason about.  Two examples of events can be transformed using Rx are text being entered into a text field and the value of an object property  that changes over time.
+
+The combination of MVVM+Rx allows us to make use of a pattern that encourages clean decoupled application architecture that separates the view and the underlying view model that represents the state of the view over time. Ultimately the result is an application that is highly testable, easy to reason about and ultimately lower effort to maintain and extend.
+
+
 * What is ReactiveX all about?
   * Reactive Extensions (ReactiveX / Rx) is about reacting to the events whether they’re synchronous or asynchronous
     * In this way it can also feel like a solution for threading
