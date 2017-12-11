@@ -6,13 +6,29 @@ Development best practices for Intrepid
 * One developer veto blocks contribution for review & revision
 * Use the github `issue` functionality if you find something is missing & should be added to Sherpa
 
+## Platform-specific Resources
+* iOS
+    * [iOS Resources](ios/README.md)
+    * [iOS Build Reporting On Jenkins Via Danger](ios/ios_danger.md)
+    * [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
+    * [Stuff to read for iOS devs](ios/stuff_to_read.md)
+    * [Common CocoaPods](ios/common_cocoapods.md)
+    * [iOS Recommended Tools](ios/ios_recommended_tools.md)
+* Android
+    * [New project setup instructions](android/android_project_creation.md)
+    * [Android Jenkins setup instructions](android/android_jenkins.md)
+    * [Stuff to read for Android devs](android/stuff_to_read.md)
+    * [Useful Android Studio plugins](android/android_studio_plugins.md)
+* Backend
+    * [Stuff to read for backend devs](backend/stuff_to_read.md)
+
 ## Style Guides
 * iOS
-	* [Swift](https://github.com/IntrepidPursuits/swift-style-guide)
-	* [Objective-C](https://github.com/IntrepidPursuits/objective-c-style-guide)
+    * [Swift](https://github.com/IntrepidPursuits/swift-style-guide)
+    * [Objective-C](https://github.com/IntrepidPursuits/objective-c-style-guide)
 * Android
-	* [Android OS Project Style Guide](https://source.android.com/source/code-style.html)
-	* [Intrepid Style Template](android/code_style.md)
+    * [Android OS Project Style Guide](https://source.android.com/source/code-style.html)
+    * [Intrepid Style Template](android/code_style.md)
 * [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
 * [Elixir](https://github.com/christopheradams/elixir_style_guide)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
@@ -30,15 +46,6 @@ Projects repos should always contain a README so that future development teams c
 ## Advice
 * [Mobile API Guidance](mobile_api_guidance.md)
 
-## Resources
-* [iOS Resources](ios/README.md)
-* [iOS Build Reporting On Jenkins Via Danger](ios/ios_danger.md)
-* [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
-* [Android Jenkins setup instructions](android/android_jenkins.md)
-* [Stuff to read for Android devs](android/stuff_to_read.md)
-* [Stuff to read for iOS devs](ios/stuff_to_read.md)
-* [Stuff to read for backend devs](backend/stuff_to_read.md)
+## General Resources
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
 * [Git cookbook](git/git_cookbook.md)
-* [Common CocoaPods](ios/common_cocoapods.md)
-* [iOS Recommended Tools](ios/ios_recommended_tools.md)

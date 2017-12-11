@@ -1,7 +1,5 @@
 # Rx{Swift,Cocoa} Sherpa
 
-*** **This document is under active development** ***
-
 This document contains best practices when using RxSwift, RxCocoa, and other Rx libraries in iOS projects.
 
 ## How to use Rx responsibility?
