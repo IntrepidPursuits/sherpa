@@ -1,0 +1,192 @@
+# Deploying Phoenix/Elixir apps
+
+relevant libraries:
+- [erlang](https://elixir-lang.org/install.html#installing-erlang)
+- [elixir](https://elixir-lang.org/install.html)
+- [phoenix](https://hexdocs.pm/phoenix/installation.html)
+- [distillery](https://github.com/bitwalker/distillery)
+- [edeliver](https://github.com/edeliver/edeliver)
+
+deployment alternatives:
+- [heroku](https://hexdocs.pm/phoenix/heroku.html)
+- [gigalixir](http://gigalixir.readthedocs.io/en/latest/main.html#getting-started-guide)
+- [bootleg](https://github.com/labzero/bootleg)
+
+
+The most simple way of deploying a phoenix app is probably using [heroku](https://hexdocs.pm/phoenix/heroku.html) and is usually sufficient for simple apps with a limited lifespan, but heroku can start to get expensive pretty quickly to account for the convenience. The alternative is to deploy using a hosting service such as AWS, Google Cloud, Digital Ocean, etc. While less expensive, it does have the overhead of having to configure more of your environment to be able to serve your app.
+
+For the sake of this guide, we're going to make a few assumptions:
+- Two instances setup within one of these providers, one with ports 80 and 443 exposed. This would be considered your production environment.
+- Database setup (likely postgres) and accessible from your production instance.
+- Both running the same operating system/version. Likely ubuntu or similar.
+- Ssh access to both instances from your local machine.
+- Have a phoenix/elixir application you want to deploy.
+
+From here, the steps we need to accomplish are:
+1. Configure build and prod environments
+2. Install and configure [distillery](https://github.com/bitwalker/distillery)
+3. Install and configure [edeliver](https://github.com/edeliver/edeliver)
+4. Initiate a first deployment to verify the app is running.
+5. Make changes to the app and push up changes.
+
+## Configure build and prod environments
+For this guide, we're going to assume the setup of one build server and one production server. You can very easily expand this to include staging, dev, or any number of other environments you wish to deploy to and would only need to alter the deployment commands to reference that environment. You could also just use one server and have the same server act as both build and production.
+
+These steps will need to be repeated on each server unless specifically noted.
+- Ssh into server using non-root user setup on instance provisioning (ie ubuntu).
+- (Optional) install a version manager to manage erlang and elixir installations [asdf](https://github.com/asdf-vm/asdf) add elixir and erlang plugins.
+- Install [erlang](https://elixir-lang.org/install.html#installing-erlang) following the guide provided or via asdf.
+- Install [elixir](https://elixir-lang.org/install.html#unix-and-unix-like) following the guide provided or via asdf.
+- (Production) Create a folder `/home/ubuntu/app` and set the permissions with `cmod /home/ubuntu/app 755`
+- (Production) Create a database, if necessary, via psql in the format `<underscore_formatted_app_name>_<environment>` via `sudo -u postgres psql` then `CREATE DATABASE my_app_production;` for example, just be sure to replace with your app and proper environment.
+- (Production) Create a database user to access the database from your app via psql via `CREATE USER username_here WITH PASSWORD 'password_here';`. Then grant priveledges to the database for that user `GRANT ALL PRIVILEGES ON DATABASE my_app_production to username_here;`.
+- (Production) If using uuid keys run `CREATE EXTENSION "uuid-ossp";` to install the postgres plugin required.
+- (Production) Setup nginx as a reverse proxy to allow your app to be served over the default http(s) port. A good guide to accomplish this can be found [here](https://www.digitalocean.com/community/tutorials/how-to-automate-elixir-phoenix-deployment-with-distillery-and-edeliver-on-ubuntu-16-04#step-9-%E2%80%94-setting-up-a-reverse-proxy-on-the-production-server).
+- (Production) Setup [certbot](https://certbot.eff.org) to obtain an ssl certificate from [Let's Encrypt](https://letsencrypt.org/) (needed to serve the app via https).
+
+Note: these steps could all be automated using some sort of provisioning tool (ie elastic beanstalk, terraform, chef, puppet, etc) but is outside the scope of this guide.
+
+## Setup app for release
+
+[Distillery](https://github.com/bitwalker/distillery) is the package we'll be using to actually generate the releases we'll be deploying to production. If using phoenix, follow the installation and setup directions starting [here](https://hexdocs.pm/distillery/use-with-phoenix.html). If not using phoenix, begin [here](https://hexdocs.pm/distillery/walkthrough.html). Once distillery is installed and you are able to generate a release via the command `mix release` we're ready to move on to edeliver, which will make the process of building and deploying apps much easier than needing to manually copy and unpack the tarballs generated by distillery.
+
+Begin [here](https://github.com/edeliver/edeliver#quick-start) and walk through the steps to get edeliver setup. When you reach the `.deliver/config` portion make sure to substitute in values that match with the instances that you've created.
+
+```bash
+# .deliver/config
+
+APP="app_name"
+
+BUILD_HOST="ip_address_to_build_instance"
+BUILD_USER="ubuntu"
+BUILD_AT="/tmp/edeliver/app_name/builds"
+
+PRODUCTION_HOSTS="ip_address_to_prod_instance"
+PRODUCTION_USER="ubuntu"
+DELIVER_TO="/home/ubuntu/app"
+```
+
+Note: If your app requires additional build steps, such as `mix phx.digest` or `npm install` see the article [here](https://github.com/edeliver/edeliver/wiki/Run-additional-build-tasks) on how to setup those hooks to run on build/deployment.
+
+## Migrations
+
+If your app requires a database (most will), see [here](https://hexdocs.pm/distillery/running-migrations.html) on how to set up a migration module that you can run either manually or configure using edelivery to run automatically on deploy.
+
+## Configuration
+
+One of the main sticking points for a successful deployment is figuring out where and how to handle configuration values. You don't want to commit and store the values, so you need to maintain them either using elixir's `prod.secret.exs` convention or in the environment of your server. This leads to another issue with configuration. Since elixir applications are compiled, the values need to be present at compile time to be included in the app. So just haven't the env vars setup in production will work for values that are fetched at run time, but not compile time.
+
+There are two ways of handling this.
+
+### Compile time
+
+For compile time env vars, you need to ensure the values you need are loaded into the build server's environment.
+
+```bash
+# ~/.profile
+
+..
+export CONFIG_VALUE=foo
+..
+```
+note: `~/.profile` is automatically loaded into the environment during edeliver operations, so it's a good place to store environment variables on the build machine.
+
+Now if you have a config definition like this:
+
+```elixir
+# prod.exs
+
+..
+config :deployment_demo, config_val: System.get_env("CONFIG_VALUE")
+..
+```
+
+This will fetch the value from the environment at compile time and have the value present when attempting to run
+```elixir
+Application.get_env(:deployment_demo, :config_val)
+# "foo"
+```
+
+If the variable is not present at compile time, during runtime when `get_env` is called, it will return `nil`.
+```elixir
+Application.get_env(:deployment_demo, :config_val)
+# nil
+```
+
+### Runtime
+
+If you wish to only store environment variables on the production server, you need to ensure that you're actually fetching from the environment at runtime.
+
+The easiest way of accomplishing this, is to reference environment variables via functions. For example:
+
+Let's take the example from before, but instead of calling `System.get_env()` in the config file, let's define the environment key we want to use in the config, but access the environment at runtime.
+
+```elixir
+# prod.exs
+
+..
+config :deployment_demo, config_val: "CONFIG_VALUE"
+..
+```
+
+Now in our module we can access the value via a function.
+
+```elixir
+# my_module.ex
+
+defmodule DeploymentDemo.MyModule do
+..
+  defp config_value do
+    :deployment_demo
+    |> Application.get_env(:config_val)
+    |> System.get_env()
+  end
+end
+```
+
+This can easily be cleaned up by extracting it to a config helper module.
+
+```elixir
+# config_helper.ex
+
+defmodule DeploymentDemo.ConfigHelper do
+  def get_env(app, value) do
+    app
+    |> Application.get_env(value)
+    |> System.get_env()
+  end
+end
+```
+
+then you can simply alias the `ConfigHelper` module and fetch values from the environment via
+```elixir
+ConfigHelper.get_env(:deployment_demo, :config_val)
+# "foo"
+```
+
+## Our first release
+
+Now that we have distillery setup and building releases and edelivery hooked up to our build and production servers, we're ready to run our first release.
+
+From your local machine, from the app's root directory. Run the commands:
+```
+$ mix edeliver build release
+$ mix edeliver deploy release to production
+```
+Once the process is completed you should be able to view your app at `https://<production_server_ip>`.
+
+## Update
+
+After making changes and commiting them, you can now run a new build and update production without having to manually stop and start the currently running build.
+
+From the app's root directory, run the commands:
+```
+$ mix edeliver build upgrade
+$ mix edeliver upgrade
+```
+and your app should be updated with your changes.
+
+Alternatively, you can deploy a full release by running
+```
+$ mix edeliver update production
+```
