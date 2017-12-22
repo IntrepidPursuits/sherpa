@@ -54,7 +54,7 @@ class SearchViewModel {
     
     var albums: [Albums] = []
         
-    init(networkingLayer: NetworkingLayer) {
+    init(networkingLayer: NetworkingLayer = DefaultNetworkingLayer.instance) {
         self.networkingLayer = networkingLayer
     }
 
@@ -66,7 +66,7 @@ class SearchViewModel {
 }
 ```
 
-In the above example, the `SearchViewModel` can be initialized with a `NetworkingLayer` to allow a mock `NetworkingLayer` to be injected into the `SearchViewModel`. In this example `NetworkingLayer` is a protocol and as a result the live and mock network layers can both conform to the protocol. Using protocol is an effective way to implement dependency injection.
+In the above example, the `SearchViewModel` can be initialized with a `NetworkingLayer` to allow a mock `NetworkingLayer` to be injected into the `SearchViewModel`. In this example `NetworkingLayer` is a protocol and as a result the live and mock network layers can both conform to the protocol. The class `DefaultNetworkingLayer` conforms to `NetworkingLayer` and is included as a default initializer. Using protocol is an effective way to implement dependency injection.
 
 ### Expectations
 
