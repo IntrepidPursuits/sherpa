@@ -1,6 +1,7 @@
-# CSS Style Guide
+#
+CSS Style Guide
 
-####The basics:
+#### The basics:
 * If you’re stuck using plain css, use hyphens, not camelCase, because css is case-insensitive.
 * Use **single quotes** around strings, double quotes are fine only when there are single quotes inside the string itself.
 * Use constants for font styles / sizes, color schemes, etc.
@@ -72,13 +73,13 @@ It's better to have these all defined in one place, where they can be easily ref
 
 Something in suspenders appends some seemingly helpful classes to the `<body>` element that specify the controller and action, but they are a trap. Use separate descriptive class names instead of having a single class that is styled or positioned differently depending on what template was rendered.
 
-####Images as Background*
+#### Images as Background*
 When adding images to your design, especially if it's going to be responsive, use a <div> tag with the background CSS property instead of <img> elements.
 
 This may seem like more work for nothing, but it actually makes it much easier to style images properly, keeping their original size and aspect-ratio, thanks to background-size, background-position, and other properties.
 
 CSS / HTML
-```
+```css
 img {
     width: 300px;
     height: 200px;
@@ -101,10 +102,10 @@ section{
 A drawback of this technique is that the web accessibility of your page will take a slight hit, as images won't be crawled properly by screen readers and search engines. This issue can be resolved by the awesome object-fit but it doesn't have full browser support yet.
 
 
-####Don’t forget to comment:
+#### Don’t forget to comment:
 CSS might not be a programming language but its code still needs to be documented. Some simple comments are all it takes to organize a style sheet and make it more accessible to your colleagues or your future self.
 For larger sections of the CSS such as major components or media-queries, use a stylized comment and leave a couple of new lines after:
-```
+```css
 /*---------------
     #Header
 ---------------*/
@@ -120,16 +121,16 @@ header nav { }
 
 Details in the design or less important components can be marked with a single-line comment.
 
-```
+```css
 /*   Footer Buttons   */
 .footer button { }
 
 .footer button:hover { }
 ```
 
-Also, remember that CSS doesn't have single line  comments, so when commenting something out you still need to use the / / syntax.
+Also, remember that CSS doesn't have single line comments, so when commenting something out you still need to use the /* syntax.
 
-```
+```css
 /*  Do  */
 p {
     padding: 15px;
