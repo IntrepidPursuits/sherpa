@@ -1,4 +1,4 @@
-# Ruby Code Style Guidelines.
+# [Ruby Code Style Guidelines](#ruby-code-style-guidelines).
 #### Each bullet links to an example of both the incorrect and correct pattern(s) for that particlar rule.
 
 ## [General](#general)
@@ -10,13 +10,13 @@
 * **[Avoid multiple assignments per line](#avoid-multiple-assignments-per-line)**
 * **[Prefer && and || over AND and OR](#prefer--and--over-and-and-or)**
 * **[Prefer ! over not](Prefer--over-not)**
-* **[Use %{} for single-line strings needing interpolation and double-quotes](use--for-single-line-strings-needing-interpolation-and-double-quotes)**
+* **[Use %{} for single-line strings containing double-quotes that require interpolation](#use--for-single-line-strings-containing-double-quotes-that-require-interpolation)**
 * **[Avoid using semicolons](#avoid-using-semicolons)**
 * **[Avoid organizational comments](#avoid-organizational-comments)**
 * **[Use CamelCase for classes and modules, snake_case for variables, methods, and file names, SCREAMING_SNAKE_CASE for constants.](#use-camelcase-for-classes-and-modules-snake_case-for-variables-methods-and-file-names-screaming_snake_case-for-constants)**
 
 ## [Conditionals](#conditionals)
-* **[Avoid lines that end with conditionals](#avoid-lines-that-end-with-conditionals)**
+* **[Avoid lines that end with complex conditionals](#avoid-lines-that-end-with-complex-conditionals)**
 * **[Avoid ternary operators](#avoid-ternary-operators)**
 * **[Prefer if over unless](#prefer-if-over-unless)**
 
@@ -39,11 +39,12 @@
 ### Prefer double quotes for strings.
   ```ruby
     # bad
-      'Kaladin Stormblessed'
+    'Kaladin Stormblessed'
 
     # good
-      "Kaladin Stormblessed"
+    "Kaladin Stormblessed"
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Use spaces around curly braces
   ```ruby
@@ -53,14 +54,17 @@
     # good
     { name: "Kelsier", title: "Survivor of Hathsin" }
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
+
 ### Don't use spaces around square brackets
   ```ruby
     # bad
-    [ "Frodo, Gandalf, Aragorn, Legolas, Gimli, Sam, Merry, Pippin" ]
+    [ "Frodo", "Gandalf", "Aragorn", "Legolas", "Gimli", "Sam", "Merry", "Pippin" ]
 
     # good
-    ["Frodo, Gandalf, Aragorn, Legolas, Gimli, Sam, Merry, Pippin"]
+    ["Frodo", "Gandalf", "Aragorn", "Legolas", "Gimli", "Sam", "Merry", "Pippin"]
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Use a trailing comma after the last item in a multi-line list.
   ```ruby
@@ -80,6 +84,7 @@
       "Wumbo",
     ]
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid explicit return statements.
   ```ruby
@@ -93,6 +98,7 @@
       operand_1 + operand_2
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid multiple assignments per line.
   ```ruby
@@ -109,6 +115,7 @@
       x + y
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Prefer && and || over AND and OR.
   ```ruby
@@ -122,6 +129,7 @@
       heavy_pizza? || (light_pizza? && big_pizza?)
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Prefer ! over not.
   ```ruby
@@ -135,8 +143,9 @@
       !small_pizza?
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
-### Use %{} for single-line strings needing interpolation and double-quotes.
+### Use %{} for single-line strings containing double-quotes that require interpolation.
   ```ruby
     # bad
     def insert_annoying_thing_into_string
@@ -150,6 +159,7 @@
       %{i am an "#{thing}" string}
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid using semicolons.
 ```ruby
@@ -163,6 +173,7 @@
     operand_1 + operand_2
   end
 ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid organizational comments.
   ```ruby
@@ -190,6 +201,7 @@
       validates :breed, presence: true
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Use CamelCase for classes and modules, snake_case for variables, methods, and file names, SCREAMING_SNAKE_CASE for constants.
   ```ruby
@@ -211,23 +223,29 @@
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 # Conditionals
-
-### Avoid lines that end with conditionals.
+### Avoid lines that end with complex conditionals.
   ```ruby
     # bad
     def sum(operand_1, operand_2)
-      operand_1 + operand_2 if valid_operands?
+      operand_1 + operand_2 if operand_is_valid(operand_1) && operand_is_valid(operand_2)
     end
 
     # good
     def sum(operand_1, operand_2)
-      if valid_operands?
+      if operand_is_valid(operand_1) && operand_is_valid(operand_2)
         operand_1 + operand_2
       end
     end
+
+    # also good
+    def sum(operand_1, operand_2)
+      operand_1 + operand_2 if valid_operands?
+    end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid ternary operators.
   ```ruby
@@ -245,38 +263,40 @@
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Prefer if over unless.
   - use `unless` for a single negation; use `if` otherwise.
   ```ruby
-  # bad
-    def best_pizza?
-      if !small_pizza?
-        true
+    # bad
+    def perform
+      if !pizza.expired?
+        eat_pizza
       end
     end
 
-  # also bad
-    def best_pizza?
-      unless !tasty_pizza || small_pizza?
-        true
+    # also bad
+    def perform
+      unless pizza.expired? || !pizza.tasty?
+        eat_pizza
       end
     end
 
-  # good
-    def best_pizza?
-      unless small_pizza?
-        true
+    # good
+    def perform
+      unless pizza.expired?
+        eat_pizza
       end
     end
 
-  # also good
-    def best_pizza?
-      if tasty_pizza && !small_pizza?
-        true
+    # also good
+    def perform
+      if pizza.tasty? && !pizza.expired?
+        eat_pizza
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 # Blocks
 ### Prefer &:method_name for simple method calls.
@@ -291,37 +311,35 @@
       toppings.detect(&:delicious)
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Use {...} for single-line blocks. Use do..end for multi-line blocks.
   ```ruby
     # bad
-      def choose_best_vacations(places)
-        places.select { |place|
-          if place.super_fun?
-            place
-          end
-        }
-      end
+    def choose_best_vacations(places)
+      places.select { |place|
+        place.super_fun?
+      }
+    end
 
     # also bad
     def choose_best_vacations(places)
-      places.select do |place| place if place.super_fun? end
+      places.select do |place| place.super_fun? end
     end
 
     # good
     def choose_best_vacations(places)
       places.select do |place|
-        if place.super_fun?
-          place
-        end
+        place.super_fun?
       end
     end
 
     # also good
     def choose_best_vacations(places)
-      places.select { |place| place if place.super_fun? }
+      places.select { |place| place.super_fun? }
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Prefer detect, select, map, and reduce for iteration.
   ```ruby
@@ -329,7 +347,7 @@
     def find_elephants(animals)
       elephants = []
       animals.each do |animal|
-        if animal.elephant
+        if animal.species == "Elephant"
           elephants << animal
         end
       end
@@ -338,11 +356,11 @@
     # good
     def find_elephants(animals)
       animals.select do |animal|
-        if animal.elephant?
-          animal
+        animal.species == "Elephant"
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 # Classes & Methods
 ### Use ? suffix for predicate methods, and avoid prefixing auxiliary verbs.
@@ -362,25 +380,25 @@
       dinosaur.size == "big"
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Use def with parentheses when there are arguments.
   ```ruby
     # bad
     def find_elephants animals
       animals.select do |animal|
-        if animal.elephant?
-          animal
+        animal.species == "Elephant"
       end
     end
 
     # good
     def find_elephants(animals)
       animals.select do |animal|
-        if animal.elephant?
-          animal
+        animal.species == "Elephant"
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Don't use spaces after required keyword arguments.
   ```ruby
@@ -394,6 +412,7 @@
       operand_1 + operand_2 + operand_3
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Avoid bang method names
   - Bang (!) usually denotes a "dangerous" method, meaning that it will modify the object it's called on.
@@ -413,7 +432,16 @@
         self.save
       end
     end
+
+    # also good
+    class Bus
+      def update_number_of_wheels!(bus_params)
+        self.number_of_wheels = bus_params[:number_of_wheels]
+        self.save!
+      end
+    end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Don't use self explicitly except for class methods and assignments.
   ```ruby
@@ -438,6 +466,7 @@
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Prefer shorthand class and module definitions.
   ```ruby
@@ -457,11 +486,12 @@
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
 
 ### Order class methods above instance methods.
   ```ruby
     # bad
-    Class Rollercoaster
+    class Rollercoaster
       def rider_capacity
         number_of_cars * seats_per_car
       end
@@ -476,7 +506,7 @@
     end
 
     # good
-    Class Rollercoaster
+    class Rollercoaster
       def self.perfect_rollercoasters
         Rollercoaster.where(score: 10)
       end
@@ -490,3 +520,4 @@
       end
     end
   ```
+**[⬆ Back to Top](#ruby-code-style-guidelines)**
