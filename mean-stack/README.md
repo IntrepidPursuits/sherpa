@@ -160,15 +160,3 @@ creation when JS code is minified. Using Babel allows us to use the
 latest JS coding techniques knowing that the code will be transpiled
 in such a way as to make backward compatible all of the newer features
 for older browsers.
-
-
-## Questions
-
-* Where do tests go?
-* How to run tests?
-* Which tests are created automatically?
-* What about Authentication?
-* How to deliver my findings.
-  * Note that a few of the apps that I'm pointing out are *already*
-    Github apps.  So I need a way to not re-deliver those, but just
-    links to them.
