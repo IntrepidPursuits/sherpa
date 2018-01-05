@@ -1,0 +1,14 @@
+{
+    "presets": [
+      "es2015",
+      "es2016",
+      "es2017",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-flow-comments",
+      "angular2-annotations",
+      "transform-runtime",
+      "transform-decorators-legacy"
+    ]
+}

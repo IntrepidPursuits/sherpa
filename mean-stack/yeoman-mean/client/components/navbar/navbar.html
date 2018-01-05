@@ -1,0 +1,31 @@
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" (click)="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">mean-yo</a>
+    </div>
+    <div [collapse]="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav">
+        <li *ngFor="let item of menu" routerLinkActive="active">
+            <a routerLink="{{item.link}}">{{item.title}}</a>
+        </li>
+        <li [hidden]="!isAdmin" routerLinkActive="active">
+          <a routerLink="/admin">Admin</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li [hidden]="isLoggedIn" routerLinkActive="active"><a routerLink="/signup">Sign up</a></li>
+        <li [hidden]="isLoggedIn" routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        <li [hidden]="!isLoggedIn"><p class="navbar-text">Hello {{ currentUser.name }}</p> </li>
+        <li [hidden]="!isLoggedIn" routerLinkActive="active"><a routerLink="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li [hidden]="!isLoggedIn"><a (click)="logout()">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
