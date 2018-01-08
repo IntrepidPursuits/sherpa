@@ -7,32 +7,32 @@ import { expect } from 'chai';
 import { OauthButtonsComponent } from './oauth-buttons.component';
 
 describe('Component: OauthButtonsComponent', () => {
-  let comp: OauthButtonsComponent;
-  let fixture: ComponentFixture<OauthButtonsComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
+    let comp: OauthButtonsComponent;
+    let fixture: ComponentFixture<OauthButtonsComponent>;
+    let de: DebugElement;
+    let el: HTMLElement;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [OauthButtonsComponent], // declare the test component
-    });
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            declarations: [ OauthButtonsComponent ], // declare the test component
+        });
 
-    fixture = TestBed.createComponent(OauthButtonsComponent);
+        fixture = TestBed.createComponent(OauthButtonsComponent);
 
-    comp = fixture.componentInstance; // OauthButtonsComponent test instance
+        comp = fixture.componentInstance; // OauthButtonsComponent test instance
 
         // query for the title <h1> by CSS element selector
         // de = fixture.debugElement.query(By.css('a'));
         // el = de.nativeElement;
-  });
+    });
 
-  it('should have a Google+ button', () => {
-    const a = fixture.debugElement.query(By.css('i.fa-google-plus')).parent.nativeElement;
+    it('should have a Google+ button', () => {
+        const a = fixture.debugElement.query(By.css('i.fa-google-plus')).parent.nativeElement;
 
-    fixture.detectChanges();
+        fixture.detectChanges();
 
-    expect(a.textContent).to.contain('Connect with Google+');
-  });
+        expect(a.textContent).to.contain('Connect with Google+');
+    });
 
     // it('should contain anchor buttons', function() {
     //   compileDirective('<oauth-buttons></oauth-buttons>');

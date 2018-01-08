@@ -17,41 +17,41 @@ type UserType = {
 }
 
 function handleError(err) {
-  return Observable.throw(err.json().error || 'Server error');
+    return Observable.throw(err.json().error || 'Server error');
 }
 
 @Injectable()
 export class UserService {
-  AuthHttp;
+    AuthHttp;
 
-  static parameters = [AuthHttp];
-  constructor(authHttp: AuthHttp) {
-    this.AuthHttp = authHttp;
-  }
+    static parameters = [AuthHttp];
+    constructor(private authHttp: AuthHttp) {
+        this.AuthHttp = authHttp;
+    }
 
-  query(): Observable<UserType[]> {
-    return this.AuthHttp.get('/api/users/')
+    query(): Observable<UserType[]> {
+        return this.AuthHttp.get('/api/users/')
             .map((res:Response) => res.json())
             .catch(handleError);
-  }
-  get(user = {id: 'me'}): Observable<UserType> {
-    return this.AuthHttp.get(`/api/users/${user.id || user._id}`)
+    }
+    get(user: UserType = {id: 'me'}): Observable<UserType> {
+        return this.AuthHttp.get(`/api/users/${user.id || user._id}`)
             .map((res:Response) => res.json())
             .catch(handleError);
-  }
-  create(user: UserType) {
-    return this.AuthHttp.post('/api/users/', user)
+    }
+    create(user: UserType) {
+        return this.AuthHttp.post('/api/users/', user)
             .map((res:Response) => res.json())
             .catch(handleError);
-  }
-  changePassword(user, oldPassword, newPassword) {
-    return this.AuthHttp.put(`/api/users/${user.id || user._id}/password`, {oldPassword, newPassword})
+    }
+    changePassword(user, oldPassword, newPassword) {
+        return this.AuthHttp.put(`/api/users/${user.id || user._id}/password`, {oldPassword, newPassword})
             .map((res:Response) => res.json())
             .catch(handleError);
-  }
-  remove(user) {
-    return this.AuthHttp.delete(`/api/users/${user.id || user._id}`)
+    }
+    remove(user) {
+        return this.AuthHttp.delete(`/api/users/${user.id || user._id}`)
             .map(() => user)
             .catch(handleError);
-  }
+    }
 }

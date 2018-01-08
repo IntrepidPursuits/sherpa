@@ -16,22 +16,22 @@ export const ROUTES: Routes = [
 
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    RouterModule.forChild(ROUTES),
+    imports: [
+        BrowserModule,
+        FormsModule,
+        RouterModule.forChild(ROUTES),
 
 
-    TooltipModule.forRoot(),
-  ],
-  declarations: [
-    MainComponent,
-  ],
-  providers: [
-    SocketService,
-  ],
-  exports: [
-    MainComponent,
-  ],
+        TooltipModule.forRoot(),
+    ],
+    declarations: [
+        MainComponent,
+    ],
+    providers: [
+        SocketService,
+    ],
+    exports: [
+        MainComponent,
+    ],
 })
 export class MainModule {}

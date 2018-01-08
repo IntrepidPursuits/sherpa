@@ -13,22 +13,22 @@ import { FooterComponent } from './footer/footer.component';
 import { OauthButtonsComponent } from './oauth-buttons/oauth-buttons.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CollapseModule,
-    AuthModule,
+    imports: [
+        CommonModule,
+        CollapseModule,
+        AuthModule,
 
-    RouterModule,
-  ],
-  declarations: [
-    NavbarComponent,
-    FooterComponent,
-    OauthButtonsComponent,
-  ],
-  exports: [
-    NavbarComponent,
-    FooterComponent,
-    OauthButtonsComponent,
-  ]
+        RouterModule,
+    ],
+    declarations: [
+        NavbarComponent,
+        FooterComponent,
+        OauthButtonsComponent,
+    ],
+    exports: [
+        NavbarComponent,
+        FooterComponent,
+        OauthButtonsComponent,
+    ]
 })
 export class DirectivesModule {}

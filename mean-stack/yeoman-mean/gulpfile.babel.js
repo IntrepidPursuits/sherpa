@@ -1,4 +1,4 @@
-// Generated on 2018-01-04 using generator-angular-fullstack 5.0.0-beta.3
+// Generated on 2018-01-08 using generator-angular-fullstack 5.0.0-beta.3
 'use strict';
 
 import _ from 'lodash';
@@ -30,13 +30,13 @@ const paths = {
         images: `${clientPath}/assets/images/**/*`,
         revManifest: `${clientPath}/assets/rev-manifest.json`,
         scripts: [
-            `${clientPath}/**/!(*.spec|*.mock).js`
+            `${clientPath}/**/!(*.spec|*.mock).ts`
         ],
         styles: [`${clientPath}/{app,components}/**/*.scss`],
         mainStyle: `${clientPath}/app/app.scss`,
         views: `${clientPath}/{app,components}/**/*.html`,
         mainView: `${clientPath}/index.html`,
-        test: [`${clientPath}/{app,components}/**/*.{spec,mock}.js`],
+        test: [`${clientPath}/{app,components}/**/*.{spec,mock}.ts`],
         e2e: ['e2e/**/*.spec.js']
     },
     server: {
@@ -95,19 +95,12 @@ function whenServerReady(cb) {
  ********************/
 
 let lintClientScripts = lazypipe()
-    .pipe(plugins.eslint, `${clientPath}/.eslintrc`)
-    .pipe(plugins.eslint.format);
+    .pipe(plugins.tslint, { formatter: 'verbose' })
+    .pipe(plugins.tslint.report, {emitError: false});
 
 const lintClientTestScripts = lazypipe()
-    .pipe(plugins.eslint, {
-        configFile: `${clientPath}/.eslintrc`,
-        envs: [
-            'browser',
-            'es6',
-            'mocha'
-        ]
-    })
-    .pipe(plugins.eslint.format);
+    .pipe(plugins.tslint, { formatter: 'verbose' })
+    .pipe(plugins.tslint.report, {emitError: false});
 
 let lintServerScripts = lazypipe()
     .pipe(plugins.eslint, `${serverPath}/.eslintrc`)

@@ -34,8 +34,8 @@ module.exports = function makeWebpackConfig(options) {
      */
     if(!TEST) {
         config.entry = {
-            app: './client/app/app.js',
-            polyfills: './client/app/polyfills.js',
+            app: './client/app/app.ts',
+            polyfills: './client/app/polyfills.ts',
             vendor: [
                 'lodash'
             ]
@@ -86,7 +86,7 @@ module.exports = function makeWebpackConfig(options) {
             extensions: ['.js', '.ts'],
             alias: {
                 // for some reason the primus client and webpack don't get along in test
-                primus: path.resolve(__dirname, 'client/components/socket/primus.mock.js'),
+                primus: path.resolve(__dirname, 'client/components/socket/primus.mock.ts'),
             }
         };
     }
@@ -137,7 +137,9 @@ module.exports = function makeWebpackConfig(options) {
             test: /\.ts$/,
             use: [{
                 loader: 'awesome-typescript-loader',
-
+                options: {
+                    tsconfig: path.resolve(__dirname, 'tsconfig.json')
+                },
             }].concat(DEV ? '@angularclass/hmr-loader' : []),
             include: [
                 path.resolve(__dirname, 'client/')
@@ -184,7 +186,7 @@ module.exports = function makeWebpackConfig(options) {
         }]
     };
 
-
+    //TODO: TS Instrumenter
 
     /**
      * Plugins
@@ -209,17 +211,7 @@ module.exports = function makeWebpackConfig(options) {
                 precision: 10,
                 sourceComments: false
             },
-            babel: {
-                shouldPrintComment(commentContents) {
-                    let regex = DEV
-                        // keep `// @flow` & flow type comments in dev
-                        ? /(@flow|^:)/
-                        // strip comments
-                        : false;
-                    return regex.test(commentContents);
-                },
 
-            },
         }),
     ];
 

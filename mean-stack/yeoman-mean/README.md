@@ -1,10 +1,6 @@
 # mean-yo
 
-This is a skeleton application generated with the [Angular Full-Stack
-Generator](https://github.com/DaftMonk/generator-angular-fullstack)
-version 5.0.0-beta.3. You can get the same structure by following the
-instructions at the link but being sure to use the beta (canary)
-branch to get the Angular 4+ version.
+This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 5.0.0-beta.3.
 
 ## Getting Started
 

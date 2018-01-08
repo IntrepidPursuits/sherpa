@@ -10,28 +10,28 @@ import { SettingsComponent } from './settings/settings.component';
 import { SignupComponent } from './signup/signup.component';
 
 const accountRoutes: Routes = [{
-  path: 'login',
-  component: LoginComponent,
+    path: 'login',
+    component: LoginComponent,
 }, {
-  path: 'settings',
-  component: SettingsComponent,
+    path: 'settings',
+    component: SettingsComponent,
 }, {
-  path: 'signup',
-  component: SignupComponent,
+    path: 'signup',
+    component: SignupComponent,
 }];
 
 @NgModule({
-  imports: [
-    FormsModule,
-    BrowserModule,
+    imports: [
+        FormsModule,
+        BrowserModule,
 
-    RouterModule.forChild(accountRoutes),
-    DirectivesModule,
-  ],
-  declarations: [
-    LoginComponent,
-    SignupComponent,
-    SettingsComponent,
-  ],
+        RouterModule.forChild(accountRoutes),
+        DirectivesModule,
+    ],
+    declarations: [
+        LoginComponent,
+        SignupComponent,
+        SettingsComponent,
+    ],
 })
 export class AccountModule {}

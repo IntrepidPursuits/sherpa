@@ -5,9 +5,9 @@ import { AuthService } from './auth.service';
 import { UserService } from './user.service';
 
 @NgModule({
-  providers: [
-    AuthService,
-    UserService
-  ]
+    providers: [
+        AuthService,
+        UserService
+    ]
 })
 export class AuthModule {}

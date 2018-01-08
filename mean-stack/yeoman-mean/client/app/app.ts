@@ -7,17 +7,17 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 // depending on the env mode, enable prod mode or add debugging modules
 if(process.env.NODE_ENV === 'production') {
-  enableProdMode();
+    enableProdMode();
 }
 
 import { AppModule } from './app.module';
 
 export function main() {
-  return platformBrowserDynamic().bootstrapModule(AppModule);
+    return platformBrowserDynamic().bootstrapModule(AppModule);
 }
 
 if(document.readyState === 'complete') {
-  main();
+    main();
 } else {
-  document.addEventListener('DOMContentLoaded', main);
+    document.addEventListener('DOMContentLoaded', main);
 }
