@@ -8,7 +8,7 @@
 Redux is comprised of regular JavaScript functions, so testing them is nothing special. Regardless, the following are some guidelines that will help when writing tests.
 
 ### Action Creators
-Test that when the action creator is invoked with its arguments (if any) it produces the an action with the correct type and payload (if it has one).
+Test that when the action creator is invoked with its arguments (if any) it produces an action with the correct type and payload (if it has one).
 
 ### Reducers
 Test that given an initial state and a given action it produces the correct next state. It's a good idea to add an assertion that the next state object is not the same as the initial object using the `toBe` Jest matcher.
@@ -19,7 +19,7 @@ Test that the selector returns the desired data from the state given the state a
 ## Component Testing
 
 ### Testing Stateless Functional Components
-Let's say we are testing a `MealEvent` component that which may have but is not limited to the following states:
+Let's say we are testing a `MealEvent` component which may have, but is not limited to, the following states:
 
 ![test](images/react-testing/meal-event-1.png)
 ![test](images/react-testing/meal-event-2.png)
@@ -164,7 +164,7 @@ describe("MealEvent", () => {
     expect(element).toBePresent();
   });
 
-  it("renders img whose src is srcMealEvent", () => {
+  it("renders img whose src is srcMealEvent and calls the correct error function", () => {
     const element = wrapper.find("img").filterWhere(n => {
       const { alt, className, src, onError } = n.props();
       return (
@@ -324,7 +324,7 @@ describe('flagged', () => {
     expect(result).toBe(true);
   });
 
-  it('returns false if a date is given', () => {
+  it('returns false if a date is not given', () => {
     const result = flagged({ flaggedAt: null });
 
     expect(result).toBe(false);
