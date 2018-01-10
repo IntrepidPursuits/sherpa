@@ -16,7 +16,7 @@ Let’s assume we have User, Player, and Game models, where:
 Here is how a service object that confirms a player is playing in a game might look:
 /(below we’ll break down the individual components)/
 
-```
+```ruby
 class PlayerConfirmer
 
   def initialize(game_id:, players_user_ids:)
@@ -52,7 +52,7 @@ end
 
 While service objects can be used for a wide variety of purposes, often they  are structured in a particular way. Service object names, for example, usually have an action associated with them. In our case, we have `PlayerConfirmer`, which describes the job this service object performs.
 
-```
+```ruby
 class PlayerConfirmer
   def initialize(game_id:, players_user_ids:)
     @game_id = game_id
@@ -65,9 +65,9 @@ class PlayerConfirmer
   attr_reader :game_id, :players_user_ids
 ```
 
-We begin by defining a `PlayerConfirmer` class, initializing it with `game_id` and `player_user_ids` attributes, and setting private attribute readers for them.  Often, it’s a good idea to pass in named arguments. this prevents needing to extract individual attributes from an amorphous `params`  argument, allows for arguments to be supplied in any order, and makes your code more readable.
+We begin by defining a `PlayerConfirmer` class, initializing it with `game_id` and `player_user_ids` attributes, and setting private attribute readers for them.  Often, it’s a good idea to pass in named arguments. This prevents needing to extract individual attributes from an amorphous `params`  argument, allows for arguments to be supplied in any order, and makes your code more readable.
 
-```
+```ruby
   def self.perform(game_id:, players_user_ids:)
     new(game_id: game_id, players_user_ids: players_user_ids).perform
   end
@@ -75,7 +75,7 @@ We begin by defining a `PlayerConfirmer` class, initializing it with `game_id` a
 
 The next section of code may look a little strange, but it is a hallmark of service objects. In a sense, by defining a `perform` class method, we are creating a “wrapper” method in order to instantiate a new `PlayerConfirmer` class and call its `perform`  method. While this may seem unnecessary at first, the benefit comes when calling the service object. With this convention, we are able to write `PlayerConfirmer.perform(game_id: 123, player_user_ids: [21, 22])`, which is much cleaner than the alternative.
 
-```
+```ruby
 ...
 
   def perform
@@ -112,7 +112,7 @@ While this example is certainly contrived, we can take away a few common pattern
 2. **Minimum adequate exposure:** Make methods and attribute readers private unless needed externally
 
 3. **General structure:**
-```
+```ruby
 class ObjectMaker
 
   def initialize(...)
