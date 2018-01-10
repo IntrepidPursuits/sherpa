@@ -29,7 +29,7 @@ Development best practices for Intrepid
 * Android
     * [Android OS Project Style Guide](https://source.android.com/source/code-style.html)
     * [Intrepid Style Template](android/code_style.md)
-* [Ruby](https://github.com/thoughtbot/guides/tree/master/style/ruby)
+* [Ruby](webservices/ruby/style_guide.md)
 * [Elixir](https://github.com/christopheradams/elixir_style_guide)
 * [C#](https://msdn.microsoft.com/en-us/library/Ff926074.aspx)
 
