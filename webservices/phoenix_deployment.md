@@ -37,7 +37,7 @@ These steps will need to be repeated on each server unless specifically noted.
 - (Optional) install a version manager to manage erlang and elixir installations [asdf](https://github.com/asdf-vm/asdf) add elixir and erlang plugins.
 - Install [erlang](https://elixir-lang.org/install.html#installing-erlang) following the guide provided or via asdf.
 - Install [elixir](https://elixir-lang.org/install.html#unix-and-unix-like) following the guide provided or via asdf.
-- (Production) Create a folder `/home/ubuntu/app` and set the permissions with `cmod /home/ubuntu/app 755`
+- (Production) Create a folder `/home/<username>/app` and set the permissions with `cmod /home/<username>/app 755`
 - (Production) Create a database, if necessary, via psql in the format `<underscore_formatted_app_name>_<environment>` via `sudo -u postgres psql` then `CREATE DATABASE my_app_production;` for example, just be sure to replace with your app and proper environment.
 - (Production) Create a database user to access the database from your app via psql via `CREATE USER username_here WITH PASSWORD 'password_here';`. Then grant priveledges to the database for that user `GRANT ALL PRIVILEGES ON DATABASE my_app_production to username_here;`.
 - (Production) If using uuid keys run `CREATE EXTENSION "uuid-ossp";` to install the postgres plugin required.
@@ -74,7 +74,7 @@ If your app requires a database (most will), see [here](https://hexdocs.pm/disti
 
 ## Configuration
 
-One of the main sticking points for a successful deployment is figuring out where and how to handle configuration values. You don't want to commit and store the values, so you need to maintain them either using elixir's `prod.secret.exs` convention or in the environment of your server. This leads to another issue with configuration. Since elixir applications are compiled, the values need to be present at compile time to be included in the app. So just haven't the env vars setup in production will work for values that are fetched at run time, but not compile time.
+One of the main sticking points for a successful deployment is figuring out where and how to handle configuration values. You don't want to commit and store the values, so you need to maintain them either using elixir's `prod.secret.exs` convention or in the environment of your server. This leads to another issue with configuration. Since elixir applications are compiled, the values need to be present at compile time to be included in the app. So just having the env vars setup in production will work for values that are fetched at run time, but not compile time.
 
 There are two ways of handling this.
 
@@ -89,7 +89,7 @@ For compile time env vars, you need to ensure the values you need are loaded int
 export CONFIG_VALUE=foo
 ..
 ```
-note: `~/.profile` is automatically loaded into the environment during edeliver operations, so it's a good place to store environment variables on the build machine.
+note: `~/.profile` is automatically loaded into the environment during edeliver operations, so it's a good place to store environment variables on the build machine. An alternative would be to store environment variables in the app's root folder using an `.env` file and then load that via `source ~/app/<appname>/.env` from `~/.profile`
 
 Now if you have a config definition like this:
 
@@ -172,8 +172,12 @@ From your local machine, from the app's root directory. Run the commands:
 ```
 $ mix edeliver build release
 $ mix edeliver deploy release to production
+$ mix edeliver start production
+$ mix edeliver ping production
 ```
 Once the process is completed you should be able to view your app at `https://<production_server_ip>`.
+
+Check [here](https://github.com/edeliver/edeliver#admin-commands) for other useful commands for checking up on a running node.
 
 ## Update
 
