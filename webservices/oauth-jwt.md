@@ -32,7 +32,7 @@ Here is a diagram of the authentication process with JWT:
 ## Implementation (for Rails API Server):
 1. Install gem  `jwt` [GitHub - jwt/ruby-jwt: A pure ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.](https://github.com/jwt/ruby-jwt)
 2. Encode the data payload using a secret, secret hash algorithm and with an expiration time claim (“exp”):
-```
+```ruby
 class EncodeJwt
 ...
 
@@ -53,7 +53,7 @@ end
 ```
 
 3. Decode the token and retrieve the data passed in the payload:
-```
+```ruby
 class DecodeJwt
 ...
 
