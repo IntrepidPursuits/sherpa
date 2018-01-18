@@ -21,6 +21,7 @@ Development best practices for Intrepid
     * [Useful Android Studio plugins](android/android_studio_plugins.md)
 * Backend
     * [Stuff to read for backend devs](backend/stuff_to_read.md)
+    * [Intro do service objects](webservices/ruby/service_objects.md)
 
 ## Style Guides
 * iOS
