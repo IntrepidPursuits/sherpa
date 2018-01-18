@@ -22,6 +22,7 @@ Development best practices for Intrepid
 * Backend
     * [Stuff to read for backend devs](backend/stuff_to_read.md)
     * [Intro to service objects](webservices/ruby/service_objects.md)
+    * [Deploying Phoenix/Elixir apps](webservices/phoenix_deployment.md)
 
 ## Style Guides
 * iOS
