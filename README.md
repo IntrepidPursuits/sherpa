@@ -9,7 +9,7 @@ Development best practices for Intrepid
 ## Platform-specific Resources
 * iOS
     * [iOS Resources](ios/README.md)
-    * [iOS Build Reporting On Jenkins Via Danger](ios/ios_danger.md)
+    * [iOS Jenkins Pipeline Setup](ios/ios_jenkins_pipeline_guide.md)
     * [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
     * [Stuff to read for iOS devs](ios/stuff_to_read.md)
     * [Common CocoaPods](ios/common_cocoapods.md)
