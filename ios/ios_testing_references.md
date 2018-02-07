@@ -1,5 +1,15 @@
 # iOS Testing References
 
+## Why do we write tests?
+
+Project stakeholders are not always sold on the benefits of writing tests. Here are a few arguments to help convince them:
+
+* Automated tests allow you to catch bugs as they are being introduced, instead of being caught by users
+* You can integrate new code faster and with more confidence if there are tests looking for regression bugs
+* Manually testing edge cases often takes a long time to setup and perform, and those actions must be done every time you want to test them, automated edge case tests only need to be setup once and can be run over and over
+* Testing forces you to write maintainable code because it is generally harder to test poorly designed code
+* Good tests are effective documentation making it easier to introduce new developers to a project
+
 ## Types of Tests
 
 ### Unit Tests
