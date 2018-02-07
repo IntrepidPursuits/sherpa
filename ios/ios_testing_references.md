@@ -6,6 +6,12 @@
 
 Unit testing is a software development process in which the smallest testable parts of an application, called units, are individually and independently scrutinized for proper operation. In terms of iOS development, the unit may be as small as testing the public API on a given object.
 
+In order for unit tests to be useful, they must:
+* Run Often - tests need to be run often so that they catch bugs as they are introduced
+* Run Quickly - tests need to run quickly so that they can actually be run often without slowing development
+* Run Reliably - tests should only fail if there is a bug in the system under test
+* Be Readable - failing tests that are difficult to read will be even harder to fix
+
 ### Integration Tests
 
 Integration testing is the phase in software testing in which individual software modules are combined and tested as a group. This could include testing the integration of a networking layer with an active web API. The iOS team is not currently focused on implementing integration tests.
@@ -30,7 +36,11 @@ Provided below is a list of commonly used tools when writing tests.
 
 ### OHHTTPStubs - Web stubbing
 
-Stubbing webcalls is required when unit testing portions of a codebase that relied on web resources. The desired stubbing tool is [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs). OHHTTPStubs allow for stubbing of specific webcalls or all web traffic. Stubbed webcalls are intercepted and allow for a static file (JSON/XML/etc) to be returned.
+Two guiding principles for unit tests from above are that they must run quickly and reliably. When unit testing portions of a codebase that rely on web resources, it is not possible for those tests to make actual webcalls because the testing speed and reliability would depend on the testing environment's netowrk connectivity. Luckily, webcall stubbing makes these tests possible by intercepting webcalls before they go out and immediately returning a pre-canned response.
+
+[OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) is the recommended tool for webcall stubbing. OHHTTPStubs allows for stubbing of specific webcalls or all web traffic. Stubbed webcalls are intercepted and allow for a static file (JSON/XML/etc) to be returned.
+
+In addition to testing code that depends upon existing web APIs, webcall stubbing enables you to code and test against web resources that are not yet available. Once there is an agreed upon API spec, your tests can stub the spec and test against those stubbed endpoints as if they were real.
 
 ### Quick - Behavior Driven Development (BDD)
 
@@ -78,7 +88,7 @@ In the above example, the `SearchViewModel` can be initialized with a `Networkin
 
 ### Mocking
 
-As eluded to in the previous section, mocking is a process of creating a dummy or 'mock' object, which will simulate the behavior of a real dependency. This is useful if the real objects are impractical to incorporate into a unit test. Objective-C has access to tools like OCMockito which allow you to automatically generate mock objects at runtime. Unfortunately, because of limitations in the Swift language, you are forced to write your own mocks.
+As eluded to in the previous section, mocking is a process of creating a dummy or 'mock' object, which will simulate the behavior of a real dependency. This is useful if the real objects are impractical to incorporate into a unit test.
 
 In the above example, we would like to isolate `SearchViewModel` from any real world implementation of `NetworkingLayer`. We do this by implementing a mock version of `NetworkingLayer`, which will run predictably during our testing of `SearchViewModel`:
 
@@ -117,6 +127,40 @@ func testSearchWithFailure() {
 
 ```
 
+_NOTE: Other languages have automatic mocking tools; however, because of limitations in the Swift language, you are forced to write your own mocks._
+
+### Argument Spying
+
+In addition to verifying how the system responds to output from its dependencies, we also want to verify that it is sending the correct inputs to those dependencies. We do this by spying on the arguments passed to the dependency.
+
+Amending on the mocking example above:
+
+```swift
+class MockNetworkingLayer: NetworkingLayer {
+    var stubbedResult: Result<[String]> = Result.failure(APIError())
+    var capturedSearchArguments = [String]()
+    func searchFor(searchTerm: String, completionHandler: @escaping (Result<[String]>) -> ()) {
+        capturedSearchArguments.append(searchTerm)
+        DispatchQueue.main.async {
+            completionHandler(self.stubbedResult)
+        }
+    }
+}
+```
+
+This allows us to make expectations on how `SearchViewModel` interacts with its dependency:
+
+```swift
+func testSearchWithSuccess() {
+    ...
+    viewModel.searchFor(searchTerm: "Big")
+    XCTAssertEqual(mockNetworkingLayer.capturedSearchArguments, ["Big"])
+    ...
+}
+```
+
+In the above code, we are establishing the expectation that when `SearchViewModel.searchFor` is called, it will in turn call `NetworkingLayer.searchFor` exactly once with the correct search term.
+
 ### Expectations
 
 An expectation is the tool for testing an asynchronous function. An expectation allow a unit test to execute an asynchronous function and only fail the test if the asynchronous function fails to succeed within a defined amount of time.
@@ -137,18 +181,19 @@ func testBasicAlbumSearch() {
   let albumSearchExpectation = expectation(description: "Validation")
 
   searchViewModel.searchFor(searchTerm: "Phish") {
-      XCTAssert(searchViewModel.albumViewModels.count == 3)
+    XCTAssert(searchViewModel.albumViewModels.count == 3)
 
-      let album = searchViewModel.albumViewModelAt(index: 1)
-      XCTAssertEqual(album.title, "Farmhouse")
-      albumSearchExpectation.fulfill()
-    }
+    let album = searchViewModel.albumViewModelAt(index: 1)
+    XCTAssertEqual(album.title, "Farmhouse")
+    albumSearchExpectation.fulfill()
+  }
+  XCTAssertEqual(mockNetworkingLayer.capturedSearchArguments, ["Big"])
 
-    waitForExpectations(timeout: 10) { error in
-      if let error = error {
-        print("Error: \(error.localizedDescription)")
-      }
+  waitForExpectations(timeout: 10) { error in
+    if let error = error {
+      print("Error: \(error.localizedDescription)")
     }
+  }
 }
 ```
 
