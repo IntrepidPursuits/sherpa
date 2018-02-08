@@ -19,3 +19,5 @@
 [Firebase Gotchas](firebase.md) - Firebase Realtime Database Usage and Gotchas...
 
 [Rx Best Practices](rxswit_sherpa.md) - Best practices when using Rx{Swift|Cocoa|etc.} in iOS projects
+
+[Testing References](ios_testing_references) - Best practices when testing on iOS projects
