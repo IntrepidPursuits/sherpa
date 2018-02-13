@@ -121,8 +121,6 @@ Successfully rebased and updated refs/heads/<rebased-branch-name>.
 ```
 Note: You can rebase at any point while working on a feature branch; you don't need wait until a feature is done. If your team size or the scope of your project is small, you might rebase after every PR is merged. If not, you might rebase when changes are made to the same area you're working on, to head any conflicts off at the pass. Either way, it's important to rebase often and early to avoid conflicts piling up, and to ensure you're working on the most up-to-date version of the codebase.
 
-(Note to reviewers: do you agree with the above?)
-
 ### Push your changes to the remote
 
 Pushing your changes lets other developers access them, and also backs them up in the remote repository. Pushing regularly is good practice, as it keeps others in the loop and prevents you from losing work. To push your branch:

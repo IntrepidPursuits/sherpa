@@ -8,12 +8,19 @@ Development best practices for Intrepid
 
 ## Platform-specific Resources
 * iOS
-    * [iOS Resources](ios/README.md)
-    * [iOS Build Reporting On Jenkins Via Danger](ios/ios_danger.md)
+    * [Estimation Playbook](ios/ios_estimation_playbook.md)
+    * [Project Setup](ios/ios_project_setup.md)
+    * [iOS Jenkins Pipeline Setup](ios/ios_jenkins_pipeline_guide.md)
     * [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
     * [Stuff to read for iOS devs](ios/stuff_to_read.md)
+    * [CocoaPods Processes](ios/cocoapods_processes.md)
     * [Common CocoaPods](ios/common_cocoapods.md)
     * [iOS Recommended Tools](ios/ios_recommended_tools.md)
+    * [Inspecting an .ipa file](ios/ios_inspecting_an_ipa_file.md)
+    * [Firebase Gotchas](ios/firebase.md)
+    * [Rx Best Practices](ios/rxswift_sherpa.md)
+    * [Testing References](ios/ios_testing_references.md)
+    * [iOS App Submission Checklist](ios/ios_app_submission_checklist.md)
 * Android
     * [New project setup instructions](android/android_project_creation.md)
     * [Android Jenkins setup instructions](android/android_jenkins.md)
@@ -22,6 +29,8 @@ Development best practices for Intrepid
 * Backend
     * [Stuff to read for backend devs](backend/stuff_to_read.md)
     * [Intro to service objects](webservices/ruby/service_objects.md)
+    * [Deploying Phoenix/Elixir apps](webservices/phoenix_deployment.md)
+    * [Deploying ReactJS apps](webservices/react_deployment.md)
 
 ## Style Guides
 * iOS
@@ -39,7 +48,6 @@ Development best practices for Intrepid
 * [Git Workflow](git/git_workflow_quick_reference.md)
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
-* [CocoaPods Processes](ios/cocoapods_processes.md)
 
 ### Maintenance Readme Template
 Projects repos should always contain a README so that future development teams can learn about processes/specific quirks that have to do with individual projects. See the template [here](readme-template.md).
