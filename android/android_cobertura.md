@@ -13,7 +13,7 @@ The main takeaway from this coverage.gradle is the addition of these lines withi
 ```
 reports {
     xml.enabled true
-    xml.destination "${buildDir}/reports/jacoco/unitTestCoverage/coverage.xml"
+    xml.destination "${buildDir}/reports/jacoco/unitTestCoverage/jacoco.xml"
 }
 ```
 This code snippet tells JaCoCo to output its results in XML format. This XML will then be converted to a format that Cobertura can read. `unitTestCoverage` will then be added to the Gradle script (see below) to perform the code coverage reporting.
@@ -31,7 +31,7 @@ Under Tasks, please put: `clean unitTestCoverage assembleQa`. **Note:** assemble
 ## Execute shell
 Please place the following code in the shell you added to the Build Phase:
 ```
-cd ${WORKSPACE}/app/build/reports && mkdir cobertura && ${SCRIPT_DIR}/jacoco2cobertura.py ${WORKSPACE}/app/build/reports/jacoco/unitTestCoverage/coverage.xml src/main/java > ${WORKSPACE}/app/build/reports/cobertura/coverage.xml
+cd ${WORKSPACE}/app/build/reports && mkdir cobertura && ${SCRIPT_DIR}/jacoco2cobertura.py ${WORKSPACE}/app/build/reports/jacoco/unitTestCoverage/jacoco.xml src/main/java > ${WORKSPACE}/app/build/reports/cobertura/coverage.xml
 ```
 
 This shell creates a new directory where out Cobertura formatted code coverage report will go. Then, using the jacoco2cobertura Python script, performs the actual conversion from JaCoCo XML to Cobertura XML.
