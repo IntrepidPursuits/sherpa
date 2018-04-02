@@ -35,7 +35,9 @@ Development best practices for Intrepid
     * [Best Practices on Caching](webservices/caching.md)
     * [Setting up a Rails app](webservices/setup.md)
     * [CSS style guide](webservices/css/styling_guidelines.md)
-
+    * [Rails gem gotchas](webservices/gotchas/gems.md)
+    * [Javascript gotchas](webservices/gotchas/javascript.md)
+    * [Rails gotchas](webservices/gotchas/rails.md)
 
 ## Style Guides
 * iOS
