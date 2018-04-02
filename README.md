@@ -26,11 +26,16 @@ Development best practices for Intrepid
     * [Android Jenkins setup instructions](android/android_jenkins.md)
     * [Stuff to read for Android devs](android/stuff_to_read.md)
     * [Useful Android Studio plugins](android/android_studio_plugins.md)
-* Backend
-    * [Stuff to read for backend devs](backend/stuff_to_read.md)
+* Web
     * [Intro to service objects](webservices/ruby/service_objects.md)
     * [Deploying Phoenix/Elixir apps](webservices/phoenix_deployment.md)
+    * [Testing ReactJS apps](webservices/react-testing.md)
+    * [React and Recompose](webservices/react_and_recompose.md)
     * [Deploying ReactJS apps](webservices/react_deployment.md)
+    * [Best Practices on Caching](webservices/caching.md)
+    * [Setting up a Rails app](webservices/setup.md)
+    * [CSS style guide](webservices/css/styling_guidelines.md)
+
 
 ## Style Guides
 * iOS
