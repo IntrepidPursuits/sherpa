@@ -38,6 +38,7 @@ Development best practices for Intrepid
     * [Rails gem gotchas](webservices/gotchas/gems.md)
     * [Javascript gotchas](webservices/gotchas/javascript.md)
     * [Rails gotchas](webservices/gotchas/rails.md)
+    * [MEAN stack glossary](webservices/mean_stack_glossary.md)
 
 ## Style Guides
 * iOS
