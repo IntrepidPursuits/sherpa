@@ -209,7 +209,7 @@ Let's add RxSwift & RxCocoa to the project to help things along:
   }
   ```
 
-  but we've now switched to using the `Driver` trait. We start by switching from using the `ControlProperty` trait `searchTextField.rx.text` we appended the `asDriver` method to convert to a `Driver` trait which has all the properties of the `ControlProperty` trait plus a few more.
+  but we've now switched to using the `Driver` trait. We started by switching from using the `ControlProperty` trait `searchTextField.rx.text` to appending the `asDriver` method to convert to a `Driver` trait which has all the properties of the `ControlProperty` trait plus a few more.
 
   Next, we appended `asDriver(onErrorJustReturn: [])` to `fetchResults` turning the resulting observable sequence into a `Driver` trait. Any observable sequence can be converted to `Driver` trait, as long as it satisfies 3 properties:
   * Can't error out
