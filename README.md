@@ -19,6 +19,7 @@ Development best practices for Intrepid
     * [Inspecting an .ipa file](ios/ios_inspecting_an_ipa_file.md)
     * [Firebase Gotchas](ios/firebase.md)
     * [Rx Best Practices](ios/rxswift_sherpa.md)
+    * [Rx Swift by Example](ios/rxswift_by_example.md)
     * [Testing References](ios/ios_testing_references.md)
     * [iOS App Submission Checklist](ios/ios_app_submission_checklist.md)
 * Android
