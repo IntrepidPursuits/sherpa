@@ -1,10 +1,10 @@
 # How To Create A New Project
 ## Create Xcode project and Github repo
-1. Create repo on Github with `.gitignore` and `README.md`. Repositories should be named with the format `<project-name>-ios` e.g `bose-stetson-ios`. The `-ios` suffix is important for other services.
+1. Create repo on Github with `.gitignore` and `README.md`. Repositories should be named with the format `<project-name>-ios`. The project name should be in `kebab-case` and must include the `-ios` suffix because it is important for other services.
 
 1. Create Xcode Project
 
-1. Ensure your Xcode Project is in the top level of the git repo directory
+1. Ensure your Xcode Project is in the top level of the future git repo directory
 
 1. In the Xcode project directory, run:
     ```
@@ -32,6 +32,18 @@
 
 1. Add, commit and push Pod files
 
+## Add SwiftLint
+
+1. Add Intrepid's [`.swiftlint.yml` file](https://github.com/IntrepidPursuits/swift-style-guide/blob/master/.swiftlint.yml) to the project directory
+
+1. To see warnings and errors in Xcode, add a new "Run Script Phase" to the project containing the script below:
+    ```
+    if which swiftlint >/dev/null; then
+      swiftlint
+    else
+      echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+    fi
+    ```
 ## Jenkins
 
 1. In Xcode, click on the project target icon next to the play button, then click "Manage Schemes...". Click the checkbox to set your project scheme to `Shared`. This is required for Jenkins
