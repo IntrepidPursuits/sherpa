@@ -109,7 +109,7 @@ it { should validate_inclusion_of(:name).in_array(['Widgetron', 'Widgetron Delux
 be aware that it may fail if: (a) you have a uniqueness constraint on `name` and (b) have already created a record with that name in your database, for example in a `before :each` or `let` block:
 
 ```ruby
-let!(:widet) { create(:widget) }
+let!(:widget) { create(:widget) }
 
 it { should validate_uniqueness_of(:name) }
 # will fail with an error suggesting the array in the test does not match the
