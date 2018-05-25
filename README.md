@@ -27,6 +27,7 @@ Development best practices for Intrepid
     * [Android Jenkins setup instructions](android/android_jenkins.md)
     * [Stuff to read for Android devs](android/stuff_to_read.md)
     * [Useful Android Studio plugins](android/android_studio_plugins.md)
+    * [Tidbits](android/tidbits)
 * Web
     * [Intro to service objects](webservices/ruby/service_objects.md)
     * [Deploying Phoenix/Elixir apps](webservices/phoenix_deployment.md)
