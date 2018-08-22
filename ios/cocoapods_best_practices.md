@@ -2,6 +2,11 @@
 
 CocoaPods is a vital tool within our iOS ecosystem, and one that is used on almost every project built at Intrepid. For that reason it's important that we also have a set of guidelines and best practices in place for working with CocoaPods to ensure relative conformity across various projects.
 
+### Takeaways
+* Check in your `Podfile`, `Podfile.lock`, and `/Pods` directory to git.
+* Be as specific as possible with Pod versions.
+* Include test-only Pods in their own target.
+
 ## Structuring a Podfile
 
 Podfiles should have as much structure to them as possible. CocoaPods makes things very easy and very straightforward to get started, and you aren't required to be restrictive in the versions you use, but that can easily cause chaos on a project when a new developer rolls on or a new version of the pod is released without being fully tested. For those reasons it's strongly encouraged to be as exact as possible. 
