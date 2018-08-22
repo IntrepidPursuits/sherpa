@@ -25,7 +25,7 @@ target 'Project' do
     pod 'IGListKit', '~> 3.1'
 end
 ```
-This Podfile is very quick to set up, and very easy to use. That ease comes with a tradeoff though where you aren't guaranteeing the version that will be installed when `pod install` is run. Sure, for Fabric and IGListKit you are giving a version, but they will bring in any version up to `2.0` and `4.0` respectively. Granted the maintainers should be adhering to semver style and shouldn't be introducing any major breaking changes in those versions, but in the event of that happening your project could be broken unexpectedly.
+This Podfile is very quick to set up, and very easy to use. That ease comes with a tradeoff though where you aren't guaranteeing the version that will be installed when `pod install` is run. Sure, for Fabric and IGListKit you are giving a version, but they will bring in any version up to `2.0` and `4.0` respectively. Granted the maintainers should be adhering to [semver style](https://semver.org/) and shouldn't be introducing any major breaking changes in those versions, but in the event of that happening your project could be broken unexpectedly.
 
 #### Good Podfile example
 ```ruby
