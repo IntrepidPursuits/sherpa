@@ -10,6 +10,15 @@ Jenkins is configured to scan Intrepid's Github Organization and look for projec
 1. Have a `Jenkinsfile` in the root of your repo.
 
 ---
+# Setting up Jenkins with Bitbucket Project
+
+To add a Bitbucket project to Jenkins:
+1. Have a `Jenkinsfile` in the root of your repo.
+1. From the "Bitbucket" folder on Jenkins, click "New Item" on the left sidebar
+1. Name the project like "MyProject-iOS" and at the bottom enter `Template` into the field for "Copy from". Click OK.
+1. In the configuration file that you are taken to next, there's a dropdown called "Repository Name", select your project. Click Save.
+
+---
 # Pipeline Basics
 
 A Pipeline is an abstract concept that describes a set of steps to go from raw code, to a delivered product. In the case of iOS projects, our pipeline handles code review, tests, and deploying binaries to our OTA server -- as well as reports, and metric collection.
@@ -37,7 +46,7 @@ At the top of your `Jenkinsfile` (But below any library import statements), add 
 
     def xcodeProject = new io.intrepid.XcodeProject()
 
-This simply creates a new XcodeProject instance, which is a [class defined in the Intrepid Pipeline library](https://github.com/IntrepidPursuits/jenkins-pipeline-library/blob/master/src/io/intrepid/XcodeProject.groovy).
+This simply creates a new XcodeProject instance, which is a [class defined in the Intrepid Pipeline library](https://source.digital.accenture.com/projects/INT/repos/jenkins-pipeline-library/browse/src/io/intrepid/XcodeProject.groovy).
 
 At the minimum, you must provide the name of your project. This should be the same name that you used when creating the Xcode project. Add this line to your Jenkinsfile
 
