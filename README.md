@@ -68,3 +68,4 @@ Projects repos should always contain a README so that future development teams c
 ## General Resources
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
 * [Git cookbook](git/git_cookbook.md)
+* [Comparison of Android and iOS development](android_vs_ios.md)
