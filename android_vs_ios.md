@@ -2,8 +2,6 @@ This document tries to provide a high level overview of some key differences (an
 
 # Language
 
-**TL;DR: Kotlin is more convenient, Swift is more powerful**
-
 ## Common features and similarities (Kotlin and Swift)
 * Mainly object oriented (classes, inheritance, interface/protocol)
 * Statically typed
@@ -53,6 +51,27 @@ Java and Kotlin classes/methods/extensions/etc are grouped into [packages](https
 
 Swift is namespaced by module, so it's not possible to have multiple files, classes, or top-level methods/variables of the same name in a module, but it's okay if they are from different modules. Selecting the correct version works similarly as Java/Kotlin by either adding [import statements](https://docs.swift.org/swift-book/ReferenceManual/Declarations.html#ID354) or using the full module name when reference it.\
 Objective-C doesn't have namespace, so it's common to see legacy code adding prefixes to class names, ex NSString.
+
+## Syntax
+Most of syntax differences/similarities can be found [here](http://nilhcem.com/swift-is-like-kotlin/). Some additional comparisons not covered in the link:
+
+#### Using optional variables
+Kotlin:
+```
+var text: String?
+...
+text?.let {
+    print(it)
+}
+```
+Swift:
+```
+var text: String?
+...
+if let text = text {
+    print(text)
+}
+```
 
 ## Other Kotlin features
 * `if` and `when` statements can also return value. ex: `val z = if (x>y) 5 else 10`
