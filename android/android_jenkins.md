@@ -2,7 +2,7 @@
 
 ### Templates
 There are three templates for creating Android Jenkins projects:
-* `android-template`: This is run every time something is merged into the develop branch. It runs the unit tests, generates a QA build, and uploads it to the OTA link.
+* `android-template`: This is run every time something is merged into the master branch. It runs the unit tests, generates a QA build, and uploads it to the OTA link.
 * `android-pr-template`: This is run every time a PR is created. It runs the unit tests and reports the result back to the GitHub PR page.
 * `android-nightly-template`: This is run once every weeknight between 12am and 8am. It runs both the unit tests and UI tests (currently the UI tests will run on a physical device attached to the Jenkins machine) and reports the test coverage.
 
@@ -41,7 +41,7 @@ Note: if you wish to rebuild a PR without pushing new commits, you can type `res
 
 ### Additional instructions for `android-nightly-template`
 The `android-nightly-template` expects the project to contain [coverage.gradle](https://github.com/IntrepidPursuits/AndroidSkeleton/blob/master/app/coverage.gradle). If your project is based off [Android Skeleton](https://github.com/IntrepidPursuits/AndroidSkeleton), you should be all set. If not, you can simply copy that file to your project and add `apply from: 'coverage.gradle'` in your app `build.gradle` file (note that you will also need the [spoon plugin](https://github.com/stanfy/spoon-gradle-plugin)).
-Additional info can be found [here](https://github.com/IntrepidPursuits/sherpa/blob/master/android_cobertura.md).
+Additional info can be found [here](https://github.com/IntrepidPursuits/sherpa/blob/master/android/android_cobertura.md).
 
 ### Build failing with error 'missing local.properties'
 
