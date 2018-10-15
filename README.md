@@ -12,6 +12,7 @@ Development best practices for Intrepid
     * [Project Setup](ios/ios_project_setup.md)
     * [Stuff to read for iOS devs](ios/stuff_to_read.md)
     * [CocoaPods Processes](ios/cocoapods_processes.md)
+    * [CocoaPods Best Practices](ios/cocoapods_best_practices.md)
     * [Common CocoaPods](ios/common_cocoapods.md)
     * [iOS Recommended Tools](ios/ios_recommended_tools.md)
     * [Inspecting an .ipa file](ios/ios_inspecting_an_ipa_file.md)
