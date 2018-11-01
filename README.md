@@ -10,8 +10,6 @@ Development best practices for Intrepid
 * iOS
     * [Estimation Playbook](ios/ios_estimation_playbook.md)
     * [Project Setup](ios/ios_project_setup.md)
-    * [iOS Jenkins Pipeline Setup](ios/ios_jenkins_pipeline_guide.md)
-    * [iOS Code Coverage On Jenkins](ios/ios_code_coverage.md)
     * [Stuff to read for iOS devs](ios/stuff_to_read.md)
     * [CocoaPods Processes](ios/cocoapods_processes.md)
     * [Common CocoaPods](ios/common_cocoapods.md)
@@ -24,7 +22,6 @@ Development best practices for Intrepid
     * [iOS App Submission Checklist](ios/ios_app_submission_checklist.md)
 * Android
     * [New project setup instructions](android/android_project_creation.md)
-    * [Android Jenkins setup instructions](android/android_jenkins.md)
     * [Stuff to read for Android devs](android/stuff_to_read.md)
     * [Useful Android Studio plugins](android/android_studio_plugins.md)
     * [Tidbits](android/tidbits)
@@ -41,6 +38,10 @@ Development best practices for Intrepid
     * [Javascript gotchas](webservices/gotchas/javascript.md)
     * [Rails gotchas](webservices/gotchas/rails.md)
     * [MEAN stack glossary](webservices/mean_stack_glossary.md)
+
+## Jenkins
+* Configuration for all platforms
+    * [Intrepid Jenkins Configuration](https://source.digital.accenture.com/projects/INT/repos/shhherpa/browse/Jenkins)
 
 ## Style Guides
 * iOS
