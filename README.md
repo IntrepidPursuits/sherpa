@@ -56,9 +56,13 @@ Development best practices for Intrepid
 
 ## Process
 * [Intrepid Development Principles](development_principles.md)
+
+## Git
 * [Git Workflow](git/git_workflow_quick_reference.md)
 * [Pull Request Guidelines](pull_request_guidelines.md)
 * [Why rebase?](git/why_rebase.md)
+* [Writing a good commit message](git/commit_message_guide.md)
+* [Git cookbook](git/git_cookbook.md)
 
 ### Maintenance Readme Template
 Projects repos should always contain a README so that future development teams can learn about processes/specific quirks that have to do with individual projects. See the template [here](readme-template.md).
@@ -68,5 +72,4 @@ Projects repos should always contain a README so that future development teams c
 
 ## General Resources
 * [Intrepid internal resources](http://github.com/IntrepidPursuits/shhherpa)
-* [Git cookbook](git/git_cookbook.md)
 * [Comparison of Android and iOS development](android_vs_ios.md)
