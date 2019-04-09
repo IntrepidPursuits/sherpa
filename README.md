@@ -20,6 +20,7 @@ Development best practices for Intrepid
     * [Rx Swift by Example](ios/rxswift_by_example.md)
     * [Testing References](ios/ios_testing_references.md)
     * [iOS App Submission Checklist](ios/ios_app_submission_checklist.md)
+    * [iOS Resources](ios/ios_resources.md)
 * Android
     * [New project setup instructions](android/android_project_creation.md)
     * [Stuff to read for Android devs](android/stuff_to_read.md)
